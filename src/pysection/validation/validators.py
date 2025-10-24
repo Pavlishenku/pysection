@@ -6,7 +6,7 @@ from typing import Optional
 
 import numpy as np
 
-from sectionpy.validation.exceptions import (
+from pysection.validation.exceptions import (
     GeometryValidationError,
     LoadValidationError,
     MaterialValidationError,

@@ -5,7 +5,7 @@ Tests unitaires pour les armatures
 import numpy as np
 import pytest
 
-from sectionpy.reinforcement import Rebar, RebarGroup
+from pysection.reinforcement import Rebar, RebarGroup
 
 
 class TestRebar:
@@ -99,7 +99,7 @@ class TestCoverHelper:
 
     def test_rectangular_position_top(self):
         """Test position haut avec enrobage"""
-        from sectionpy.reinforcement.helpers import CoverHelper
+        from pysection.reinforcement.helpers import CoverHelper
         
         y, z = CoverHelper.rectangular_position_with_cover(
             "top", width=0.3, height=0.5, diameter=0.020, cover=0.03
@@ -113,7 +113,7 @@ class TestCoverHelper:
     
     def test_rectangular_position_bottom(self):
         """Test position bas avec enrobage"""
-        from sectionpy.reinforcement.helpers import CoverHelper
+        from pysection.reinforcement.helpers import CoverHelper
         
         y, z = CoverHelper.rectangular_position_with_cover(
             "bottom", width=0.3, height=0.5, diameter=0.020, cover=0.03
@@ -125,7 +125,7 @@ class TestCoverHelper:
     
     def test_rectangular_position_left(self):
         """Test position gauche avec enrobage"""
-        from sectionpy.reinforcement.helpers import CoverHelper
+        from pysection.reinforcement.helpers import CoverHelper
         
         y, z = CoverHelper.rectangular_position_with_cover(
             "left", width=0.3, height=0.5, diameter=0.020, cover=0.03
@@ -136,7 +136,7 @@ class TestCoverHelper:
     
     def test_rectangular_position_right(self):
         """Test position droite avec enrobage"""
-        from sectionpy.reinforcement.helpers import CoverHelper
+        from pysection.reinforcement.helpers import CoverHelper
         
         y, z = CoverHelper.rectangular_position_with_cover(
             "right", width=0.3, height=0.5, diameter=0.020, cover=0.03
@@ -147,7 +147,7 @@ class TestCoverHelper:
     
     def test_rectangular_position_top_left(self):
         """Test position coin haut-gauche"""
-        from sectionpy.reinforcement.helpers import CoverHelper
+        from pysection.reinforcement.helpers import CoverHelper
         
         y, z = CoverHelper.rectangular_position_with_cover(
             "top-left", width=0.3, height=0.5, diameter=0.020, cover=0.03
@@ -158,7 +158,7 @@ class TestCoverHelper:
     
     def test_circular_position_with_cover(self):
         """Test position sur cercle avec enrobage"""
-        from sectionpy.reinforcement.helpers import CoverHelper
+        from pysection.reinforcement.helpers import CoverHelper
         
         # Angle 0° = droite
         y, z = CoverHelper.circular_position_with_cover(
@@ -175,7 +175,7 @@ class TestCoverHelper:
     
     def test_circular_position_90_degrees(self):
         """Test position à 90° (haut)"""
-        from sectionpy.reinforcement.helpers import CoverHelper
+        from pysection.reinforcement.helpers import CoverHelper
         
         y, z = CoverHelper.circular_position_with_cover(
             angle_degrees=90, diameter_section=0.5, diameter_rebar=0.020, cover=0.03
@@ -187,7 +187,7 @@ class TestCoverHelper:
     
     def test_circular_array_with_cover(self):
         """Test nappe circulaire avec enrobage"""
-        from sectionpy.reinforcement.helpers import CoverHelper
+        from pysection.reinforcement.helpers import CoverHelper
         
         positions = CoverHelper.circular_array_with_cover(
             n_bars=8, diameter_section=0.5, diameter_rebar=0.020, cover=0.03
@@ -203,7 +203,7 @@ class TestCoverHelper:
     
     def test_circular_array_angles(self):
         """Test angles de la nappe circulaire"""
-        from sectionpy.reinforcement.helpers import CoverHelper
+        from pysection.reinforcement.helpers import CoverHelper
         
         n_bars = 4
         positions = CoverHelper.circular_array_with_cover(
@@ -218,7 +218,7 @@ class TestCoverHelper:
     
     def test_layer_positions_single_bar(self):
         """Test nappe avec 1 barre"""
-        from sectionpy.reinforcement.helpers import CoverHelper
+        from pysection.reinforcement.helpers import CoverHelper
         
         positions = CoverHelper.layer_positions_with_cover(
             position="top", width=0.3, height=0.5, n_bars=1,
@@ -231,7 +231,7 @@ class TestCoverHelper:
     
     def test_layer_positions_two_bars(self):
         """Test nappe avec 2 barres"""
-        from sectionpy.reinforcement.helpers import CoverHelper
+        from pysection.reinforcement.helpers import CoverHelper
         
         positions = CoverHelper.layer_positions_with_cover(
             position="top", width=0.3, height=0.5, n_bars=2,
@@ -251,7 +251,7 @@ class TestCoverHelper:
     
     def test_layer_positions_multiple_bars(self):
         """Test nappe avec plusieurs barres"""
-        from sectionpy.reinforcement.helpers import CoverHelper
+        from pysection.reinforcement.helpers import CoverHelper
         
         n_bars = 5
         positions = CoverHelper.layer_positions_with_cover(
@@ -275,7 +275,7 @@ class TestCoverHelper:
     
     def test_layer_positions_custom_spacing(self):
         """Test nappe avec espacement personnalisé"""
-        from sectionpy.reinforcement.helpers import CoverHelper
+        from pysection.reinforcement.helpers import CoverHelper
         
         positions = CoverHelper.layer_positions_with_cover(
             position="top", width=0.3, height=0.5, n_bars=3,
@@ -294,7 +294,7 @@ class TestCoverHelper:
     
     def test_cover_consistency(self):
         """Test cohérence de l'enrobage"""
-        from sectionpy.reinforcement.helpers import CoverHelper
+        from pysection.reinforcement.helpers import CoverHelper
         
         width = 0.3
         height = 0.5

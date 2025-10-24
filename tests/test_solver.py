@@ -5,11 +5,11 @@ Tests for the section solver
 import numpy as np
 import pytest
 
-from sectionpy.geometry.section import CircularSection, RectangularSection
-from sectionpy.materials.concrete import ConcreteEC2
-from sectionpy.materials.steel import SteelEC2
-from sectionpy.reinforcement.rebar import RebarGroup
-from sectionpy.solver.section_solver import SectionSolver, SolverResult
+from pysection.geometry.section import CircularSection, RectangularSection
+from pysection.materials.concrete import ConcreteEC2
+from pysection.materials.steel import SteelEC2
+from pysection.reinforcement.rebar import RebarGroup
+from pysection.solver.section_solver import SectionSolver, SolverResult
 
 
 class TestSectionSolver:

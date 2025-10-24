@@ -5,12 +5,12 @@ Tests for custom/arbitrary contours functionality
 import numpy as np
 import pytest
 
-from sectionpy.geometry import Contour, Point
-from sectionpy.geometry.section import Section
-from sectionpy.materials.concrete import ConcreteEC2
-from sectionpy.materials.steel import SteelEC2
-from sectionpy.reinforcement.rebar import RebarGroup
-from sectionpy.solver.section_solver import SectionSolver
+from pysection.geometry import Contour, Point
+from pysection.geometry.section import Section
+from pysection.materials.concrete import ConcreteEC2
+from pysection.materials.steel import SteelEC2
+from pysection.reinforcement.rebar import RebarGroup
+from pysection.solver.section_solver import SectionSolver
 
 
 class TestContourPolygon:

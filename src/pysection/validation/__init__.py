@@ -2,19 +2,19 @@
 Validation module with analytical reference cases and validators
 """
 
-from sectionpy.validation.analytical_cases import (
+from pysection.validation.analytical_cases import (
     RectangularBeamCase,
     TBeamCase,
     ValidationDatabase,
 )
-from sectionpy.validation.exceptions import (
+from pysection.validation.exceptions import (
     GeometryValidationError,
     LoadValidationError,
     MaterialValidationError,
     RebarValidationError,
     ValidationError,
 )
-from sectionpy.validation.validators import (
+from pysection.validation.validators import (
     GeometryValidator,
     LoadValidator,
     MaterialValidator,

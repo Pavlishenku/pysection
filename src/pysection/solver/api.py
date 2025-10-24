@@ -4,12 +4,12 @@ High-level API helpers for solving with validation.
 
 from typing import Optional
 
-from sectionpy.geometry.section import Section
-from sectionpy.materials.concrete import ConcreteEC2
-from sectionpy.materials.steel import SteelEC2
-from sectionpy.reinforcement.rebar import RebarGroup
-from sectionpy.solver.section_solver import SectionSolver, SolverResult
-from sectionpy.validation.validators import SectionValidator
+from pysection.geometry.section import Section
+from pysection.materials.concrete import ConcreteEC2
+from pysection.materials.steel import SteelEC2
+from pysection.reinforcement.rebar import RebarGroup
+from pysection.solver.section_solver import SectionSolver, SolverResult
+from pysection.validation.validators import SectionValidator
 
 
 def validate_and_solve(

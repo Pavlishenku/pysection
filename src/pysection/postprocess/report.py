@@ -2,7 +2,7 @@
 Génération de rapports
 """
 
-from sectionpy.solver.section_solver import SolverResult
+from pysection.solver.section_solver import SolverResult
 
 
 class ReportGenerator:

@@ -6,7 +6,7 @@ from typing import Tuple
 
 import numpy as np
 
-from sectionpy.solver.section_solver import SectionSolver
+from pysection.solver.section_solver import SectionSolver
 
 
 class InteractionDiagram:

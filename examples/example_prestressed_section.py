@@ -8,7 +8,7 @@ Référence : CEB-FIP Model Code 1990, exemples de précontrainte
 """
 import numpy as np
 import matplotlib.pyplot as plt
-from sectionpy import RectangularSection, ConcreteEC2, PrestressingSteelEC2, RebarGroup, SectionSolver
+from pysection import RectangularSection, ConcreteEC2, PrestressingSteelEC2, RebarGroup, SectionSolver
 
 
 def prestressed_beam_example():

@@ -9,8 +9,8 @@ Référence : Exemples de dimensionnement de ponts, guides techniques
 """
 import numpy as np
 import matplotlib.pyplot as plt
-from sectionpy import TSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
-from sectionpy.eurocodes import EC2Verification
+from pysection import TSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
+from pysection.eurocodes import EC2Verification
 
 
 def t_beam_bridge_design():

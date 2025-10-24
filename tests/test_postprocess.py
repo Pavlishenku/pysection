@@ -8,13 +8,13 @@ import matplotlib
 matplotlib.use("Agg")  # Use non-interactive backend for testing
 import matplotlib.pyplot as plt
 
-from sectionpy.geometry.section import CircularSection, RectangularSection
-from sectionpy.materials.concrete import ConcreteEC2
-from sectionpy.materials.steel import SteelEC2
-from sectionpy.postprocess.report import ReportGenerator
-from sectionpy.postprocess.visualization import SectionPlotter
-from sectionpy.reinforcement.rebar import RebarGroup
-from sectionpy.solver.section_solver import SectionSolver
+from pysection.geometry.section import CircularSection, RectangularSection
+from pysection.materials.concrete import ConcreteEC2
+from pysection.materials.steel import SteelEC2
+from pysection.postprocess.report import ReportGenerator
+from pysection.postprocess.visualization import SectionPlotter
+from pysection.reinforcement.rebar import RebarGroup
+from pysection.solver.section_solver import SectionSolver
 
 
 class TestReportGenerator:

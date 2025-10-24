@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 🎉 First Stable Release
 
-This is the first stable release of SectionPy, a professional concrete section analysis library.
+This is the first stable release of PySection, a professional concrete section analysis library.
 
 ### ✨ Added
 
@@ -94,8 +94,8 @@ This is the first stable release of SectionPy, a professional concrete section a
 - **Main Dependencies**: NumPy >= 1.20.0, Matplotlib >= 3.3.0
 
 ### 🔧 Breaking Changes
-- Package renamed from `opencds` to `sectionpy`
-- All imports now use `import sectionpy as sp` instead of `import opencds as oc`
+- Package renamed from `opencds` to `PySection`
+- All imports now use `import PySection as ps` instead of `import opencds as oc`
 
 ### 🙏 Acknowledgments
 This release represents a complete, production-ready library for structural concrete section analysis based on Eurocode 2 specifications.

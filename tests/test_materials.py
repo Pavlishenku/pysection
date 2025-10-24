@@ -5,8 +5,8 @@ Tests unitaires pour les matériaux
 import numpy as np
 import pytest
 
-import sectionpy as oc
-from sectionpy.materials import ConcreteEC2, SteelEC2, StructuralSteelEC3
+import pysection as oc
+from pysection.materials import ConcreteEC2, SteelEC2, StructuralSteelEC3
 
 
 class TestConcreteEC2:

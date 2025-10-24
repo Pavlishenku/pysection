@@ -8,11 +8,11 @@ from typing import List, Optional, Tuple
 
 import numpy as np
 
-from sectionpy.geometry.section import Section
-from sectionpy.materials.concrete import ConcreteEC2
-from sectionpy.materials.steel import SteelEC2
-from sectionpy.reinforcement.rebar import RebarGroup
-from sectionpy.utils import NumericalConstants, UnitConverter, clamp, is_converged, safe_divide
+from pysection.geometry.section import Section
+from pysection.materials.concrete import ConcreteEC2
+from pysection.materials.steel import SteelEC2
+from pysection.reinforcement.rebar import RebarGroup
+from pysection.utils import NumericalConstants, UnitConverter, clamp, is_converged, safe_divide
 
 
 @dataclass

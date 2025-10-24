@@ -4,7 +4,7 @@ Visualisation des sections
 
 import matplotlib.pyplot as plt
 
-from sectionpy.geometry.section import Section
+from pysection.geometry.section import Section
 
 
 class SectionPlotter:

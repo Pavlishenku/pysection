@@ -8,7 +8,7 @@ from typing import List, Tuple
 import numpy as np
 
 try:
-    from sectionpy.reinforcement.helpers import CoverHelper
+    from pysection.reinforcement.helpers import CoverHelper
 except ImportError:
     # Si helpers n'est pas encore chargé, on l'importera plus tard
     CoverHelper = None

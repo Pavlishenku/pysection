@@ -5,8 +5,8 @@ This module provides constitutive laws for structural materials
 according to Eurocodes (EC2 for concrete, EC3 for structural steel).
 """
 
-from sectionpy.materials.concrete import ConcreteEC2
-from sectionpy.materials.steel import PrestressingSteelEC2, SteelEC2, StructuralSteelEC3
+from pysection.materials.concrete import ConcreteEC2
+from pysection.materials.steel import PrestressingSteelEC2, SteelEC2, StructuralSteelEC3
 
 __all__ = [
     "ConcreteEC2",

@@ -5,7 +5,7 @@ Tests unitaires pour le module géométrie
 import numpy as np
 import pytest
 
-from sectionpy.geometry import CircularSection, Contour, Point, RectangularSection
+from pysection.geometry import CircularSection, Contour, Point, RectangularSection
 
 
 def test_point_creation():

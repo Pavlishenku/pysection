@@ -6,8 +6,8 @@ from typing import List
 
 import numpy as np
 
-from sectionpy.geometry.contour import Contour, Point
-from sectionpy.geometry.properties import GeometricProperties
+from pysection.geometry.contour import Contour, Point
+from pysection.geometry.properties import GeometricProperties
 
 
 class Section:

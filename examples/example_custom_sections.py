@@ -13,14 +13,14 @@ Author: SectionPy Contributors
 import matplotlib.pyplot as plt
 import numpy as np
 
-from sectionpy.geometry import Contour, Point
-from sectionpy.geometry.section import Section
-from sectionpy.materials.concrete import ConcreteEC2
-from sectionpy.materials.steel import SteelEC2
-from sectionpy.postprocess.report import ReportGenerator
-from sectionpy.postprocess.visualization import SectionPlotter
-from sectionpy.reinforcement.rebar import RebarGroup
-from sectionpy.solver.section_solver import SectionSolver
+from pysection.geometry import Contour, Point
+from pysection.geometry.section import Section
+from pysection.materials.concrete import ConcreteEC2
+from pysection.materials.steel import SteelEC2
+from pysection.postprocess.report import ReportGenerator
+from pysection.postprocess.visualization import SectionPlotter
+from pysection.reinforcement.rebar import RebarGroup
+from pysection.solver.section_solver import SectionSolver
 
 print("=" * 70)
 print("SectionPy - CUSTOM SECTION CONTOURS EXAMPLE")

@@ -2,8 +2,8 @@
 Exemple d'utilisation du module de validation SectionPy
 """
 
-from sectionpy import RectangularSection, ConcreteEC2, SteelEC2, RebarGroup
-from sectionpy.validation import (
+from pysection import RectangularSection, ConcreteEC2, SteelEC2, RebarGroup
+from pysection.validation import (
     SectionValidator,
     GeometryValidator,
     MaterialValidator,

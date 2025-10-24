@@ -5,8 +5,8 @@ Tests de validation du solver contre des solutions analytiques
 import numpy as np
 import pytest
 
-from sectionpy import ConcreteEC2, RebarGroup, RectangularSection, SectionSolver, SteelEC2, TSection
-from sectionpy.validation.analytical_cases import ValidationDatabase
+from pysection import ConcreteEC2, RebarGroup, RectangularSection, SectionSolver, SteelEC2, TSection
+from pysection.validation.analytical_cases import ValidationDatabase
 
 
 class TestAnalyticalValidation:
@@ -172,7 +172,7 @@ class TestAnalyticalCases:
 
     def test_analytical_balanced_bending_realistic(self):
         """Test que la solution analytique donne des valeurs réalistes"""
-        from sectionpy.validation.analytical_cases import RectangularBeamCase
+        from pysection.validation.analytical_cases import RectangularBeamCase
 
         sol = RectangularBeamCase.pure_bending_balanced()
 
@@ -191,7 +191,7 @@ class TestAnalyticalCases:
 
     def test_analytical_compression_realistic(self):
         """Test compression pure analytique"""
-        from sectionpy.validation.analytical_cases import RectangularBeamCase
+        from pysection.validation.analytical_cases import RectangularBeamCase
 
         sol = RectangularBeamCase.pure_compression()
 

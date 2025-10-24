@@ -10,7 +10,7 @@ Référence : Publications académiques en mécanique des structures
 """
 import numpy as np
 import matplotlib.pyplot as plt
-from sectionpy import RectangularSection, CircularSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
+from pysection import RectangularSection, CircularSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
 
 
 def chen_saleeb_example():

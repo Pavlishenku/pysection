@@ -31,7 +31,7 @@
 ### Depuis PyPI (recommandé)
 
 ```bash
-pip install sectionpy
+pip install pysection
 ```
 
 ### Depuis les sources
@@ -53,7 +53,7 @@ pip install -e ".[dev]"
 ## 🚀 Démarrage Rapide
 
 ```python
-import sectionpy as sp
+import pysection as ps
 
 # Définir une section béton rectangulaire
 section = sp.RectangularSection(width=0.3, height=0.5)

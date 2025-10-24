@@ -22,30 +22,30 @@ __author__ = "SectionPy Contributors"
 __license__ = "MIT"
 
 # Eurocodes
-from sectionpy.eurocodes.verification import EC2Verification
+from pysection.eurocodes.verification import EC2Verification
 
 # Geometry
-from sectionpy.geometry.contour import Contour, Point
-from sectionpy.geometry.properties import GeometricProperties
-from sectionpy.geometry.section import CircularSection, RectangularSection, Section, TSection
+from pysection.geometry.contour import Contour, Point
+from pysection.geometry.properties import GeometricProperties
+from pysection.geometry.section import CircularSection, RectangularSection, Section, TSection
 
 # Interaction diagrams
-from sectionpy.interaction.diagram import InteractionDiagram
+from pysection.interaction.diagram import InteractionDiagram
 
 # Materials
-from sectionpy.materials.concrete import ConcreteEC2
-from sectionpy.materials.steel import PrestressingSteelEC2, SteelEC2, StructuralSteelEC3
-from sectionpy.postprocess.report import ReportGenerator
+from pysection.materials.concrete import ConcreteEC2
+from pysection.materials.steel import PrestressingSteelEC2, SteelEC2, StructuralSteelEC3
+from pysection.postprocess.report import ReportGenerator
 
 # Postprocessing
-from sectionpy.postprocess.visualization import SectionPlotter
+from pysection.postprocess.visualization import SectionPlotter
 
 # Reinforcement
-from sectionpy.reinforcement.rebar import Rebar, RebarGroup
-from sectionpy.solver.api import validate_and_solve
+from pysection.reinforcement.rebar import Rebar, RebarGroup
+from pysection.solver.api import validate_and_solve
 
 # Solver
-from sectionpy.solver.section_solver import SectionSolver, SolverResult
+from pysection.solver.section_solver import SectionSolver, SolverResult
 
 __all__ = [
     # Version

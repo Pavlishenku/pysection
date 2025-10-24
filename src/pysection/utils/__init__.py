@@ -8,13 +8,13 @@ This module provides utility functions for:
 - Numerical tools
 """
 
-from sectionpy.utils.constants import (
+from pysection.utils.constants import (
     CodeConstants,
     GeometricConstants,
     MaterialConstants,
     NumericalConstants,
 )
-from sectionpy.utils.math_helpers import (
+from pysection.utils.math_helpers import (
     angle_between_vectors,
     check_positive_definite,
     clamp,
@@ -27,7 +27,7 @@ from sectionpy.utils.math_helpers import (
     smooth_max,
     smooth_min,
 )
-from sectionpy.utils.units import Area, Force, Length, Moment, Stress, UnitConverter
+from pysection.utils.units import Area, Force, Length, Moment, Stress, UnitConverter
 
 __all__ = [
     "UnitConverter",

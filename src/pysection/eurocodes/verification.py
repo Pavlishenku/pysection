@@ -2,8 +2,8 @@
 Vérifications Eurocode 2
 """
 
-from sectionpy.solver.section_solver import SolverResult
-from sectionpy.utils import CodeConstants
+from pysection.solver.section_solver import SolverResult
+from pysection.utils import CodeConstants
 
 
 class EC2Verification:

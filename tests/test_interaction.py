@@ -5,7 +5,7 @@ Tests unitaires pour les diagrammes d'interaction
 import numpy as np
 import pytest
 
-from sectionpy import (
+from pysection import (
     RectangularSection,
     CircularSection,
     ConcreteEC2,
@@ -13,7 +13,7 @@ from sectionpy import (
     RebarGroup,
     SectionSolver,
 )
-from sectionpy.interaction import InteractionDiagram
+from pysection.interaction import InteractionDiagram
 
 
 class TestInteractionDiagram:

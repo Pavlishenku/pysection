@@ -9,7 +9,7 @@ Référence : Mari & Scordelis (1984), Spacone et al. (1996)
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-from sectionpy import RectangularSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
+from pysection import RectangularSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
 
 
 def biaxial_bending_study():

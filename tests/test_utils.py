@@ -5,7 +5,7 @@ Tests for utility functions
 import numpy as np
 import pytest
 
-from sectionpy.utils import (
+from pysection.utils import (
     Area,
     Force,
     Length,

@@ -3,9 +3,9 @@ Exemple avancé : Poteau circulaire avec ferraillage circulaire
 Démontre l'utilisation de l'enrobage automatique
 """
 
-from sectionpy import CircularSection, ConcreteEC2, SteelEC2, RebarGroup
-from sectionpy import SectionSolver
-from sectionpy.validation import SectionValidator, ValidationError
+from pysection import CircularSection, ConcreteEC2, SteelEC2, RebarGroup
+from pysection import SectionSolver
+from pysection.validation import SectionValidator, ValidationError
 import numpy as np
 
 
@@ -117,7 +117,7 @@ def main():
     
     # === 6. VÉRIFICATIONS EC2 ===
     print("6. Vérifications Eurocode 2")
-    from sectionpy.eurocodes import EC2Verification
+    from pysection.eurocodes import EC2Verification
     
     if result2.converged:
         checks = EC2Verification.check_ULS(result2, concrete.fcd, steel.fyd)

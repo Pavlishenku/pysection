@@ -2,7 +2,7 @@
 Exemple basique d'utilisation d'SectionPy
 """
 import numpy as np
-from sectionpy import RectangularSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
+from pysection import RectangularSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
 
 
 def main():
@@ -48,7 +48,7 @@ def main():
     print(f"  Profondeur AN = {result.neutral_axis_depth:.3f} m")
     
     # Vérifications EC2
-    from sectionpy.eurocodes import EC2Verification
+    from pysection.eurocodes import EC2Verification
     
     checks_uls = EC2Verification.check_ULS(result, concrete.fcd, steel.fyd)
     

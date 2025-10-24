@@ -3,8 +3,8 @@ Exemple d'utilisation de la base de validation analytique
 Compare le solver numérique avec des solutions analytiques EC2
 """
 
-from sectionpy import RectangularSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
-from sectionpy.validation.analytical_cases import ValidationDatabase
+from pysection import RectangularSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
+from pysection.validation.analytical_cases import ValidationDatabase
 import numpy as np
 
 

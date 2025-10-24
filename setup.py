@@ -1,5 +1,5 @@
 """
-Setup file for SectionPy package
+Setup file for PySection package
 
 This file is kept for backwards compatibility.
 The actual configuration is in pyproject.toml
