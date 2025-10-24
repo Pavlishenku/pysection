@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>opensection.geometry.contour &mdash; opensection 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            opensection
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/geometry.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/materials.html">Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/solver.html">Section Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/verification.html">Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/basic_section.html">Basic Section Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/interaction_diagram.html">Interaction Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/custom_geometry.html">Custom Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/biaxial_bending.html">Biaxial Bending</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/geometry.html">Geometry API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/materials.html">Materials API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/reinforcement.html">Reinforcement API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/solver.html">Solver API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/eurocodes.html">Eurocodes API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/interaction.html">Interaction API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/postprocess.html">Postprocess API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utils.html">Utils Module</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Theory</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../theory/fiber_method.html">Fiber Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../theory/newton_raphson.html">Newton-Raphson Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../theory/eurocode2.html">Eurocode 2 Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../theory/material_models.html">Material Constitutive Models</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">opensection</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">opensection.geometry.contour</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for opensection.geometry.contour</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Classes pour la représentation de contours géométriques</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<div class="viewcode-block" id="Point">
+<a class="viewcode-back" href="../../../user_guide/geometry.html#opensection.geometry.Point">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Représente un point 2D dans le plan (y, z)&quot;&quot;&quot;</span>
+
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">z</span><span class="p">:</span> <span class="nb">float</span>
+
+<div class="viewcode-block" id="Point.to_array">
+<a class="viewcode-back" href="../../../user_guide/geometry.html#opensection.geometry.Point.to_array">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_array</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convertit en array numpy&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">])</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Contour">
+<a class="viewcode-back" href="../../../user_guide/geometry.html#opensection.geometry.Contour">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Contour</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Représente un contour fermé défini par une liste de points</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        points: Liste de points définissant le contour</span>
+<span class="sd">        is_hole: True si le contour représente un trou</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Contour.__init__">
+<a class="viewcode-back" href="../../../user_guide/geometry.html#opensection.geometry.Contour.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Point</span><span class="p">],</span> <span class="n">is_hole</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            points: Liste de points (sens trigonométrique pour contour extérieur)</span>
+<span class="sd">            is_hole: True si c&#39;est un trou (sens horaire)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">points</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_hole</span> <span class="o">=</span> <span class="n">is_hole</span></div>
+
+
+<div class="viewcode-block" id="Contour.to_array">
+<a class="viewcode-back" href="../../../user_guide/geometry.html#opensection.geometry.Contour.to_array">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_array</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convertit en array numpy (n_points, 2)&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">z</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="Contour.area">
+<a class="viewcode-back" href="../../../user_guide/geometry.html#opensection.geometry.Contour.area">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calcule l&#39;aire du contour par la formule de Shoelace</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Aire du contour (positive)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.0</span>
+
+        <span class="c1"># Formule de Shoelace</span>
+        <span class="n">area</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span>
+            <span class="n">area</span> <span class="o">+=</span> <span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">coords</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">area</span> <span class="o">-=</span> <span class="n">coords</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">area</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span></div>
+
+
+<div class="viewcode-block" id="Contour.centroid">
+<a class="viewcode-back" href="../../../user_guide/geometry.html#opensection.geometry.Contour.centroid">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">centroid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calcule le centroïde du contour</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple (y_c, z_c) du centroïde</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+        <span class="n">area</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">area</span> <span class="o">&lt;</span> <span class="mf">1e-12</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+        <span class="n">cy</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">cz</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span>
+            <span class="n">cross</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">coords</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">coords</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">cy</span> <span class="o">+=</span> <span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">coords</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">cross</span>
+            <span class="n">cz</span> <span class="o">+=</span> <span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">coords</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">cross</span>
+
+        <span class="n">factor</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">6.0</span> <span class="o">*</span> <span class="n">area</span><span class="p">)</span>
+        <span class="n">cy</span> <span class="o">*=</span> <span class="n">factor</span>
+        <span class="n">cz</span> <span class="o">*=</span> <span class="n">factor</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">cy</span><span class="p">,</span> <span class="n">cz</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Contour.second_moment">
+<a class="viewcode-back" href="../../../user_guide/geometry.html#opensection.geometry.Contour.second_moment">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">second_moment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cy</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">cz</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calcule les moments quadratiques par rapport à un point de référence</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            cy, cz: Coordonnées du point de référence</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple (I_yy, I_zz, I_yz)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+
+        <span class="n">I_yy</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">I_zz</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">I_yz</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span>
+
+            <span class="n">y1</span><span class="p">,</span> <span class="n">z1</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">cy</span><span class="p">,</span> <span class="n">cz</span><span class="p">])</span>
+            <span class="n">y2</span><span class="p">,</span> <span class="n">z2</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">cy</span><span class="p">,</span> <span class="n">cz</span><span class="p">])</span>
+
+            <span class="n">cross</span> <span class="o">=</span> <span class="n">y1</span> <span class="o">*</span> <span class="n">z2</span> <span class="o">-</span> <span class="n">y2</span> <span class="o">*</span> <span class="n">z1</span>
+
+            <span class="c1"># Moments quadratiques</span>
+            <span class="n">I_yy</span> <span class="o">+=</span> <span class="p">(</span><span class="n">z1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">z1</span> <span class="o">*</span> <span class="n">z2</span> <span class="o">+</span> <span class="n">z2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">cross</span>
+            <span class="n">I_zz</span> <span class="o">+=</span> <span class="p">(</span><span class="n">y1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y1</span> <span class="o">*</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">y2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">cross</span>
+            <span class="n">I_yz</span> <span class="o">+=</span> <span class="p">(</span><span class="n">y1</span> <span class="o">*</span> <span class="n">z2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y1</span> <span class="o">*</span> <span class="n">z1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y2</span> <span class="o">*</span> <span class="n">z2</span> <span class="o">+</span> <span class="n">y2</span> <span class="o">*</span> <span class="n">z1</span><span class="p">)</span> <span class="o">*</span> <span class="n">cross</span>
+
+        <span class="n">I_yy</span> <span class="o">/=</span> <span class="mf">12.0</span>
+        <span class="n">I_zz</span> <span class="o">/=</span> <span class="mf">12.0</span>
+        <span class="n">I_yz</span> <span class="o">/=</span> <span class="mf">24.0</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">I_yy</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">I_zz</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">I_yz</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Contour.contains_point">
+<a class="viewcode-back" href="../../../user_guide/geometry.html#opensection.geometry.Contour.contains_point">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">contains_point</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Teste si un point est à l&#39;intérieur du contour (ray casting algorithm)</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            y, z: Coordonnées du point à tester</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            True si le point est à l&#39;intérieur</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+        <span class="n">inside</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="n">p1y</span><span class="p">,</span> <span class="n">p1z</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">p2y</span><span class="p">,</span> <span class="n">p2z</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="n">n</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">z</span> <span class="o">&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">p1z</span><span class="p">,</span> <span class="n">p2z</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="nb">max</span><span class="p">(</span><span class="n">p1z</span><span class="p">,</span> <span class="n">p2z</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="nb">max</span><span class="p">(</span><span class="n">p1y</span><span class="p">,</span> <span class="n">p2y</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">p1z</span> <span class="o">!=</span> <span class="n">p2z</span><span class="p">:</span>
+                            <span class="n">xinters</span> <span class="o">=</span> <span class="p">(</span><span class="n">z</span> <span class="o">-</span> <span class="n">p1z</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">p2y</span> <span class="o">-</span> <span class="n">p1y</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">p2z</span> <span class="o">-</span> <span class="n">p1z</span><span class="p">)</span> <span class="o">+</span> <span class="n">p1y</span>
+                        <span class="k">if</span> <span class="n">p1y</span> <span class="o">==</span> <span class="n">p2y</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">xinters</span><span class="p">:</span>
+                            <span class="n">inside</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">inside</span>
+
+            <span class="n">p1y</span><span class="p">,</span> <span class="n">p1z</span> <span class="o">=</span> <span class="n">p2y</span><span class="p">,</span> <span class="n">p2z</span>
+
+        <span class="k">return</span> <span class="n">inside</span></div>
+
+
+<div class="viewcode-block" id="Contour.rectangle">
+<a class="viewcode-back" href="../../../user_guide/geometry.html#opensection.geometry.Contour.rectangle">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rectangle</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">center_y</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">center_z</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Contour&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Crée un contour rectangulaire</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            width: Largeur (direction y)</span>
+<span class="sd">            height: Hauteur (direction z)</span>
+<span class="sd">            center_y: Coordonnée y du centre</span>
+<span class="sd">            center_z: Coordonnée z du centre</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Contour rectangulaire</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">half_w</span> <span class="o">=</span> <span class="n">width</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="n">half_h</span> <span class="o">=</span> <span class="n">height</span> <span class="o">/</span> <span class="mf">2.0</span>
+
+        <span class="n">points</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">Point</span><span class="p">(</span><span class="n">center_y</span> <span class="o">-</span> <span class="n">half_w</span><span class="p">,</span> <span class="n">center_z</span> <span class="o">-</span> <span class="n">half_h</span><span class="p">),</span>
+            <span class="n">Point</span><span class="p">(</span><span class="n">center_y</span> <span class="o">+</span> <span class="n">half_w</span><span class="p">,</span> <span class="n">center_z</span> <span class="o">-</span> <span class="n">half_h</span><span class="p">),</span>
+            <span class="n">Point</span><span class="p">(</span><span class="n">center_y</span> <span class="o">+</span> <span class="n">half_w</span><span class="p">,</span> <span class="n">center_z</span> <span class="o">+</span> <span class="n">half_h</span><span class="p">),</span>
+            <span class="n">Point</span><span class="p">(</span><span class="n">center_y</span> <span class="o">-</span> <span class="n">half_w</span><span class="p">,</span> <span class="n">center_z</span> <span class="o">+</span> <span class="n">half_h</span><span class="p">),</span>
+        <span class="p">]</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">points</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Contour.circle">
+<a class="viewcode-back" href="../../../user_guide/geometry.html#opensection.geometry.Contour.circle">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">circle</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">n_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">36</span><span class="p">,</span> <span class="n">center_y</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">center_z</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Contour&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Crée un contour circulaire</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            radius: Rayon du cercle</span>
+<span class="sd">            n_points: Nombre de points pour approximer le cercle</span>
+<span class="sd">            center_y: Coordonnée y du centre</span>
+<span class="sd">            center_z: Coordonnée z du centre</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Contour circulaire</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_points</span><span class="p">):</span>
+            <span class="n">theta</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">i</span> <span class="o">/</span> <span class="n">n_points</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">center_y</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">center_z</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+            <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">points</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Contour.polygon">
+<a class="viewcode-back" href="../../../user_guide/geometry.html#opensection.geometry.Contour.polygon">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">polygon</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">vertices</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="s2">&quot;Contour&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Crée un contour polygonal à partir d&#39;une liste de vertices</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            vertices: Liste de tuples (y, z)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Contour polygonal</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">vertices</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">points</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, opensection Contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

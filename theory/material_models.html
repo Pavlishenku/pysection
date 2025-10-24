@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Material Constitutive Models &mdash; opensection 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contributing" href="../contributing.html" />
+    <link rel="prev" title="Eurocode 2 Theory" href="eurocode2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            opensection
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/geometry.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/materials.html">Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/solver.html">Section Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/verification.html">Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/basic_section.html">Basic Section Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/interaction_diagram.html">Interaction Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/custom_geometry.html">Custom Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/biaxial_bending.html">Biaxial Bending</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/geometry.html">Geometry API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/materials.html">Materials API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/reinforcement.html">Reinforcement API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/solver.html">Solver API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/eurocodes.html">Eurocodes API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/interaction.html">Interaction API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/postprocess.html">Postprocess API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils Module</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Theory</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="fiber_method.html">Fiber Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="newton_raphson.html">Newton-Raphson Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eurocode2.html">Eurocode 2 Theory</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Material Constitutive Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#concrete-models">Concrete Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ec2-parabola-rectangle">EC2 Parabola-Rectangle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#elastic-modulus">Elastic Modulus</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#steel-models">Steel Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ec2-reinforcing-steel">EC2 Reinforcing Steel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prestressing-steel">Prestressing Steel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#structural-steel-ec3">Structural Steel (EC3)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sign-conventions">Sign Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#concrete">Concrete</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#steel">Steel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#numerical-implementation">Numerical Implementation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vectorized-computation">Vectorized Computation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tangent-modulus">Tangent Modulus</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">opensection</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Material Constitutive Models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/theory/material_models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="material-constitutive-models">
+<h1>Material Constitutive Models<a class="headerlink" href="#material-constitutive-models" title="Link to this heading"></a></h1>
+<p>Detailed description of material stress-strain relationships.</p>
+<section id="concrete-models">
+<h2>Concrete Models<a class="headerlink" href="#concrete-models" title="Link to this heading"></a></h2>
+<section id="ec2-parabola-rectangle">
+<h3>EC2 Parabola-Rectangle<a class="headerlink" href="#ec2-parabola-rectangle" title="Link to this heading"></a></h3>
+<p>Used for ultimate limit state design.</p>
+<p><strong>Normal Strength (f_ck ≤ 50 MPa)</strong></p>
+<ul class="simple">
+<li><p>ε_c2 = 2.0‰</p></li>
+<li><p>ε_cu2 = 3.5‰</p></li>
+<li><p>n = 2.0</p></li>
+</ul>
+<p><strong>High Strength (50 &lt; f_ck ≤ 90 MPa)</strong></p>
+<ul class="simple">
+<li><p>ε_c2 = (2.0 + 0.085·(f_ck - 50)^0.53)‰</p></li>
+<li><p>ε_cu2 = (2.6 + 35·((90-f_ck)/100)^4)‰</p></li>
+<li><p>n = 1.4 + 23.4·((90-f_ck)/100)^4</p></li>
+</ul>
+</section>
+<section id="elastic-modulus">
+<h3>Elastic Modulus<a class="headerlink" href="#elastic-modulus" title="Link to this heading"></a></h3>
+<p>Secant modulus (EC2 Table 3.1):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}E_{cm} = 22000 \\cdot \\left(\\frac{f_{ck} + 8}{10}\\right)^{0.3}\end{split}\]</div>
+</section>
+</section>
+<section id="steel-models">
+<h2>Steel Models<a class="headerlink" href="#steel-models" title="Link to this heading"></a></h2>
+<section id="ec2-reinforcing-steel">
+<h3>EC2 Reinforcing Steel<a class="headerlink" href="#ec2-reinforcing-steel" title="Link to this heading"></a></h3>
+<p><strong>Without Hardening</strong></p>
+<p>Perfect elasto-plastic model:</p>
+<ul class="simple">
+<li><p>Elastic: σ_s = E_s · ε_s for <a href="#id1"><span class="problematic" id="id2">|ε|</span></a> ≤ ε_yd</p></li>
+<li><p>Plastic: σ_s = ±f_yd for ε_yd &lt; <a href="#id3"><span class="problematic" id="id4">|ε|</span></a> ≤ ε_ud</p></li>
+</ul>
+<p><strong>With Hardening</strong></p>
+<p>Includes strain hardening:</p>
+<ul class="simple">
+<li><p>Elastic: σ_s = E_s · ε_s</p></li>
+<li><p>Hardening: σ_s = sign(ε)·[f_yd + E_sh·(<a href="#id5"><span class="problematic" id="id6">|ε|</span></a> - ε_yd)]</p></li>
+<li><p>E_sh = k · E_s (typically k = 0.01)</p></li>
+</ul>
+</section>
+<section id="prestressing-steel">
+<h3>Prestressing Steel<a class="headerlink" href="#prestressing-steel" title="Link to this heading"></a></h3>
+<p>Simplified model (EC2 Annex D):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\\sigma_p = \\frac{f_{p0.1k}}{\\varepsilon_{p0.1k}} \\cdot \\varepsilon_p \\cdot
+\\left(1 - \\left(\\frac{\\varepsilon_p}{\\varepsilon_{pu}}\\right)^m\\right)\end{split}\]</div>
+<p>where m ≈ 2.0.</p>
+</section>
+<section id="structural-steel-ec3">
+<h3>Structural Steel (EC3)<a class="headerlink" href="#structural-steel-ec3" title="Link to this heading"></a></h3>
+<p>Similar to reinforcing steel but with:</p>
+<ul class="simple">
+<li><p>E_a = 210 GPa</p></li>
+<li><p>Different safety factors (γ_M0 = 1.0)</p></li>
+</ul>
+</section>
+</section>
+<section id="sign-conventions">
+<h2>Sign Conventions<a class="headerlink" href="#sign-conventions" title="Link to this heading"></a></h2>
+<section id="concrete">
+<h3>Concrete<a class="headerlink" href="#concrete" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Compression</strong>: Positive strain and stress</p></li>
+<li><p><strong>Tension</strong>: Negative strain, typically neglected (σ_c = 0)</p></li>
+</ul>
+<p>This follows traditional concrete design convention.</p>
+</section>
+<section id="steel">
+<h3>Steel<a class="headerlink" href="#steel" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Tension</strong>: Positive strain and stress</p></li>
+<li><p><strong>Compression</strong>: Negative strain and stress</p></li>
+</ul>
+<p>This follows mechanics convention.</p>
+</section>
+</section>
+<section id="numerical-implementation">
+<h2>Numerical Implementation<a class="headerlink" href="#numerical-implementation" title="Link to this heading"></a></h2>
+<section id="vectorized-computation">
+<h3>Vectorized Computation<a class="headerlink" href="#vectorized-computation" title="Link to this heading"></a></h3>
+<p>For efficiency, use NumPy vectorized operations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">stress_vectorized</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">):</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">epsilon</span><span class="p">)</span>
+    <span class="c1"># Compute for all fibers simultaneously</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">epsilon</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">epsilon</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">epsilon_c2</span><span class="p">)</span>
+    <span class="n">sigma</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fcd</span> <span class="o">*</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sigma</span>
+</pre></div>
+</div>
+</section>
+<section id="tangent-modulus">
+<h3>Tangent Modulus<a class="headerlink" href="#tangent-modulus" title="Link to this heading"></a></h3>
+<p>For Newton-Raphson, need tangent modulus:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}E_t = \\frac{d\\sigma}{d\\varepsilon}\end{split}\]</div>
+<p>Concrete:</p>
+<ul class="simple">
+<li><p>Parabolic branch: E_t = (f_cd · n / ε_c2) · (1 - ε/ε_c2)^(n-1)</p></li>
+<li><p>Plastic branch: E_t = 0</p></li>
+<li><p>Post-peak: E_t = 0</p></li>
+</ul>
+<p>Steel:</p>
+<ul class="simple">
+<li><p>Elastic: E_t = E_s</p></li>
+<li><p>Plastic (no hardening): E_t = 0</p></li>
+<li><p>Plastic (with hardening): E_t = k · E_s</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="eurocode2.html" class="btn btn-neutral float-left" title="Eurocode 2 Theory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../contributing.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, opensection Contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,598 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contributing &mdash; opensection 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Material Constitutive Models" href="theory/material_models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            opensection
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/geometry.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/materials.html">Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/solver.html">Section Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/verification.html">Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/basic_section.html">Basic Section Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/interaction_diagram.html">Interaction Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/custom_geometry.html">Custom Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/biaxial_bending.html">Biaxial Bending</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/geometry.html">Geometry API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/materials.html">Materials API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/reinforcement.html">Reinforcement API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/solver.html">Solver API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/eurocodes.html">Eurocodes API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/interaction.html">Interaction API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/postprocess.html">Postprocess API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils Module</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Theory</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="theory/fiber_method.html">Fiber Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/newton_raphson.html">Newton-Raphson Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/eurocode2.html">Eurocode 2 Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/material_models.html">Material Constitutive Models</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#contributing-to-opensection">Contributing to opensection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-table-of-contents">[LIST] Table of Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-started">[&gt;] Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#development-setup">Development Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#think-how-can-i-contribute">[THINK] How Can I Contribute?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#reporting-bugs">Reporting Bugs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#suggesting-enhancements">Suggesting Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#your-first-code-contribution">Your First Code Contribution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pull-requests">Pull Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#config-development-process">[CONFIG] Development Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#make-your-changes">1. Make Your Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-your-changes">2. Test Your Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lint-your-code">3. Lint Your Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update-documentation">4. Update Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#commit-your-changes">5. Commit Your Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#coding-standards">Coding Standards</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#python-style">Python Style</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docstrings">Docstrings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#type-hints">Type Hints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#test-testing">[TEST] Testing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#writing-tests">Writing Tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-organization">Test Organization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#docs-documentation">[DOCS] Documentation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#building-documentation">Building Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#documentation-structure">Documentation Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submitting-changes">Submitting Changes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#before-submitting">Before Submitting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pull-request-process">Pull Request Process</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#review-criteria">Review Criteria</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#world-translation-contributions">[WORLD] Translation Contributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#idea-questions">[IDEA] Questions?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#award-recognition">[AWARD] Recognition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">opensection</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Contributing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/contributing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Link to this heading"></a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="contributing-to-opensection">
+<h2>Contributing to opensection<a class="headerlink" href="#contributing-to-opensection" title="Link to this heading"></a></h2>
+<p>First off, thank you for considering contributing to opensection! It’s people like you that make opensection such a great tool for the structural engineering community.</p>
+<section id="list-table-of-contents">
+<h3>[LIST] Table of Contents<a class="headerlink" href="#list-table-of-contents" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="#code-of-conduct"><span class="xref myst">Code of Conduct</span></a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/unittest.mock-examples.html#getting-started" title="Python 3.14"><span class="xref myst">Getting Started</span></a></p></li>
+<li><p><a class="reference internal" href="#how-can-i-contribute"><span class="xref myst">How Can I Contribute?</span></a></p></li>
+<li><p><a class="reference internal" href="#development-process"><span class="xref myst">Development Process</span></a></p></li>
+<li><p><a class="reference internal" href="#coding-standards"><span class="xref myst">Coding Standards</span></a></p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/stable/devel/testing.html#testing" title="Matplotlib 3.10.7"><span class="xref myst">Testing</span></a></p></li>
+<li><p><a class="reference internal" href="#documentation"><span class="xref myst">Documentation</span></a></p></li>
+<li><p><a class="reference internal" href="#submitting-changes"><span class="xref myst">Submitting Changes</span></a></p></li>
+</ul>
+</section>
+<section id="code-of-conduct">
+<h3>Code of Conduct<a class="headerlink" href="#code-of-conduct" title="Link to this heading"></a></h3>
+<p>This project and everyone participating in it is governed by the <a class="reference internal" href="#CODE_OF_CONDUCT.md"><span class="xref myst">opensection Code of Conduct</span></a>. By participating, you are expected to uphold this code.</p>
+</section>
+<section id="getting-started">
+<h3>[&gt;] Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h3>
+<section id="prerequisites">
+<h4>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Python 3.8 or higher</p></li>
+<li><p>Git</p></li>
+<li><p>Basic knowledge of structural engineering and Eurocodes</p></li>
+</ul>
+</section>
+<section id="development-setup">
+<h4>Development Setup<a class="headerlink" href="#development-setup" title="Link to this heading"></a></h4>
+<ol class="arabic">
+<li><p><strong>Fork the repository</strong> on GitHub</p></li>
+<li><p><strong>Clone your fork</strong> locally:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/YOUR-USERNAME/opensection.git
+<span class="nb">cd</span><span class="w"> </span>opensection
+</pre></div>
+</div>
+</li>
+<li><p><strong>Create a virtual environment</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># On Windows: venv\Scripts\activate</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install development dependencies</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install pre-commit hooks</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>install
+</pre></div>
+</div>
+</li>
+<li><p><strong>Create a branch</strong> for your changes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/your-feature-name
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="think-how-can-i-contribute">
+<h3>[THINK] How Can I Contribute?<a class="headerlink" href="#think-how-can-i-contribute" title="Link to this heading"></a></h3>
+<section id="reporting-bugs">
+<h4>Reporting Bugs<a class="headerlink" href="#reporting-bugs" title="Link to this heading"></a></h4>
+<p>Before creating bug reports, please check existing issues to avoid duplicates.</p>
+<p><strong>When reporting a bug, please include</strong>:</p>
+<ul class="simple">
+<li><p>opensection version</p></li>
+<li><p>Python version</p></li>
+<li><p>Operating system</p></li>
+<li><p>Steps to reproduce</p></li>
+<li><p>Expected vs actual behavior</p></li>
+<li><p>Minimal code example</p></li>
+<li><p>Error messages and stack traces</p></li>
+</ul>
+<p>Use the <a class="reference internal" href="#.github/ISSUE_TEMPLATE/bug_report.md"><span class="xref myst">bug report template</span></a>.</p>
+</section>
+<section id="suggesting-enhancements">
+<h4>Suggesting Enhancements<a class="headerlink" href="#suggesting-enhancements" title="Link to this heading"></a></h4>
+<p>Enhancement suggestions are tracked as GitHub issues.</p>
+<p><strong>When suggesting an enhancement, please include</strong>:</p>
+<ul class="simple">
+<li><p>Clear description of the feature</p></li>
+<li><p>Rationale and use cases</p></li>
+<li><p>Examples of how it would work</p></li>
+<li><p>Potential implementation approach</p></li>
+</ul>
+<p>Use the <a class="reference internal" href="#.github/ISSUE_TEMPLATE/feature_request.md"><span class="xref myst">feature request template</span></a>.</p>
+</section>
+<section id="your-first-code-contribution">
+<h4>Your First Code Contribution<a class="headerlink" href="#your-first-code-contribution" title="Link to this heading"></a></h4>
+<p>Unsure where to begin? Look for issues labeled:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">good</span> <span class="pre">first</span> <span class="pre">issue</span></code> - Good for newcomers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">wanted</span></code> - Extra attention needed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">documentation</span></code> - Documentation improvements</p></li>
+</ul>
+</section>
+<section id="pull-requests">
+<h4>Pull Requests<a class="headerlink" href="#pull-requests" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Follow the <a class="reference internal" href="#development-process"><span class="xref myst">development process</span></a></p></li>
+<li><p>Follow the <a class="reference internal" href="#coding-standards"><span class="xref myst">coding standards</span></a></p></li>
+<li><p>Add or update tests as needed</p></li>
+<li><p>Update documentation as needed</p></li>
+<li><p>Ensure all tests pass</p></li>
+<li><p>Fill in the pull request template</p></li>
+</ol>
+</section>
+</section>
+<section id="config-development-process">
+<h3>[CONFIG] Development Process<a class="headerlink" href="#config-development-process" title="Link to this heading"></a></h3>
+<section id="make-your-changes">
+<h4>1. Make Your Changes<a class="headerlink" href="#make-your-changes" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Write clear, documented code</p></li>
+<li><p>Follow existing code style</p></li>
+<li><p>Add docstrings to new functions/classes</p></li>
+<li><p>Keep commits atomic and well-described</p></li>
+</ul>
+</section>
+<section id="test-your-changes">
+<h4>2. Test Your Changes<a class="headerlink" href="#test-your-changes" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run all tests</span>
+pytest
+
+<span class="c1"># Run with coverage</span>
+pytest<span class="w"> </span>--cov<span class="o">=</span>opensection<span class="w"> </span>--cov-report<span class="o">=</span>html
+
+<span class="c1"># Run specific test file</span>
+pytest<span class="w"> </span>tests/test_geometry.py
+
+<span class="c1"># Run specific test</span>
+pytest<span class="w"> </span>tests/test_geometry.py::test_rectangular_section
+</pre></div>
+</div>
+</section>
+<section id="lint-your-code">
+<h4>3. Lint Your Code<a class="headerlink" href="#lint-your-code" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Format code</span>
+black<span class="w"> </span>src/<span class="w"> </span>tests/
+
+<span class="c1"># Sort imports</span>
+isort<span class="w"> </span>src/<span class="w"> </span>tests/
+
+<span class="c1"># Run linters</span>
+flake8<span class="w"> </span>src/<span class="w"> </span>tests/
+mypy<span class="w"> </span>src/
+</pre></div>
+</div>
+</section>
+<section id="update-documentation">
+<h4>4. Update Documentation<a class="headerlink" href="#update-documentation" title="Link to this heading"></a></h4>
+<p>If you’ve changed the API or added features:</p>
+<ul class="simple">
+<li><p>Update docstrings</p></li>
+<li><p>Update user guide if needed</p></li>
+<li><p>Add examples if applicable</p></li>
+</ul>
+</section>
+<section id="commit-your-changes">
+<h4>5. Commit Your Changes<a class="headerlink" href="#commit-your-changes" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat: add support for circular hollow sections&quot;</span>
+</pre></div>
+</div>
+<p><strong>Commit message format</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">feat:</span></code> New feature</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fix:</span></code> Bug fix</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs:</span></code> Documentation changes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test:</span></code> Adding or updating tests</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">refactor:</span></code> Code refactoring</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">style:</span></code> Formatting changes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chore:</span></code> Maintenance tasks</p></li>
+</ul>
+</section>
+</section>
+<section id="coding-standards">
+<h3>Coding Standards<a class="headerlink" href="#coding-standards" title="Link to this heading"></a></h3>
+<section id="python-style">
+<h4>Python Style<a class="headerlink" href="#python-style" title="Link to this heading"></a></h4>
+<p>We follow <a class="reference external" href="https://pep8.org/">PEP 8</a> with some modifications:</p>
+<ul class="simple">
+<li><p>Line length: 100 characters</p></li>
+<li><p>Use Black for formatting</p></li>
+<li><p>Use isort for import ordering</p></li>
+</ul>
+</section>
+<section id="docstrings">
+<h4>Docstrings<a class="headerlink" href="#docstrings" title="Link to this heading"></a></h4>
+<p>Use Google-style docstrings:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_moment</span><span class="p">(</span><span class="n">force</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">distance</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate bending moment from force and distance.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        force: Applied force in kN</span>
+<span class="sd">        distance: Distance from point in m</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Bending moment in kN·m</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If force or distance is negative</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; calculate_moment(100, 2.5)</span>
+<span class="sd">        250.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">force</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Force and distance must be positive&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">force</span> <span class="o">*</span> <span class="n">distance</span>
+</pre></div>
+</div>
+</section>
+<section id="type-hints">
+<h4>Type Hints<a class="headerlink" href="#type-hints" title="Link to this heading"></a></h4>
+<p>Always use type hints:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process_rebars</span><span class="p">(</span>
+    <span class="n">rebars</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Rebar</span><span class="p">],</span>
+    <span class="n">diameter</span><span class="p">:</span> <span class="nb">float</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Process reinforcement bars.&quot;&quot;&quot;</span>
+    <span class="c1"># Implementation</span>
+    <span class="k">return</span> <span class="n">total_area</span><span class="p">,</span> <span class="n">count</span>
+</pre></div>
+</div>
+</section>
+<section id="naming-conventions">
+<h4>Naming Conventions<a class="headerlink" href="#naming-conventions" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Classes</strong>: <code class="docutils literal notranslate"><span class="pre">PascalCase</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">SectionSolver</span></code>)</p></li>
+<li><p><strong>Functions/methods</strong>: <code class="docutils literal notranslate"><span class="pre">snake_case</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">compute_properties</span></code>)</p></li>
+<li><p><strong>Constants</strong>: <code class="docutils literal notranslate"><span class="pre">UPPER_SNAKE_CASE</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">MAX_ITERATIONS</span></code>)</p></li>
+<li><p><strong>Private</strong>: prefix with <code class="docutils literal notranslate"><span class="pre">_</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">_internal_method</span></code>)</p></li>
+</ul>
+</section>
+</section>
+<section id="test-testing">
+<h3>[TEST] Testing<a class="headerlink" href="#test-testing" title="Link to this heading"></a></h3>
+<section id="writing-tests">
+<h4>Writing Tests<a class="headerlink" href="#writing-tests" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Use pytest</p></li>
+<li><p>Aim for &gt;80% code coverage</p></li>
+<li><p>Test edge cases and error conditions</p></li>
+<li><p>Use descriptive test names</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">opensection</span><span class="w"> </span><span class="kn">import</span> <span class="n">RectangularSection</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_rectangular_section_area</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test area calculation for rectangular section.&quot;&quot;&quot;</span>
+    <span class="n">section</span> <span class="o">=</span> <span class="n">RectangularSection</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">expected_area</span> <span class="o">=</span> <span class="mf">0.15</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">section</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">area</span><span class="p">,</span> <span class="n">expected_area</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_rectangular_section_invalid_dimensions</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test that negative dimensions raise ValueError.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">RectangularSection</span><span class="p">(</span><span class="n">width</span><span class="o">=-</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="test-organization">
+<h4>Test Organization<a class="headerlink" href="#test-organization" title="Link to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tests</span><span class="o">/</span>
+ <span class="n">test_geometry</span><span class="o">.</span><span class="n">py</span>       <span class="c1"># Geometry module tests</span>
+ <span class="n">test_materials</span><span class="o">.</span><span class="n">py</span>      <span class="c1"># Material models tests</span>
+ <span class="n">test_solver</span><span class="o">.</span><span class="n">py</span>         <span class="c1"># Solver tests</span>
+ <span class="n">test_integration</span><span class="o">.</span><span class="n">py</span>    <span class="c1"># Integration tests</span>
+ <span class="n">fixtures</span><span class="o">/</span>              <span class="c1"># Test data and fixtures</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="docs-documentation">
+<h3>[DOCS] Documentation<a class="headerlink" href="#docs-documentation" title="Link to this heading"></a></h3>
+<section id="building-documentation">
+<h4>Building Documentation<a class="headerlink" href="#building-documentation" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+make<span class="w"> </span>html
+</pre></div>
+</div>
+<p>View at <code class="docutils literal notranslate"><span class="pre">docs/_build/html/index.html</span></code>.</p>
+</section>
+<section id="documentation-structure">
+<h4>Documentation Structure<a class="headerlink" href="#documentation-structure" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Tutorials</strong>: Step-by-step guides for beginners</p></li>
+<li><p><strong>How-to guides</strong>: Recipes for specific tasks</p></li>
+<li><p><strong>Reference</strong>: API documentation (auto-generated)</p></li>
+<li><p><strong>Explanation</strong>: Background theory and concepts</p></li>
+</ul>
+</section>
+</section>
+<section id="submitting-changes">
+<h3>Submitting Changes<a class="headerlink" href="#submitting-changes" title="Link to this heading"></a></h3>
+<section id="before-submitting">
+<h4>Before Submitting<a class="headerlink" href="#before-submitting" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>[ ] Tests pass locally</p></li>
+<li><p>[ ] Code is formatted (black, isort)</p></li>
+<li><p>[ ] Linters pass (flake8, mypy)</p></li>
+<li><p>[ ] Documentation is updated</p></li>
+<li><p>[ ] CHANGELOG.md is updated (for significant changes)</p></li>
+<li><p>[ ] Commit messages follow conventions</p></li>
+</ul>
+</section>
+<section id="pull-request-process">
+<h4>Pull Request Process<a class="headerlink" href="#pull-request-process" title="Link to this heading"></a></h4>
+<ol class="arabic">
+<li><p><strong>Push to your fork</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/your-feature-name
+</pre></div>
+</div>
+</li>
+<li><p><strong>Create pull request</strong> on GitHub</p></li>
+<li><p><strong>Fill in the PR template</strong> with:</p>
+<ul class="simple">
+<li><p>Description of changes</p></li>
+<li><p>Related issues</p></li>
+<li><p>Type of change</p></li>
+<li><p>Testing performed</p></li>
+<li><p>Screenshots (if UI changes)</p></li>
+</ul>
+</li>
+<li><p><strong>Wait for review</strong>:</p>
+<ul class="simple">
+<li><p>Address review comments</p></li>
+<li><p>Push additional commits if needed</p></li>
+<li><p>Be patient and respectful</p></li>
+</ul>
+</li>
+<li><p><strong>After approval</strong>:</p>
+<ul class="simple">
+<li><p>Squash commits if requested</p></li>
+<li><p>Maintainer will merge</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="review-criteria">
+<h4>Review Criteria<a class="headerlink" href="#review-criteria" title="Link to this heading"></a></h4>
+<p>Pull requests are reviewed for:</p>
+<ul class="simple">
+<li><p>Correctness and completeness</p></li>
+<li><p>Code quality and style</p></li>
+<li><p>Test coverage</p></li>
+<li><p>Documentation</p></li>
+<li><p>Performance implications</p></li>
+<li><p>API consistency</p></li>
+</ul>
+</section>
+</section>
+<section id="world-translation-contributions">
+<h3>[WORLD] Translation Contributions<a class="headerlink" href="#world-translation-contributions" title="Link to this heading"></a></h3>
+<p>We welcome translations! See <a class="reference internal" href="#docs/TRANSLATION.md"><span class="xref myst">Translation Guide</span></a> for:</p>
+<ul class="simple">
+<li><p>How to add new language</p></li>
+<li><p>Translation workflow</p></li>
+<li><p>Using sphinx-intl</p></li>
+<li><p>Translation guidelines</p></li>
+</ul>
+<p>Priority languages:</p>
+<ul class="simple">
+<li><p>English (base)</p></li>
+<li><p>French</p></li>
+<li><p>Japanese</p></li>
+<li><p>Chinese (Simplified)</p></li>
+</ul>
+</section>
+<section id="idea-questions">
+<h3>[IDEA] Questions?<a class="headerlink" href="#idea-questions" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>General questions</strong>: <a class="reference external" href="https://github.com/opensection/opensection/discussions">GitHub Discussions</a></p></li>
+<li><p><strong>Bug reports</strong>: <a class="reference external" href="https://github.com/opensection/opensection/issues">GitHub Issues</a></p></li>
+<li><p><strong>Email</strong>: pavlishenku&#64;gmail.com</p></li>
+</ul>
+</section>
+<section id="award-recognition">
+<h3>[AWARD] Recognition<a class="headerlink" href="#award-recognition" title="Link to this heading"></a></h3>
+<p>Contributors are recognized in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#AUTHORS.md"><span class="xref myst">AUTHORS.md</span></a></p></li>
+<li><p>GitHub contributors page</p></li>
+<li><p>Release notes</p></li>
+<li><p>Annual summary posts</p></li>
+</ul>
+<p>Thank you for contributing to opensection! [SUCCESS]</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="theory/material_models.html" class="btn btn-neutral float-left" title="Material Constitutive Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, opensection Contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

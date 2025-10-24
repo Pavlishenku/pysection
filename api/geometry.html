@@ -1,0 +1,765 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geometry API &mdash; opensection 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Materials API" href="materials.html" />
+    <link rel="prev" title="Biaxial Bending" href="../examples/biaxial_bending.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            opensection
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/geometry.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/materials.html">Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/solver.html">Section Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/verification.html">Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/basic_section.html">Basic Section Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/interaction_diagram.html">Interaction Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/custom_geometry.html">Custom Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/biaxial_bending.html">Biaxial Bending</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Geometry API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#opensection.geometry.Point"><code class="docutils literal notranslate"><span class="pre">Point</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Point.__init__"><code class="docutils literal notranslate"><span class="pre">Point.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Point.to_array"><code class="docutils literal notranslate"><span class="pre">Point.to_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Point.y"><code class="docutils literal notranslate"><span class="pre">Point.y</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Point.z"><code class="docutils literal notranslate"><span class="pre">Point.z</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#opensection.geometry.Contour"><code class="docutils literal notranslate"><span class="pre">Contour</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Contour.points"><code class="docutils literal notranslate"><span class="pre">Contour.points</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Contour.is_hole"><code class="docutils literal notranslate"><span class="pre">Contour.is_hole</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Contour.__init__"><code class="docutils literal notranslate"><span class="pre">Contour.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Contour.area"><code class="docutils literal notranslate"><span class="pre">Contour.area()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Contour.centroid"><code class="docutils literal notranslate"><span class="pre">Contour.centroid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Contour.circle"><code class="docutils literal notranslate"><span class="pre">Contour.circle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Contour.contains_point"><code class="docutils literal notranslate"><span class="pre">Contour.contains_point()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Contour.polygon"><code class="docutils literal notranslate"><span class="pre">Contour.polygon()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Contour.rectangle"><code class="docutils literal notranslate"><span class="pre">Contour.rectangle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Contour.second_moment"><code class="docutils literal notranslate"><span class="pre">Contour.second_moment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Contour.to_array"><code class="docutils literal notranslate"><span class="pre">Contour.to_array()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#opensection.geometry.GeometricProperties"><code class="docutils literal notranslate"><span class="pre">GeometricProperties</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.GeometricProperties.__init__"><code class="docutils literal notranslate"><span class="pre">GeometricProperties.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.GeometricProperties.principal_inertias"><code class="docutils literal notranslate"><span class="pre">GeometricProperties.principal_inertias</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#opensection.geometry.Section"><code class="docutils literal notranslate"><span class="pre">Section</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Section.__init__"><code class="docutils literal notranslate"><span class="pre">Section.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Section.compute_properties"><code class="docutils literal notranslate"><span class="pre">Section.compute_properties()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Section.create_fiber_mesh"><code class="docutils literal notranslate"><span class="pre">Section.create_fiber_mesh()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.Section.properties"><code class="docutils literal notranslate"><span class="pre">Section.properties</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#opensection.geometry.RectangularSection"><code class="docutils literal notranslate"><span class="pre">RectangularSection</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.RectangularSection.__init__"><code class="docutils literal notranslate"><span class="pre">RectangularSection.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#opensection.geometry.CircularSection"><code class="docutils literal notranslate"><span class="pre">CircularSection</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.CircularSection.__init__"><code class="docutils literal notranslate"><span class="pre">CircularSection.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#opensection.geometry.TSection"><code class="docutils literal notranslate"><span class="pre">TSection</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.TSection.__init__"><code class="docutils literal notranslate"><span class="pre">TSection.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sections">Sections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.section.Section"><code class="docutils literal notranslate"><span class="pre">Section</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.section.Section.__init__"><code class="docutils literal notranslate"><span class="pre">Section.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.section.Section.compute_properties"><code class="docutils literal notranslate"><span class="pre">Section.compute_properties()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.section.Section.properties"><code class="docutils literal notranslate"><span class="pre">Section.properties</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.section.Section.create_fiber_mesh"><code class="docutils literal notranslate"><span class="pre">Section.create_fiber_mesh()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.section.RectangularSection"><code class="docutils literal notranslate"><span class="pre">RectangularSection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.section.RectangularSection.__init__"><code class="docutils literal notranslate"><span class="pre">RectangularSection.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.section.CircularSection"><code class="docutils literal notranslate"><span class="pre">CircularSection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.section.CircularSection.__init__"><code class="docutils literal notranslate"><span class="pre">CircularSection.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.section.TSection"><code class="docutils literal notranslate"><span class="pre">TSection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.section.TSection.__init__"><code class="docutils literal notranslate"><span class="pre">TSection.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#contours">Contours</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.contour.Contour"><code class="docutils literal notranslate"><span class="pre">Contour</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.contour.Contour.points"><code class="docutils literal notranslate"><span class="pre">Contour.points</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.contour.Contour.is_hole"><code class="docutils literal notranslate"><span class="pre">Contour.is_hole</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.contour.Contour.__init__"><code class="docutils literal notranslate"><span class="pre">Contour.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.contour.Contour.to_array"><code class="docutils literal notranslate"><span class="pre">Contour.to_array()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.contour.Contour.area"><code class="docutils literal notranslate"><span class="pre">Contour.area()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.contour.Contour.centroid"><code class="docutils literal notranslate"><span class="pre">Contour.centroid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.contour.Contour.second_moment"><code class="docutils literal notranslate"><span class="pre">Contour.second_moment()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.contour.Contour.contains_point"><code class="docutils literal notranslate"><span class="pre">Contour.contains_point()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.contour.Contour.rectangle"><code class="docutils literal notranslate"><span class="pre">Contour.rectangle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.contour.Contour.circle"><code class="docutils literal notranslate"><span class="pre">Contour.circle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.contour.Contour.polygon"><code class="docutils literal notranslate"><span class="pre">Contour.polygon()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.contour.Point"><code class="docutils literal notranslate"><span class="pre">Point</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.contour.Point.y"><code class="docutils literal notranslate"><span class="pre">Point.y</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.contour.Point.z"><code class="docutils literal notranslate"><span class="pre">Point.z</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.contour.Point.to_array"><code class="docutils literal notranslate"><span class="pre">Point.to_array()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.contour.Point.__init__"><code class="docutils literal notranslate"><span class="pre">Point.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.geometry.properties.GeometricProperties"><code class="docutils literal notranslate"><span class="pre">GeometricProperties</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.properties.GeometricProperties.__init__"><code class="docutils literal notranslate"><span class="pre">GeometricProperties.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.geometry.properties.GeometricProperties.principal_inertias"><code class="docutils literal notranslate"><span class="pre">GeometricProperties.principal_inertias</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Materials API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reinforcement.html">Reinforcement API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solver.html">Solver API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eurocodes.html">Eurocodes API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interaction.html">Interaction API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postprocess.html">Postprocess API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils Module</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Theory</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../theory/fiber_method.html">Fiber Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/newton_raphson.html">Newton-Raphson Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/eurocode2.html">Eurocode 2 Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/material_models.html">Material Constitutive Models</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">opensection</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Geometry API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/geometry.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-opensection.geometry">
+<span id="geometry-api"></span><h1>Geometry API<a class="headerlink" href="#module-opensection.geometry" title="Link to this heading"></a></h1>
+<p>Geometry module for opensection</p>
+<p>This module provides classes for representing cross-section geometry,
+computing geometric properties, and creating fiber meshes for analysis.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="opensection.geometry.Point">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensection.geometry.</span></span><span class="sig-name descname"><span class="pre">Point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Point"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.Point" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Représente un point 2D dans le plan (y, z)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.Point.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#opensection.geometry.Point.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.Point.to_array">
+<span class="sig-name descname"><span class="pre">to_array</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Point.to_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.Point.to_array" title="Link to this definition"></a></dt>
+<dd><p>Convertit en array numpy</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.geometry.Point.y">
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#opensection.geometry.Point.y" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.geometry.Point.z">
+<span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#opensection.geometry.Point.z" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="opensection.geometry.Contour">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensection.geometry.</span></span><span class="sig-name descname"><span class="pre">Contour</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opensection.geometry.contour.Point" title="opensection.geometry.contour.Point"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_hole</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.Contour" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Représente un contour fermé défini par une liste de points</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.geometry.Contour.points">
+<span class="sig-name descname"><span class="pre">points</span></span><a class="headerlink" href="#opensection.geometry.Contour.points" title="Link to this definition"></a></dt>
+<dd><p>Liste de points définissant le contour</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.geometry.Contour.is_hole">
+<span class="sig-name descname"><span class="pre">is_hole</span></span><a class="headerlink" href="#opensection.geometry.Contour.is_hole" title="Link to this definition"></a></dt>
+<dd><p>True si le contour représente un trou</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.Contour.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opensection.geometry.contour.Point" title="opensection.geometry.contour.Point"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_hole</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.Contour.__init__" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>points</strong> – Liste de points (sens trigonométrique pour contour extérieur)</p></li>
+<li><p><strong>is_hole</strong> – True si c’est un trou (sens horaire)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.Contour.area">
+<span class="sig-name descname"><span class="pre">area</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.Contour.area" title="Link to this definition"></a></dt>
+<dd><p>Calcule l’aire du contour par la formule de Shoelace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Aire du contour (positive)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.Contour.centroid">
+<span class="sig-name descname"><span class="pre">centroid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.centroid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.Contour.centroid" title="Link to this definition"></a></dt>
+<dd><p>Calcule le centroïde du contour</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple (y_c, z_c) du centroïde</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.Contour.circle">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">36</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#opensection.geometry.contour.Contour" title="opensection.geometry.contour.Contour"><span class="pre">Contour</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.circle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.Contour.circle" title="Link to this definition"></a></dt>
+<dd><p>Crée un contour circulaire</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> – Rayon du cercle</p></li>
+<li><p><strong>n_points</strong> – Nombre de points pour approximer le cercle</p></li>
+<li><p><strong>center_y</strong> – Coordonnée y du centre</p></li>
+<li><p><strong>center_z</strong> – Coordonnée z du centre</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Contour circulaire</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.Contour.contains_point">
+<span class="sig-name descname"><span class="pre">contains_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.contains_point"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.Contour.contains_point" title="Link to this definition"></a></dt>
+<dd><p>Teste si un point est à l’intérieur du contour (ray casting algorithm)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> – Coordonnées du point à tester</p></li>
+<li><p><strong>z</strong> – Coordonnées du point à tester</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True si le point est à l’intérieur</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.Contour.polygon">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#opensection.geometry.contour.Contour" title="opensection.geometry.contour.Contour"><span class="pre">Contour</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.polygon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.Contour.polygon" title="Link to this definition"></a></dt>
+<dd><p>Crée un contour polygonal à partir d’une liste de vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vertices</strong> – Liste de tuples (y, z)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Contour polygonal</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.Contour.rectangle">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rectangle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#opensection.geometry.contour.Contour" title="opensection.geometry.contour.Contour"><span class="pre">Contour</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.rectangle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.Contour.rectangle" title="Link to this definition"></a></dt>
+<dd><p>Crée un contour rectangulaire</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> – Largeur (direction y)</p></li>
+<li><p><strong>height</strong> – Hauteur (direction z)</p></li>
+<li><p><strong>center_y</strong> – Coordonnée y du centre</p></li>
+<li><p><strong>center_z</strong> – Coordonnée z du centre</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Contour rectangulaire</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.Contour.second_moment">
+<span class="sig-name descname"><span class="pre">second_moment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.second_moment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.Contour.second_moment" title="Link to this definition"></a></dt>
+<dd><p>Calcule les moments quadratiques par rapport à un point de référence</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cy</strong> – Coordonnées du point de référence</p></li>
+<li><p><strong>cz</strong> – Coordonnées du point de référence</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple (I_yy, I_zz, I_yz)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.Contour.to_array">
+<span class="sig-name descname"><span class="pre">to_array</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.to_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.Contour.to_array" title="Link to this definition"></a></dt>
+<dd><p>Convertit en array numpy (n_points, 2)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="opensection.geometry.GeometricProperties">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensection.geometry.</span></span><span class="sig-name descname"><span class="pre">GeometricProperties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">centroid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I_yy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">I_zz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">I_yz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/properties.html#GeometricProperties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.GeometricProperties" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Propriétés géométriques d’une section</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.GeometricProperties.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">centroid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I_yy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">I_zz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">I_yz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/properties.html#GeometricProperties.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.GeometricProperties.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="opensection.geometry.GeometricProperties.principal_inertias">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">principal_inertias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#opensection.geometry.GeometricProperties.principal_inertias" title="Link to this definition"></a></dt>
+<dd><p>Calcule I1, I2 et a</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="opensection.geometry.Section">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensection.geometry.</span></span><span class="sig-name descname"><span class="pre">Section</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contours</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opensection.geometry.contour.Contour" title="opensection.geometry.contour.Contour"><span class="pre">Contour</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/section.html#Section"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.Section" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Classe de base pour les sections</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.Section.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contours</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opensection.geometry.contour.Contour" title="opensection.geometry.contour.Contour"><span class="pre">Contour</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/section.html#Section.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.Section.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.Section.compute_properties">
+<span class="sig-name descname"><span class="pre">compute_properties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#opensection.geometry.properties.GeometricProperties" title="opensection.geometry.properties.GeometricProperties"><span class="pre">GeometricProperties</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/section.html#Section.compute_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.Section.compute_properties" title="Link to this definition"></a></dt>
+<dd><p>Calcule les propriétés géométriques</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.Section.create_fiber_mesh">
+<span class="sig-name descname"><span class="pre">create_fiber_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_fiber_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/section.html#Section.create_fiber_mesh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.Section.create_fiber_mesh" title="Link to this definition"></a></dt>
+<dd><p>Crée un maillage de fibres</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="opensection.geometry.Section.properties">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">properties</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#opensection.geometry.properties.GeometricProperties" title="opensection.geometry.properties.GeometricProperties"><span class="pre">GeometricProperties</span></a></em><a class="headerlink" href="#opensection.geometry.Section.properties" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="opensection.geometry.RectangularSection">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensection.geometry.</span></span><span class="sig-name descname"><span class="pre">RectangularSection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/section.html#RectangularSection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.RectangularSection" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#opensection.geometry.section.Section" title="opensection.geometry.section.Section"><code class="xref py py-class docutils literal notranslate"><span class="pre">Section</span></code></a></p>
+<p>Section rectangulaire</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.RectangularSection.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/section.html#RectangularSection.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.RectangularSection.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="opensection.geometry.CircularSection">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensection.geometry.</span></span><span class="sig-name descname"><span class="pre">CircularSection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">diameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">36</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/section.html#CircularSection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.CircularSection" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#opensection.geometry.section.Section" title="opensection.geometry.section.Section"><code class="xref py py-class docutils literal notranslate"><span class="pre">Section</span></code></a></p>
+<p>Section circulaire</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.CircularSection.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">diameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">36</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/section.html#CircularSection.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.CircularSection.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="opensection.geometry.TSection">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensection.geometry.</span></span><span class="sig-name descname"><span class="pre">TSection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flange_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">flange_thickness</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">web_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">web_height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/section.html#TSection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.TSection" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#opensection.geometry.section.Section" title="opensection.geometry.section.Section"><code class="xref py py-class docutils literal notranslate"><span class="pre">Section</span></code></a></p>
+<p>Section en T</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.TSection.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flange_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">flange_thickness</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">web_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">web_height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/section.html#TSection.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.TSection.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<section id="sections">
+<h2>Sections<a class="headerlink" href="#sections" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="opensection.geometry.section.Section">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensection.geometry.section.</span></span><span class="sig-name descname"><span class="pre">Section</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contours</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opensection.geometry.contour.Contour" title="opensection.geometry.contour.Contour"><span class="pre">Contour</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/section.html#Section"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.section.Section" title="Link to this definition"></a></dt>
+<dd><p>Classe de base pour les sections</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.section.Section.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contours</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opensection.geometry.contour.Contour" title="opensection.geometry.contour.Contour"><span class="pre">Contour</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/section.html#Section.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.section.Section.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.section.Section.compute_properties">
+<span class="sig-name descname"><span class="pre">compute_properties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#opensection.geometry.properties.GeometricProperties" title="opensection.geometry.properties.GeometricProperties"><span class="pre">GeometricProperties</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/section.html#Section.compute_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.section.Section.compute_properties" title="Link to this definition"></a></dt>
+<dd><p>Calcule les propriétés géométriques</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="opensection.geometry.section.Section.properties">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">properties</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#opensection.geometry.properties.GeometricProperties" title="opensection.geometry.properties.GeometricProperties"><span class="pre">GeometricProperties</span></a></em><a class="headerlink" href="#opensection.geometry.section.Section.properties" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.section.Section.create_fiber_mesh">
+<span class="sig-name descname"><span class="pre">create_fiber_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_fiber_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/section.html#Section.create_fiber_mesh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.section.Section.create_fiber_mesh" title="Link to this definition"></a></dt>
+<dd><p>Crée un maillage de fibres</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="opensection.geometry.section.RectangularSection">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensection.geometry.section.</span></span><span class="sig-name descname"><span class="pre">RectangularSection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/section.html#RectangularSection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.section.RectangularSection" title="Link to this definition"></a></dt>
+<dd><p>Section rectangulaire</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.section.RectangularSection.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/section.html#RectangularSection.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.section.RectangularSection.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="opensection.geometry.section.CircularSection">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensection.geometry.section.</span></span><span class="sig-name descname"><span class="pre">CircularSection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">diameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">36</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/section.html#CircularSection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.section.CircularSection" title="Link to this definition"></a></dt>
+<dd><p>Section circulaire</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.section.CircularSection.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">diameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">36</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/section.html#CircularSection.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.section.CircularSection.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="opensection.geometry.section.TSection">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensection.geometry.section.</span></span><span class="sig-name descname"><span class="pre">TSection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flange_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">flange_thickness</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">web_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">web_height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/section.html#TSection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.section.TSection" title="Link to this definition"></a></dt>
+<dd><p>Section en T</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.section.TSection.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flange_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">flange_thickness</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">web_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">web_height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/section.html#TSection.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.section.TSection.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="contours">
+<h2>Contours<a class="headerlink" href="#contours" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Contour">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensection.geometry.contour.</span></span><span class="sig-name descname"><span class="pre">Contour</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opensection.geometry.contour.Point" title="opensection.geometry.contour.Point"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_hole</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.contour.Contour" title="Link to this definition"></a></dt>
+<dd><p>Représente un contour fermé défini par une liste de points</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Contour.points">
+<span class="sig-name descname"><span class="pre">points</span></span><a class="headerlink" href="#opensection.geometry.contour.Contour.points" title="Link to this definition"></a></dt>
+<dd><p>Liste de points définissant le contour</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Contour.is_hole">
+<span class="sig-name descname"><span class="pre">is_hole</span></span><a class="headerlink" href="#opensection.geometry.contour.Contour.is_hole" title="Link to this definition"></a></dt>
+<dd><p>True si le contour représente un trou</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Contour.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opensection.geometry.contour.Point" title="opensection.geometry.contour.Point"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_hole</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.contour.Contour.__init__" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>points</strong> – Liste de points (sens trigonométrique pour contour extérieur)</p></li>
+<li><p><strong>is_hole</strong> – True si c’est un trou (sens horaire)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Contour.to_array">
+<span class="sig-name descname"><span class="pre">to_array</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.to_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.contour.Contour.to_array" title="Link to this definition"></a></dt>
+<dd><p>Convertit en array numpy (n_points, 2)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Contour.area">
+<span class="sig-name descname"><span class="pre">area</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.contour.Contour.area" title="Link to this definition"></a></dt>
+<dd><p>Calcule l’aire du contour par la formule de Shoelace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Aire du contour (positive)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Contour.centroid">
+<span class="sig-name descname"><span class="pre">centroid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.centroid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.contour.Contour.centroid" title="Link to this definition"></a></dt>
+<dd><p>Calcule le centroïde du contour</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple (y_c, z_c) du centroïde</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Contour.second_moment">
+<span class="sig-name descname"><span class="pre">second_moment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.second_moment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.contour.Contour.second_moment" title="Link to this definition"></a></dt>
+<dd><p>Calcule les moments quadratiques par rapport à un point de référence</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cy</strong> – Coordonnées du point de référence</p></li>
+<li><p><strong>cz</strong> – Coordonnées du point de référence</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple (I_yy, I_zz, I_yz)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Contour.contains_point">
+<span class="sig-name descname"><span class="pre">contains_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.contains_point"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.contour.Contour.contains_point" title="Link to this definition"></a></dt>
+<dd><p>Teste si un point est à l’intérieur du contour (ray casting algorithm)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> – Coordonnées du point à tester</p></li>
+<li><p><strong>z</strong> – Coordonnées du point à tester</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True si le point est à l’intérieur</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Contour.rectangle">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rectangle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#opensection.geometry.contour.Contour" title="opensection.geometry.contour.Contour"><span class="pre">Contour</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.rectangle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.contour.Contour.rectangle" title="Link to this definition"></a></dt>
+<dd><p>Crée un contour rectangulaire</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> – Largeur (direction y)</p></li>
+<li><p><strong>height</strong> – Hauteur (direction z)</p></li>
+<li><p><strong>center_y</strong> – Coordonnée y du centre</p></li>
+<li><p><strong>center_z</strong> – Coordonnée z du centre</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Contour rectangulaire</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Contour.circle">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">36</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#opensection.geometry.contour.Contour" title="opensection.geometry.contour.Contour"><span class="pre">Contour</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.circle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.contour.Contour.circle" title="Link to this definition"></a></dt>
+<dd><p>Crée un contour circulaire</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> – Rayon du cercle</p></li>
+<li><p><strong>n_points</strong> – Nombre de points pour approximer le cercle</p></li>
+<li><p><strong>center_y</strong> – Coordonnée y du centre</p></li>
+<li><p><strong>center_z</strong> – Coordonnée z du centre</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Contour circulaire</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Contour.polygon">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#opensection.geometry.contour.Contour" title="opensection.geometry.contour.Contour"><span class="pre">Contour</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Contour.polygon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.contour.Contour.polygon" title="Link to this definition"></a></dt>
+<dd><p>Crée un contour polygonal à partir d’une liste de vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vertices</strong> – Liste de tuples (y, z)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Contour polygonal</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Point">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensection.geometry.contour.</span></span><span class="sig-name descname"><span class="pre">Point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Point"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.contour.Point" title="Link to this definition"></a></dt>
+<dd><p>Représente un point 2D dans le plan (y, z)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Point.y">
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#opensection.geometry.contour.Point.y" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Point.z">
+<span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#opensection.geometry.contour.Point.z" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Point.to_array">
+<span class="sig-name descname"><span class="pre">to_array</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/opensection/geometry/contour.html#Point.to_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.contour.Point.to_array" title="Link to this definition"></a></dt>
+<dd><p>Convertit en array numpy</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.contour.Point.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#opensection.geometry.contour.Point.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="opensection.geometry.properties.GeometricProperties">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensection.geometry.properties.</span></span><span class="sig-name descname"><span class="pre">GeometricProperties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">centroid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I_yy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">I_zz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">I_yz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/properties.html#GeometricProperties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.properties.GeometricProperties" title="Link to this definition"></a></dt>
+<dd><p>Propriétés géométriques d’une section</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.geometry.properties.GeometricProperties.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">centroid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I_yy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">I_zz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">I_yz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/geometry/properties.html#GeometricProperties.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.geometry.properties.GeometricProperties.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="opensection.geometry.properties.GeometricProperties.principal_inertias">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">principal_inertias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#opensection.geometry.properties.GeometricProperties.principal_inertias" title="Link to this definition"></a></dt>
+<dd><p>Calcule I1, I2 et a</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../examples/biaxial_bending.html" class="btn btn-neutral float-left" title="Biaxial Bending" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="materials.html" class="btn btn-neutral float-right" title="Materials API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, opensection Contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,512 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section Solver &mdash; opensection 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Verification" href="verification.html" />
+    <link rel="prev" title="Materials" href="materials.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            opensection
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geometry.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Materials</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Section Solver</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Section Solver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.SectionSolver"><code class="docutils literal notranslate"><span class="pre">SectionSolver</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SectionSolver.__init__"><code class="docutils literal notranslate"><span class="pre">SectionSolver.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SectionSolver.compute_strain"><code class="docutils literal notranslate"><span class="pre">SectionSolver.compute_strain()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SectionSolver.compute_internal_forces"><code class="docutils literal notranslate"><span class="pre">SectionSolver.compute_internal_forces()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SectionSolver.solve"><code class="docutils literal notranslate"><span class="pre">SectionSolver.solve()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#solver-result">Solver Result</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.SolverResult"><code class="docutils literal notranslate"><span class="pre">SolverResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SolverResult.epsilon_0"><code class="docutils literal notranslate"><span class="pre">SolverResult.epsilon_0</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SolverResult.chi_y"><code class="docutils literal notranslate"><span class="pre">SolverResult.chi_y</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SolverResult.chi_z"><code class="docutils literal notranslate"><span class="pre">SolverResult.chi_z</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SolverResult.N"><code class="docutils literal notranslate"><span class="pre">SolverResult.N</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SolverResult.My"><code class="docutils literal notranslate"><span class="pre">SolverResult.My</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SolverResult.Mz"><code class="docutils literal notranslate"><span class="pre">SolverResult.Mz</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SolverResult.sigma_c_max"><code class="docutils literal notranslate"><span class="pre">SolverResult.sigma_c_max</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SolverResult.sigma_s_max"><code class="docutils literal notranslate"><span class="pre">SolverResult.sigma_s_max</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SolverResult.converged"><code class="docutils literal notranslate"><span class="pre">SolverResult.converged</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SolverResult.n_iter"><code class="docutils literal notranslate"><span class="pre">SolverResult.n_iter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SolverResult.residual_norm_history"><code class="docutils literal notranslate"><span class="pre">SolverResult.residual_norm_history</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SolverResult.step_norm_history"><code class="docutils literal notranslate"><span class="pre">SolverResult.step_norm_history</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SolverResult.reason"><code class="docutils literal notranslate"><span class="pre">SolverResult.reason</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SolverResult.neutral_axis_depth"><code class="docutils literal notranslate"><span class="pre">SolverResult.neutral_axis_depth</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opensection.SolverResult.__init__"><code class="docutils literal notranslate"><span class="pre">SolverResult.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-it-works">How It Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-solve">Basic Solve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checking-results">Checking Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-options">Advanced Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fiber-mesh-control">Fiber Mesh Control</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sign-conventions">Sign Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#convergence">Convergence</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-issues">Common Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#performance-tips">Performance Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-validation">API Validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opensection.validate_and_solve"><code class="docutils literal notranslate"><span class="pre">validate_and_solve()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="verification.html">Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/basic_section.html">Basic Section Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/interaction_diagram.html">Interaction Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/custom_geometry.html">Custom Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/biaxial_bending.html">Biaxial Bending</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/geometry.html">Geometry API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/materials.html">Materials API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/reinforcement.html">Reinforcement API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/solver.html">Solver API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/eurocodes.html">Eurocodes API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/interaction.html">Interaction API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/postprocess.html">Postprocess API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils Module</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Theory</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../theory/fiber_method.html">Fiber Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/newton_raphson.html">Newton-Raphson Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/eurocode2.html">Eurocode 2 Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/material_models.html">Material Constitutive Models</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">opensection</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Section Solver</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/user_guide/solver.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="section-solver">
+<h1>Section Solver<a class="headerlink" href="#section-solver" title="Link to this heading"></a></h1>
+<p>The section solver is the core of opensection, computing the internal forces
+and strains for a given section under applied loads.</p>
+<section id="id1">
+<h2>Section Solver<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="opensection.SectionSolver">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensection.</span></span><span class="sig-name descname"><span class="pre">SectionSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../api/geometry.html#opensection.geometry.section.Section" title="opensection.geometry.section.Section"><span class="pre">Section</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">concrete</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../api/materials.html#opensection.materials.concrete.ConcreteEC2" title="opensection.materials.concrete.ConcreteEC2"><span class="pre">ConcreteEC2</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">steel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../api/materials.html#opensection.materials.steel.SteelEC2" title="opensection.materials.steel.SteelEC2"><span class="pre">SteelEC2</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rebars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../api/reinforcement.html#opensection.reinforcement.rebar.RebarGroup" title="opensection.reinforcement.rebar.RebarGroup"><span class="pre">RebarGroup</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fiber_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/solver/section_solver.html#SectionSolver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.SectionSolver" title="Link to this definition"></a></dt>
+<dd><p>Solveur pour section en flexion composée déviée
+Résout le système : F(d) = S
+où d = (e0, χ_y, χ_z) et S = (N, M_y, M_z)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.SectionSolver.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../api/geometry.html#opensection.geometry.section.Section" title="opensection.geometry.section.Section"><span class="pre">Section</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">concrete</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../api/materials.html#opensection.materials.concrete.ConcreteEC2" title="opensection.materials.concrete.ConcreteEC2"><span class="pre">ConcreteEC2</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">steel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../api/materials.html#opensection.materials.steel.SteelEC2" title="opensection.materials.steel.SteelEC2"><span class="pre">SteelEC2</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rebars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../api/reinforcement.html#opensection.reinforcement.rebar.RebarGroup" title="opensection.reinforcement.rebar.RebarGroup"><span class="pre">RebarGroup</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fiber_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/solver/section_solver.html#SectionSolver.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.SectionSolver.__init__" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>section</strong> – Section géométrique</p></li>
+<li><p><strong>concrete</strong> – Matériau béton</p></li>
+<li><p><strong>steel</strong> – Matériau acier</p></li>
+<li><p><strong>rebars</strong> – Groupe d’armatures</p></li>
+<li><p><strong>fiber_area</strong> – Aire cible des fibres (m²)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.SectionSolver.compute_strain">
+<span class="sig-name descname"><span class="pre">compute_strain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></span><a class="reference internal" href="../_modules/opensection/solver/section_solver.html#SectionSolver.compute_strain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.SectionSolver.compute_strain" title="Link to this definition"></a></dt>
+<dd><p>Calcule la déformation en un point
+e(y,z) = e0 + χ_y·y + χ_z·z</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> – Coordonnées du point</p></li>
+<li><p><strong>z</strong> – Coordonnées du point</p></li>
+<li><p><strong>d</strong> – Vecteur [e0, χ_y, χ_z]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Déformation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.SectionSolver.compute_internal_forces">
+<span class="sig-name descname"><span class="pre">compute_internal_forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/opensection/solver/section_solver.html#SectionSolver.compute_internal_forces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.SectionSolver.compute_internal_forces" title="Link to this definition"></a></dt>
+<dd><p>Calcule les efforts internes F(d) et la matrice tangente K</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>d</strong> – Vecteur [e0, χ_y, χ_z]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Vecteur [N, M_y, M_z]
+K: Matrice tangente 3x3</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>F</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.SectionSolver.solve">
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">My</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_relative_tol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../api/solver.html#opensection.solver.section_solver.SolverResult" title="opensection.solver.section_solver.SolverResult"><span class="pre">SolverResult</span></a></span></span><a class="reference internal" href="../_modules/opensection/solver/section_solver.html#SectionSolver.solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.SectionSolver.solve" title="Link to this definition"></a></dt>
+<dd><p>Résout F(d) = S par Newton-Raphson</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Effort normal (kN, positif en compression)</p></li>
+<li><p><strong>My</strong> – Moment autour de y (kN·m)</p></li>
+<li><p><strong>Mz</strong> – Moment autour de z (kN·m)</p></li>
+<li><p><strong>tol</strong> – Tolérance de convergence (défaut: NumericalConstants.TOL_FORCE_DEFAULT)</p></li>
+<li><p><strong>max_iter</strong> – Nombre max d’itérations (défaut: NumericalConstants.MAX_ITER_DEFAULT)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>SolverResult avec les résultats</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="solver-result">
+<h2>Solver Result<a class="headerlink" href="#solver-result" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="opensection.SolverResult">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opensection.</span></span><span class="sig-name descname"><span class="pre">SolverResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epsilon_0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">chi_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">chi_z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">My</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_c_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_s_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">converged</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual_norm_history</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_norm_history</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reason</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/opensection/solver/section_solver.html#SolverResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.SolverResult" title="Link to this definition"></a></dt>
+<dd><p>Résultat de la résolution</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.SolverResult.epsilon_0">
+<span class="sig-name descname"><span class="pre">epsilon_0</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#opensection.SolverResult.epsilon_0" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.SolverResult.chi_y">
+<span class="sig-name descname"><span class="pre">chi_y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#opensection.SolverResult.chi_y" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.SolverResult.chi_z">
+<span class="sig-name descname"><span class="pre">chi_z</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#opensection.SolverResult.chi_z" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.SolverResult.N">
+<span class="sig-name descname"><span class="pre">N</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#opensection.SolverResult.N" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.SolverResult.My">
+<span class="sig-name descname"><span class="pre">My</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#opensection.SolverResult.My" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.SolverResult.Mz">
+<span class="sig-name descname"><span class="pre">Mz</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#opensection.SolverResult.Mz" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.SolverResult.sigma_c_max">
+<span class="sig-name descname"><span class="pre">sigma_c_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#opensection.SolverResult.sigma_c_max" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.SolverResult.sigma_s_max">
+<span class="sig-name descname"><span class="pre">sigma_s_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#opensection.SolverResult.sigma_s_max" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.SolverResult.converged">
+<span class="sig-name descname"><span class="pre">converged</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><a class="headerlink" href="#opensection.SolverResult.converged" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.SolverResult.n_iter">
+<span class="sig-name descname"><span class="pre">n_iter</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><a class="headerlink" href="#opensection.SolverResult.n_iter" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.SolverResult.residual_norm_history">
+<span class="sig-name descname"><span class="pre">residual_norm_history</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#opensection.SolverResult.residual_norm_history" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.SolverResult.step_norm_history">
+<span class="sig-name descname"><span class="pre">step_norm_history</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#opensection.SolverResult.step_norm_history" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opensection.SolverResult.reason">
+<span class="sig-name descname"><span class="pre">reason</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#opensection.SolverResult.reason" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="opensection.SolverResult.neutral_axis_depth">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">neutral_axis_depth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#opensection.SolverResult.neutral_axis_depth" title="Link to this definition"></a></dt>
+<dd><p>Distance de l’axe neutre au CG</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opensection.SolverResult.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epsilon_0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">chi_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">chi_z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">My</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_c_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_s_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">converged</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual_norm_history</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_norm_history</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reason</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#opensection.SolverResult.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="how-it-works">
+<h2>How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading"></a></h2>
+<p>The solver uses the fiber method with Newton-Raphson iteration:</p>
+<ol class="arabic simple">
+<li><p><strong>Fiber Discretization</strong>: Section is divided into small fibers</p></li>
+<li><p><strong>Strain Field</strong>: Assume planar sections remain planar: ε(y,z) = ε₀ + χ_y·y + χ_z·z</p></li>
+<li><p><strong>Material Laws</strong>: Compute fiber stresses from strains</p></li>
+<li><p><strong>Equilibrium</strong>: Sum forces and moments from all fibers</p></li>
+<li><p><strong>Newton-Raphson</strong>: Iterate until equilibrium is satisfied</p></li>
+</ol>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<section id="basic-solve">
+<h3>Basic Solve<a class="headerlink" href="#basic-solve" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">opensection</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ops</span>
+
+<span class="c1"># Setup</span>
+<span class="n">section</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">RectangularSection</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">concrete</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">ConcreteEC2</span><span class="p">(</span><span class="n">fck</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">steel</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">SteelEC2</span><span class="p">(</span><span class="n">fyk</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">rebars</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">RebarGroup</span><span class="p">()</span>
+<span class="n">rebars</span><span class="o">.</span><span class="n">add_rebar</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">diameter</span><span class="o">=</span><span class="mf">0.020</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Create solver</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">SectionSolver</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">concrete</span><span class="p">,</span> <span class="n">steel</span><span class="p">,</span> <span class="n">rebars</span><span class="p">)</span>
+
+<span class="c1"># Solve for N and M</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">My</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Mz</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># kN, kN·m</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Converged: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">converged</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iterations: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">n_iter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="checking-results">
+<h3>Checking Results<a class="headerlink" href="#checking-results" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">converged</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Axial strain: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">epsilon_0</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ‰&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Curvature: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">chi_z</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2"> rad/m&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max concrete stress: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">sigma_c_max</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> MPa&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max steel stress: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">sigma_s_max</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> MPa&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neutral axis depth: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">neutral_axis_depth</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Did not converge (</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iterations: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">n_iter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="advanced-options">
+<h3>Advanced Options<a class="headerlink" href="#advanced-options" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Custom tolerance and max iterations</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span>
+    <span class="n">N</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">My</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Mz</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">tol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span>              <span class="c1"># Force tolerance in kN</span>
+    <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>          <span class="c1"># Maximum iterations</span>
+    <span class="n">use_relative_tol</span><span class="o">=</span><span class="kc">False</span> <span class="c1"># Absolute tolerance</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="fiber-mesh-control">
+<h3>Fiber Mesh Control<a class="headerlink" href="#fiber-mesh-control" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fine mesh (more accurate, slower)</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">SectionSolver</span><span class="p">(</span>
+    <span class="n">section</span><span class="p">,</span> <span class="n">concrete</span><span class="p">,</span> <span class="n">steel</span><span class="p">,</span> <span class="n">rebars</span><span class="p">,</span>
+    <span class="n">fiber_area</span><span class="o">=</span><span class="mf">0.00005</span>  <span class="c1"># m²</span>
+<span class="p">)</span>
+
+<span class="c1"># Coarse mesh (faster, less accurate)</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">SectionSolver</span><span class="p">(</span>
+    <span class="n">section</span><span class="p">,</span> <span class="n">concrete</span><span class="p">,</span> <span class="n">steel</span><span class="p">,</span> <span class="n">rebars</span><span class="p">,</span>
+    <span class="n">fiber_area</span><span class="o">=</span><span class="mf">0.0005</span>  <span class="c1"># m²</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="sign-conventions">
+<h2>Sign Conventions<a class="headerlink" href="#sign-conventions" title="Link to this heading"></a></h2>
+<p><strong>Forces and Moments:</strong></p>
+<ul class="simple">
+<li><p><strong>N &gt; 0</strong>: Compression</p></li>
+<li><p><strong>N &lt; 0</strong>: Tension</p></li>
+<li><p><strong>My</strong>: Moment around y-axis (out-of-plane)</p></li>
+<li><p><strong>Mz</strong>: Moment around z-axis (in-plane)</p></li>
+</ul>
+<p><strong>Coordinates:</strong></p>
+<ul class="simple">
+<li><p><strong>y</strong>: Vertical axis (+ upward)</p></li>
+<li><p><strong>z</strong>: Horizontal axis (+ rightward)</p></li>
+<li><p>Origin at section centroid</p></li>
+</ul>
+<p><strong>Strains:</strong></p>
+<ul class="simple">
+<li><p><strong>Compression</strong>: Positive</p></li>
+<li><p><strong>Tension</strong>: Negative</p></li>
+</ul>
+</section>
+<section id="convergence">
+<h2>Convergence<a class="headerlink" href="#convergence" title="Link to this heading"></a></h2>
+<p>The solver uses Newton-Raphson with line search for robust convergence:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check convergence history</span>
+<span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">converged</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Residual norms:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">res</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">residual_norm_history</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Iter </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">res</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="common-issues">
+<h3>Common Issues<a class="headerlink" href="#common-issues" title="Link to this heading"></a></h3>
+<p><strong>No Convergence:</strong></p>
+<ul class="simple">
+<li><p>Try different initial guess (adjust applied loads)</p></li>
+<li><p>Reduce tolerance</p></li>
+<li><p>Increase max iterations</p></li>
+<li><p>Check if section/loads are physical</p></li>
+</ul>
+<p><strong>Singular Matrix:</strong></p>
+<ul class="simple">
+<li><p>Section may be unstable (too little reinforcement)</p></li>
+<li><p>Loading case may be extreme</p></li>
+<li><p>Check fiber mesh quality</p></li>
+</ul>
+</section>
+</section>
+<section id="performance-tips">
+<h2>Performance Tips<a class="headerlink" href="#performance-tips" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Mesh Size</strong>: Start with default, refine if needed</p></li>
+<li><p><strong>Tolerance</strong>: Use 1e-3 for most cases, 1e-4 for precision</p></li>
+<li><p><strong>Iterations</strong>: Usually converges in 5-10 iterations</p></li>
+<li><p><strong>Caching</strong>: Reuse solver for multiple load cases</p></li>
+</ol>
+</section>
+<section id="api-validation">
+<h2>API Validation<a class="headerlink" href="#api-validation" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="opensection.validate_and_solve">
+<span class="sig-prename descclassname"><span class="pre">opensection.</span></span><span class="sig-name descname"><span class="pre">validate_and_solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../api/geometry.html#opensection.geometry.section.Section" title="opensection.geometry.section.Section"><span class="pre">Section</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">concrete</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../api/materials.html#opensection.materials.concrete.ConcreteEC2" title="opensection.materials.concrete.ConcreteEC2"><span class="pre">ConcreteEC2</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">steel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../api/materials.html#opensection.materials.steel.SteelEC2" title="opensection.materials.steel.SteelEC2"><span class="pre">SteelEC2</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rebars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../api/reinforcement.html#opensection.reinforcement.rebar.RebarGroup" title="opensection.reinforcement.rebar.RebarGroup"><span class="pre">RebarGroup</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">My</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_relative_tol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exposure_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../api/solver.html#opensection.solver.section_solver.SolverResult" title="opensection.solver.section_solver.SolverResult"><span class="pre">SolverResult</span></a></span></span><a class="reference internal" href="../_modules/opensection/solver/api.html#validate_and_solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#opensection.validate_and_solve" title="Link to this definition"></a></dt>
+<dd><p>Validate inputs (geometry, materials, reinforcement, loads) then solve.
+Raises validation exceptions if inputs are inconsistent.</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="materials.html" class="btn btn-neutral float-left" title="Materials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="verification.html" class="btn btn-neutral float-right" title="Verification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, opensection Contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
