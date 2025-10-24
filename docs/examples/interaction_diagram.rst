@@ -17,7 +17,7 @@ Basic Usage
 
 .. code-block:: python
 
-    import sectionpy as oc
+    import opensection as oc
     
     # Setup section
     section = oc.RectangularSection(width=0.3, height=0.5)

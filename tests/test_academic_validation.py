@@ -1,5 +1,5 @@
 """
-Tests de validation académique pour SectionPy
+Tests de validation académique pour opensection
 
 Comparaison quantitative avec :
 1. Solutions analytiques classiques
@@ -12,11 +12,11 @@ Ces tests garantissent la précision et la fiabilité du code.
 import numpy as np
 import pytest
 
-from pysection.geometry.section import CircularSection, RectangularSection
-from pysection.materials.concrete import ConcreteEC2
-from pysection.materials.steel import SteelEC2
-from pysection.reinforcement.rebar import RebarGroup
-from pysection.solver.section_solver import SectionSolver
+from opensection.geometry.section import CircularSection, RectangularSection
+from opensection.materials.concrete import ConcreteEC2
+from opensection.materials.steel import SteelEC2
+from opensection.reinforcement.rebar import RebarGroup
+from opensection.solver.section_solver import SectionSolver
 
 
 class TestAnalyticalValidation:

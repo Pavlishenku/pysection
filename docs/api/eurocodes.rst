@@ -1,7 +1,7 @@
 Eurocodes API
 =============
 
-.. automodule:: sectionpy.eurocodes
+.. automodule:: opensection.eurocodes
    :members:
    :undoc-members:
    :show-inheritance:
@@ -9,7 +9,7 @@ Eurocodes API
 Verification
 ------------
 
-.. autoclass:: sectionpy.eurocodes.verification.EC2Verification
+.. autoclass:: opensection.eurocodes.verification.EC2Verification
    :members:
    :undoc-members:
 

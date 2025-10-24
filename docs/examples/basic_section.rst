@@ -1,7 +1,7 @@
 Basic Section Analysis
 ======================
 
-This example demonstrates basic section analysis with sectionpy.
+This example demonstrates basic section analysis with opensection.
 
 Simple Rectangular Section
 ---------------------------
@@ -15,7 +15,7 @@ Output
 
 When you run this example, you should see::
 
-    sectionpy - Exemple de calcul de section
+    opensection - Exemple de calcul de section
     ============================================================
     
     Section: 0.3m x 0.5m

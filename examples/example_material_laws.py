@@ -2,7 +2,7 @@
 Exemple : Visualisation des lois de comportement des materiaux
 """
 import numpy as np
-import pysection as ps
+import opensection as ps
 
 try:
     import matplotlib.pyplot as plt

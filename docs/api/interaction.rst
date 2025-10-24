@@ -1,7 +1,7 @@
 Interaction API
 ===============
 
-.. automodule:: sectionpy.interaction
+.. automodule:: opensection.interaction
    :members:
    :undoc-members:
    :show-inheritance:
@@ -9,7 +9,7 @@ Interaction API
 Interaction Diagram
 -------------------
 
-.. autoclass:: sectionpy.interaction.diagram.InteractionDiagram
+.. autoclass:: opensection.interaction.diagram.InteractionDiagram
    :members:
    :undoc-members:
 

@@ -1,12 +1,12 @@
 """
-Exemple basique d'utilisation d'SectionPy
+Exemple basique d'utilisation d'opensection
 """
 import numpy as np
-from pysection import RectangularSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
+from opensection import RectangularSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
 
 
 def main():
-    print("SectionPy - Exemple de calcul de section")
+    print("opensection - Exemple de calcul de section")
     print("=" * 60)
     
     # Définir la géométrie
@@ -48,7 +48,7 @@ def main():
     print(f"  Profondeur AN = {result.neutral_axis_depth:.3f} m")
     
     # Vérifications EC2
-    from pysection.eurocodes import EC2Verification
+    from opensection.eurocodes import EC2Verification
     
     checks_uls = EC2Verification.check_ULS(result, concrete.fcd, steel.fyd)
     

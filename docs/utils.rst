@@ -3,7 +3,7 @@ Utils Module
 
 The ``utils`` module provides utility functions for unit conversions, mathematical helpers, and physical constants.
 
-.. automodule:: sectionpy.utils
+.. automodule:: opensection.utils
    :members:
    :undoc-members:
    :show-inheritance:
@@ -11,75 +11,75 @@ The ``utils`` module provides utility functions for unit conversions, mathematic
 Unit Conversions
 ----------------
 
-.. autoclass:: sectionpy.utils.UnitConverter
+.. autoclass:: opensection.utils.UnitConverter
    :members:
    :undoc-members:
 
-.. autoclass:: sectionpy.utils.Force
+.. autoclass:: opensection.utils.Force
    :members:
    :undoc-members:
 
-.. autoclass:: sectionpy.utils.Length
+.. autoclass:: opensection.utils.Length
    :members:
    :undoc-members:
 
-.. autoclass:: sectionpy.utils.Stress
+.. autoclass:: opensection.utils.Stress
    :members:
    :undoc-members:
 
-.. autoclass:: sectionpy.utils.Area
+.. autoclass:: opensection.utils.Area
    :members:
    :undoc-members:
 
-.. autoclass:: sectionpy.utils.Moment
+.. autoclass:: opensection.utils.Moment
    :members:
    :undoc-members:
 
 Constants
 ---------
 
-.. autoclass:: sectionpy.utils.MaterialConstants
+.. autoclass:: opensection.utils.MaterialConstants
    :members:
    :undoc-members:
 
-.. autoclass:: sectionpy.utils.NumericalConstants
+.. autoclass:: opensection.utils.NumericalConstants
    :members:
    :undoc-members:
 
-.. autoclass:: sectionpy.utils.GeometricConstants
+.. autoclass:: opensection.utils.GeometricConstants
    :members:
    :undoc-members:
 
 Mathematical Helpers
 --------------------
 
-.. autofunction:: sectionpy.utils.safe_divide
+.. autofunction:: opensection.utils.safe_divide
 
-.. autofunction:: sectionpy.utils.normalize_vector
+.. autofunction:: opensection.utils.normalize_vector
 
-.. autofunction:: sectionpy.utils.is_converged
+.. autofunction:: opensection.utils.is_converged
 
-.. autofunction:: sectionpy.utils.clamp
+.. autofunction:: opensection.utils.clamp
 
-.. autofunction:: sectionpy.utils.interpolate_linear
+.. autofunction:: opensection.utils.interpolate_linear
 
-.. autofunction:: sectionpy.utils.angle_between_vectors
+.. autofunction:: opensection.utils.angle_between_vectors
 
-.. autofunction:: sectionpy.utils.sign_with_zero
+.. autofunction:: opensection.utils.sign_with_zero
 
-.. autofunction:: sectionpy.utils.smooth_min
+.. autofunction:: opensection.utils.smooth_min
 
-.. autofunction:: sectionpy.utils.smooth_max
+.. autofunction:: opensection.utils.smooth_max
 
-.. autofunction:: sectionpy.utils.rotation_matrix_2d
+.. autofunction:: opensection.utils.rotation_matrix_2d
 
-.. autofunction:: sectionpy.utils.check_positive_definite
+.. autofunction:: opensection.utils.check_positive_definite
 
 
 Unit System
 -----------
 
-sectionpy uses the following internal unit system:
+opensection uses the following internal unit system:
 
 * **Length**: meters (m)
 * **Force**: kilonewtons (kN)
@@ -91,7 +91,7 @@ sectionpy uses the following internal unit system:
 Key Conversion
 ~~~~~~~~~~~~~~
 
-The most important conversion to understand in sectionpy is:
+The most important conversion to understand in opensection is:
 
 .. math::
 
@@ -109,7 +109,7 @@ To convert to kilonewtons (kN), multiply by 1000:
 
    F (\\text{kN}) = \\sigma (\\text{MPa}) \\times A (\\text{m}^2) \\times 1000
 
-This is handled automatically by the :meth:`sectionpy.utils.UnitConverter.stress_area_to_force` method.
+This is handled automatically by the :meth:`opensection.utils.UnitConverter.stress_area_to_force` method.
 
 Examples
 --------
@@ -119,7 +119,7 @@ Unit Conversions
 
 .. code-block:: python
 
-   from sectionpy.utils import Length, Force, UnitConverter
+   from opensection.utils import Length, Force, UnitConverter
    
    # Convert 500 mm to meters
    length_m = Length.mm_to_m(500)  # 0.5 m
@@ -135,7 +135,7 @@ Mathematical Helpers
 .. code-block:: python
 
    import numpy as np
-   from sectionpy.utils import safe_divide, clamp, is_converged
+   from opensection.utils import safe_divide, clamp, is_converged
    
    # Safe division
    result = safe_divide(10, 0, default=0.0)  # Returns 0.0 instead of error
@@ -152,7 +152,7 @@ Constants
 
 .. code-block:: python
 
-   from sectionpy.utils import MaterialConstants, NumericalConstants
+   from opensection.utils import MaterialConstants, NumericalConstants
    
    # Material properties
    E_steel = MaterialConstants.E_STEEL_DEFAULT  # 200000 MPa

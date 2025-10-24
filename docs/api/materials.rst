@@ -1,7 +1,7 @@
 Materials API
 =============
 
-.. automodule:: sectionpy.materials
+.. automodule:: opensection.materials
    :members:
    :undoc-members:
    :show-inheritance:
@@ -9,7 +9,7 @@ Materials API
 Concrete
 --------
 
-.. autoclass:: sectionpy.materials.concrete.ConcreteEC2
+.. autoclass:: opensection.materials.concrete.ConcreteEC2
    :members:
    :undoc-members:
    :show-inheritance:
@@ -17,17 +17,17 @@ Concrete
 Steel
 -----
 
-.. autoclass:: sectionpy.materials.steel.SteelEC2
+.. autoclass:: opensection.materials.steel.SteelEC2
    :members:
    :undoc-members:
    :show-inheritance:
 
-.. autoclass:: sectionpy.materials.steel.PrestressingSteelEC2
+.. autoclass:: opensection.materials.steel.PrestressingSteelEC2
    :members:
    :undoc-members:
    :show-inheritance:
 
-.. autoclass:: sectionpy.materials.steel.StructuralSteelEC3
+.. autoclass:: opensection.materials.steel.StructuralSteelEC3
    :members:
    :undoc-members:
    :show-inheritance:

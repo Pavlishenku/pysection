@@ -1,7 +1,7 @@
 Reinforcement API
 =================
 
-.. automodule:: sectionpy.reinforcement
+.. automodule:: opensection.reinforcement
    :members:
    :undoc-members:
    :show-inheritance:
@@ -9,22 +9,22 @@ Reinforcement API
 Rebar Classes
 -------------
 
-.. autoclass:: sectionpy.reinforcement.rebar.Rebar
+.. autoclass:: opensection.reinforcement.rebar.Rebar
    :members:
    :undoc-members:
 
-.. autoclass:: sectionpy.reinforcement.rebar.RebarGroup
+.. autoclass:: opensection.reinforcement.rebar.RebarGroup
    :members:
    :undoc-members:
 
 Helpers
 -------
 
-.. automodule:: sectionpy.reinforcement.helpers
+.. automodule:: opensection.reinforcement.helpers
    :members:
    :undoc-members:
 
-.. autoclass:: sectionpy.reinforcement.helpers.CoverHelper
+.. autoclass:: opensection.reinforcement.helpers.CoverHelper
    :members:
    :undoc-members:
 

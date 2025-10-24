@@ -5,7 +5,7 @@ Tests for cover helper functions
 import numpy as np
 import pytest
 
-from pysection.reinforcement.helpers import CoverHelper
+from opensection.reinforcement.helpers import CoverHelper
 
 
 class TestCoverHelper:
@@ -154,7 +154,7 @@ class TestRebarGroupWithCover:
 
     def test_add_rebar_with_cover(self):
         """Test adding rebar with automatic cover"""
-        from pysection.reinforcement.rebar import RebarGroup
+        from opensection.reinforcement.rebar import RebarGroup
 
         rebars = RebarGroup()
         rebars.add_rebar_with_cover(
@@ -171,7 +171,7 @@ class TestRebarGroupWithCover:
 
     def test_add_layer_with_cover(self):
         """Test adding a layer with automatic cover"""
-        from pysection.reinforcement.rebar import RebarGroup
+        from opensection.reinforcement.rebar import RebarGroup
 
         rebars = RebarGroup()
         rebars.add_layer_with_cover(
@@ -188,7 +188,7 @@ class TestRebarGroupWithCover:
 
     def test_add_circular_array_with_cover(self):
         """Test adding circular array with automatic cover"""
-        from pysection.reinforcement.rebar import RebarGroup
+        from opensection.reinforcement.rebar import RebarGroup
 
         rebars = RebarGroup()
         rebars.add_circular_array_with_cover(

@@ -3,15 +3,15 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pysection"
+name = "opensection"
 version = "1.0.0"
 description = "Professional concrete section analysis - Structural concrete design according to Eurocodes"
 readme = "README.md"
 authors = [
-    {name = "SectionPy Contributors", email = "pavlishenku@gmail.com"}
+    {name = "opensection Contributors", email = "pavlishenku@gmail.com"}
 ]
 maintainers = [
-    {name = "SectionPy Contributors", email = "pavlishenku@gmail.com"}
+    {name = "opensection Contributors", email = "pavlishenku@gmail.com"}
 ]
 license = {text = "MIT"}
 classifiers = [
@@ -67,18 +67,18 @@ test = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Pavlishenku/pysection"
-Documentation = "https://pysection.readthedocs.io"
-Repository = "https://github.com/Pavlishenku/pysection"
-"Bug Tracker" = "https://github.com/Pavlishenku/pysection/issues"
-Changelog = "https://github.com/Pavlishenku/pysection/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/Pavlishenku/opensection"
+Documentation = "https://opensection.readthedocs.io"
+Repository = "https://github.com/Pavlishenku/opensection"
+"Bug Tracker" = "https://github.com/Pavlishenku/opensection/issues"
+Changelog = "https://github.com/Pavlishenku/opensection/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["pysection*"]
+include = ["opensection*"]
 exclude = ["tests*"]
 
 [tool.pytest.ini_options]
@@ -88,7 +88,7 @@ python_classes = ["Test*"]
 python_functions = ["test_*"]
 addopts = [
     "--verbose",
-    "--cov=pysection",
+    "--cov=opensection",
     "--cov-report=term-missing",
     "--cov-report=html",
     "--cov-report=xml",

@@ -1,7 +1,7 @@
 Solver API
 ==========
 
-.. automodule:: sectionpy.solver
+.. automodule:: opensection.solver
    :members:
    :undoc-members:
    :show-inheritance:
@@ -9,16 +9,16 @@ Solver API
 Section Solver
 --------------
 
-.. autoclass:: sectionpy.solver.section_solver.SectionSolver
+.. autoclass:: opensection.solver.section_solver.SectionSolver
    :members:
    :undoc-members:
 
-.. autoclass:: sectionpy.solver.section_solver.SolverResult
+.. autoclass:: opensection.solver.section_solver.SolverResult
    :members:
    :undoc-members:
 
 API Functions
 -------------
 
-.. autofunction:: sectionpy.solver.api.validate_and_solve
+.. autofunction:: opensection.solver.api.validate_and_solve
 

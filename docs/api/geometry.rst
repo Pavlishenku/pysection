@@ -1,7 +1,7 @@
 Geometry API
 ============
 
-.. automodule:: sectionpy.geometry
+.. automodule:: opensection.geometry
    :members:
    :undoc-members:
    :show-inheritance:
@@ -9,37 +9,37 @@ Geometry API
 Sections
 --------
 
-.. autoclass:: sectionpy.geometry.section.Section
+.. autoclass:: opensection.geometry.section.Section
    :members:
    :undoc-members:
 
-.. autoclass:: sectionpy.geometry.section.RectangularSection
+.. autoclass:: opensection.geometry.section.RectangularSection
    :members:
    :undoc-members:
 
-.. autoclass:: sectionpy.geometry.section.CircularSection
+.. autoclass:: opensection.geometry.section.CircularSection
    :members:
    :undoc-members:
 
-.. autoclass:: sectionpy.geometry.section.TSection
+.. autoclass:: opensection.geometry.section.TSection
    :members:
    :undoc-members:
 
 Contours
 --------
 
-.. autoclass:: sectionpy.geometry.contour.Contour
+.. autoclass:: opensection.geometry.contour.Contour
    :members:
    :undoc-members:
 
-.. autoclass:: sectionpy.geometry.contour.Point
+.. autoclass:: opensection.geometry.contour.Point
    :members:
    :undoc-members:
 
 Properties
 ----------
 
-.. autoclass:: sectionpy.geometry.properties.GeometricProperties
+.. autoclass:: opensection.geometry.properties.GeometricProperties
    :members:
    :undoc-members:
 

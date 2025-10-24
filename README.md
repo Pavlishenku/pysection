@@ -1,15 +1,15 @@
-# SectionPy - Professional Concrete Section Analysis
+# opensection - Professional Concrete Section Analysis
 
 <div align="center">
 
 **A Python library for structural concrete section analysis according to Eurocodes**
 
-[![PyPI version](https://img.shields.io/pypi/v/sectionpy.svg)](https://pypi.org/project/sectionpy/)
-[![Python versions](https://img.shields.io/pypi/pyversions/sectionpy.svg)](https://pypi.org/project/sectionpy/)
+[![PyPI version](https://img.shields.io/pypi/v/opensection.svg)](https://pypi.org/project/opensection/)
+[![Python versions](https://img.shields.io/pypi/pyversions/opensection.svg)](https://pypi.org/project/opensection/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://github.com/Pavlishenku/pysection/workflows/CI/badge.svg)](https://github.com/Pavlishenku/pysection/actions)
-[![codecov](https://codecov.io/gh/Pavlishenku/sectionpy/branch/main/graph/badge.svg)](https://codecov.io/gh/Pavlishenku/sectionpy)
-[![Documentation Status](https://readthedocs.org/projects/sectionpy/badge/?version=latest)](https://pysection.readthedocs.io/en/latest/?badge=latest)
+[![Build Status](https://github.com/Pavlishenku/opensection/workflows/CI/badge.svg)](https://github.com/Pavlishenku/opensection/actions)
+[![codecov](https://codecov.io/gh/Pavlishenku/opensection/branch/main/graph/badge.svg)](https://codecov.io/gh/Pavlishenku/opensection)
+[![Documentation Status](https://readthedocs.org/projects/opensection/badge/?version=latest)](https://opensection.readthedocs.io/en/latest/?badge=latest)
 
 [English](README.md) | [Français](README_FR.md)
 
@@ -33,44 +33,44 @@
 ### From PyPI (recommended)
 
 ```bash
-pip install pysection
+pip install opensection
 ```
 
 ### From source
 
 ```bash
-git clone https://github.com/Pavlishenku/pysection.git
-cd sectionpy
+git clone https://github.com/Pavlishenku/opensection.git
+cd opensection
 pip install -e .
 ```
 
 ### Development installation
 
 ```bash
-git clone https://github.com/Pavlishenku/pysection.git
-cd sectionpy
+git clone https://github.com/Pavlishenku/opensection.git
+cd opensection
 pip install -e ".[dev]"
 ```
 
 ## 🚀 Quick Start
 
 ```python
-import pysection as ps
+import opensection as ps
 
 # Define a rectangular concrete section
-section = sp.RectangularSection(width=0.3, height=0.5)
+section = ops.RectangularSection(width=0.3, height=0.5)
 
 # Define materials (Eurocode 2)
-concrete = sp.ConcreteEC2(fck=30)  # C30/37
-steel = sp.SteelEC2(fyk=500)       # B500B
+concrete = ops.ConcreteEC2(fck=30)  # C30/37
+steel = ops.SteelEC2(fyk=500)       # B500B
 
 # Add reinforcement
-rebars = sp.RebarGroup()
+rebars = ops.RebarGroup()
 rebars.add_rebar(y=0.0, z=-0.20, diameter=0.020, n=3)  # 3Ø20 bottom
 rebars.add_rebar(y=0.0, z=0.20, diameter=0.016, n=2)   # 2Ø16 top
 
 # Create solver and analyze
-solver = sp.SectionSolver(section, concrete, steel, rebars)
+solver = ops.SectionSolver(section, concrete, steel, rebars)
 result = solver.solve(N=500, My=0, Mz=100)  # N in kN, M in kN·m
 
 # Check results
@@ -79,19 +79,19 @@ print(f"Max concrete stress: {result.sigma_c_max:.2f} MPa")
 print(f"Max steel stress: {result.sigma_s_max:.2f} MPa")
 
 # Verify according to EC2
-checks = sp.EC2Verification.check_ULS(result, concrete.fcd, steel.fyd)
+checks = ops.EC2Verification.check_ULS(result, concrete.fcd, steel.fyd)
 print(f"Concrete check: {'OK' if checks['concrete_stress']['ok'] else 'FAIL'}")
 print(f"Steel check: {'OK' if checks['steel_stress']['ok'] else 'FAIL'}")
 ```
 
 ## 📚 Documentation
 
-Full documentation is available at [pysection.readthedocs.io](https://pysection.readthedocs.io)
+Full documentation is available at [opensection.readthedocs.io](https://opensection.readthedocs.io)
 
-- [User Guide](https://pysection.readthedocs.io/en/latest/user_guide/index.html)
-- [API Reference](https://pysection.readthedocs.io/en/latest/api/index.html)
-- [Examples](https://pysection.readthedocs.io/en/latest/examples/index.html)
-- [Theory](https://pysection.readthedocs.io/en/latest/theory/index.html)
+- [User Guide](https://opensection.readthedocs.io/en/latest/user_guide/index.html)
+- [API Reference](https://opensection.readthedocs.io/en/latest/api/index.html)
+- [Examples](https://opensection.readthedocs.io/en/latest/examples/index.html)
+- [Theory](https://opensection.readthedocs.io/en/latest/theory/index.html)
 
 ## 💡 Examples
 
@@ -110,8 +110,8 @@ Check out the [examples](examples/) directory for more detailed use cases:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Pavlishenku/pysection.git
-cd sectionpy
+git clone https://github.com/Pavlishenku/opensection.git
+cd opensection
 
 # Create virtual environment
 python -m venv venv
@@ -128,7 +128,7 @@ pip install -e ".[dev]"
 pytest
 
 # Run with coverage
-pytest --cov=sectionpy --cov-report=html
+pytest --cov=opensection --cov-report=html
 
 # Run specific test file
 pytest tests/test_geometry.py
@@ -172,8 +172,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact & Support
 
-- **Issues**: [GitHub Issues](https://github.com/Pavlishenku/pysection/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Pavlishenku/pysection/discussions)
+- **Issues**: [GitHub Issues](https://github.com/Pavlishenku/opensection/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Pavlishenku/opensection/discussions)
 
 ## 🗺️ Roadmap
 
@@ -189,14 +189,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📖 Citation
 
-If you use SectionPy in academic work, please cite:
+If you use opensection in academic work, please cite:
 
 ```bibtex
-@software{sectionpy2025,
-  author = {SectionPy Contributors},
-  title = {SectionPy: Professional Concrete Section Analysis},
+@software{opensection2025,
+  author = {opensection Contributors},
+  title = {opensection: Professional Concrete Section Analysis},
   year = {2025},
-  url = {https://github.com/Pavlishenku/pysection},
+  url = {https://github.com/Pavlishenku/opensection},
   version = {1.0.0}
 }
 ```
@@ -205,8 +205,8 @@ If you use SectionPy in academic work, please cite:
 
 <div align="center">
 
-**Made with ❤️ by the SectionPy community**
+**Made with ❤️ by the opensection community**
 
-[⭐ Star us on GitHub](https://github.com/Pavlishenku/pysection) | [📖 Read the docs](https://pysection.readthedocs.io) | [💬 Join the discussion](https://github.com/Pavlishenku/pysection/discussions)
+[⭐ Star us on GitHub](https://github.com/Pavlishenku/opensection) | [📖 Read the docs](https://opensection.readthedocs.io) | [💬 Join the discussion](https://github.com/Pavlishenku/opensection/discussions)
 
 </div>

@@ -1,5 +1,5 @@
 """
-Tests de performance pour le solveur SectionPy
+Tests de performance pour le solveur opensection
 
 Ces tests évaluent les performances du solveur pour différentes configurations :
 - Temps de calcul
@@ -13,11 +13,11 @@ import time
 import numpy as np
 import pytest
 
-from pysection.geometry.section import CircularSection, RectangularSection, TSection
-from pysection.materials.concrete import ConcreteEC2
-from pysection.materials.steel import SteelEC2
-from pysection.reinforcement.rebar import RebarGroup
-from pysection.solver.section_solver import SectionSolver
+from opensection.geometry.section import CircularSection, RectangularSection, TSection
+from opensection.materials.concrete import ConcreteEC2
+from opensection.materials.steel import SteelEC2
+from opensection.reinforcement.rebar import RebarGroup
+from opensection.solver.section_solver import SectionSolver
 
 
 class TestSolverPerformance:
@@ -239,7 +239,7 @@ if __name__ == "__main__":
     # Exécuter les tests avec mesure de temps
     import time
 
-    print("Tests de performance SectionPy")
+    print("Tests de performance opensection")
     print("=" * 50)
 
     start_total = time.time()

@@ -1,6 +1,6 @@
-# Contributing to SectionPy
+# Contributing to opensection
 
-First off, thank you for considering contributing to SectionPy! It's people like you that make SectionPy such a great tool for the structural engineering community.
+First off, thank you for considering contributing to opensection! It's people like you that make opensection such a great tool for the structural engineering community.
 
 ## [LIST] Table of Contents
 
@@ -15,7 +15,7 @@ First off, thank you for considering contributing to SectionPy! It's people like
 
 ##  Code of Conduct
 
-This project and everyone participating in it is governed by the [SectionPy Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
+This project and everyone participating in it is governed by the [opensection Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
 
 ## [>] Getting Started
 
@@ -30,8 +30,8 @@ This project and everyone participating in it is governed by the [SectionPy Code
 1. **Fork the repository** on GitHub
 2. **Clone your fork** locally:
    ```bash
-   git clone https://github.com/YOUR-USERNAME/SectionPy.git
-   cd SectionPy
+   git clone https://github.com/YOUR-USERNAME/opensection.git
+   cd opensection
    ```
 
 3. **Create a virtual environment**:
@@ -62,7 +62,7 @@ This project and everyone participating in it is governed by the [SectionPy Code
 Before creating bug reports, please check existing issues to avoid duplicates.
 
 **When reporting a bug, please include**:
-- SectionPy version
+- opensection version
 - Python version
 - Operating system
 - Steps to reproduce
@@ -116,7 +116,7 @@ Unsure where to begin? Look for issues labeled:
 pytest
 
 # Run with coverage
-pytest --cov=SectionPy --cov-report=html
+pytest --cov=opensection --cov-report=html
 
 # Run specific test file
 pytest tests/test_geometry.py
@@ -234,7 +234,7 @@ def process_rebars(
 ```python
 import pytest
 import numpy as np
-from SectionPy import RectangularSection
+from opensection import RectangularSection
 
 def test_rectangular_section_area():
     """Test area calculation for rectangular section."""
@@ -339,9 +339,9 @@ Priority languages:
 
 ## [IDEA] Questions?
 
-- **General questions**: [GitHub Discussions](https://github.com/SectionPy/SectionPy/discussions)
-- **Bug reports**: [GitHub Issues](https://github.com/SectionPy/SectionPy/issues)
-- **Email**: SectionPy@example.com
+- **General questions**: [GitHub Discussions](https://github.com/opensection/opensection/discussions)
+- **Bug reports**: [GitHub Issues](https://github.com/opensection/opensection/issues)
+- **Email**: pavlishenku@gmail.com
 
 ## [AWARD] Recognition
 
@@ -351,5 +351,5 @@ Contributors are recognized in:
 - Release notes
 - Annual summary posts
 
-Thank you for contributing to SectionPy! [SUCCESS]
+Thank you for contributing to opensection! [SUCCESS]
 

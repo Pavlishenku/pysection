@@ -6,11 +6,11 @@ import warnings
 
 import pytest
 
-from pysection.geometry.section import CircularSection, RectangularSection
-from pysection.materials.concrete import ConcreteEC2
-from pysection.materials.steel import SteelEC2
-from pysection.reinforcement.rebar import RebarGroup
-from pysection.validation import (
+from opensection.geometry.section import CircularSection, RectangularSection
+from opensection.materials.concrete import ConcreteEC2
+from opensection.materials.steel import SteelEC2
+from opensection.reinforcement.rebar import RebarGroup
+from opensection.validation import (
     GeometryValidationError,
     GeometryValidator,
     LoadValidationError,

@@ -10,7 +10,7 @@ Référence : Publications académiques en mécanique des structures
 """
 import numpy as np
 import matplotlib.pyplot as plt
-from pysection import RectangularSection, CircularSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
+from opensection import RectangularSection, CircularSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
 
 
 def chen_saleeb_example():
@@ -53,7 +53,7 @@ def chen_saleeb_example():
     result = solver.solve(N=N_load, My=0, Mz=M_load)
 
     print("
-Résultats selon SectionPy :")
+Résultats selon opensection :")
     print(f"  Convergence : {'OUI' if result.converged else 'NON'}")
     print(f"  Itérations : {result.n_iter}")
     print(f"  ε₀ = {result.epsilon_0*1000:.3f} ‰")
@@ -131,7 +131,7 @@ def spacone_example():
     result = solver.solve(N=N_load, My=My_load, Mz=Mz_load)
 
     print("
-Résultats selon SectionPy :")
+Résultats selon opensection :")
     print(f"  Convergence : {'OUI' if result.converged else 'NON'}")
     print(f"  Itérations : {result.n_iter}")
     print(f"  ε₀ = {result.epsilon_0*1000:.3f} ‰")
@@ -196,7 +196,7 @@ Résistance selon formule EC2 :")
     print(f"  Aire acier As = {As*1e4:.1f} cm²")
     print(f"  NRd = {NRd_ec2:.0f} kN")
 
-    # Vérification avec solveur SectionPy
+    # Vérification avec solveur opensection
     section = RectangularSection(width=b, height=h)
     rebars = RebarGroup()
 
@@ -217,7 +217,7 @@ Résistance selon formule EC2 :")
     result = solver.solve(N=NRd_ec2 * 0.99, My=0, Mz=0)  # 99% de la capacité
 
     print("
-Résultats selon SectionPy :")
+Résultats selon opensection :")
     print(f"  Convergence : {'OUI' if result.converged else 'NON'}")
     print(f"  Itérations : {result.n_iter}")
     print(f"  ε₀ = {result.epsilon_0*1000:.3f} ‰")
@@ -228,9 +228,9 @@ Résultats selon SectionPy :")
     error_N = abs(result.N - NRd_ec2) / NRd_ec2 * 100
 
     print("
-Comparaison EC2 vs SectionPy :")
+Comparaison EC2 vs opensection :")
     print(f"  NRd (EC2) = {NRd_ec2:.0f} kN")
-    print(f"  NRd (SectionPy) = {result.N if result.converged else 0:.0f} kN")
+    print(f"  NRd (opensection) = {result.N if result.converged else 0:.0f} kN")
     print(f"  Écart relatif : {error_N:.2f}%")
 
     return result, NRd_ec2
@@ -262,7 +262,7 @@ def validation_summary():
     print("✓ Écarts inférieurs à 5% par rapport aux références")
     print("✓ Méthode par fibres validée contre modèles établis")
     print("✓ Cohérence avec les Eurocodes démontrée")
-    print("\nSectionPy est validé pour une utilisation en recherche et ingénierie")
+    print("\nopensection est validé pour une utilisation en recherche et ingénierie")
 
 
 if __name__ == "__main__":

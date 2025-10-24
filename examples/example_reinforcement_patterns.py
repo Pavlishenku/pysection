@@ -3,7 +3,7 @@ Exemple : Différentes dispositions de ferraillage
 """
 
 import numpy as np
-import pysection as ps
+import opensection as ps
 
 try:
     import matplotlib.pyplot as plt
@@ -145,7 +145,7 @@ def example_cover_helpers():
     print("EXEMPLE 5 : HELPERS POUR ENROBAGE AUTOMATIQUE")
     print("=" * 70)
 
-    from pysection.reinforcement.helpers import CoverHelper
+    from opensection.reinforcement.helpers import CoverHelper
 
     # Section
     width = 0.3

@@ -1,7 +1,7 @@
 """
 Exemple : Poutre en T en béton armé
 """
-import pysection as ps
+import opensection as ps
 
 
 def main():

@@ -1,7 +1,7 @@
 Materials
 =========
 
-sectionpy implements material constitutive laws according to Eurocodes.
+opensection implements material constitutive laws according to Eurocodes.
 
 Concrete
 --------
@@ -9,7 +9,7 @@ Concrete
 Concrete EC2
 ~~~~~~~~~~~~
 
-.. autoclass:: sectionpy.ConcreteEC2
+.. autoclass:: opensection.ConcreteEC2
    :members:
    :undoc-members:
 
@@ -42,7 +42,7 @@ Steel
 Reinforcing Steel EC2
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. autoclass:: sectionpy.SteelEC2
+.. autoclass:: opensection.SteelEC2
    :members:
    :undoc-members:
 
@@ -67,14 +67,14 @@ where ``E_sh = k · E_s`` is the hardening modulus.
 Prestressing Steel EC2
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. autoclass:: sectionpy.PrestressingSteelEC2
+.. autoclass:: opensection.PrestressingSteelEC2
    :members:
    :undoc-members:
 
 Structural Steel EC3
 ~~~~~~~~~~~~~~~~~~~~
 
-.. autoclass:: sectionpy.StructuralSteelEC3
+.. autoclass:: opensection.StructuralSteelEC3
    :members:
    :undoc-members:
 
@@ -86,7 +86,7 @@ Concrete Classes
 
 .. code-block:: python
 
-    import sectionpy as oc
+    import opensection as oc
     
     # Standard concrete classes
     c20 = oc.ConcreteEC2(fck=20)  # C20/25

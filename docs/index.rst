@@ -1,22 +1,22 @@
-sectionpy Documentation
+opensection Documentation
 =====================
 
-.. image:: https://img.shields.io/pypi/v/sectionpy.svg
-   :target: https://pypi.org/project/sectionpy/
+.. image:: https://img.shields.io/pypi/v/opensection.svg
+   :target: https://pypi.org/project/opensection/
    :alt: PyPI version
 
-.. image:: https://img.shields.io/pypi/pyversions/sectionpy.svg
-   :target: https://pypi.org/project/sectionpy/
+.. image:: https://img.shields.io/pypi/pyversions/opensection.svg
+   :target: https://pypi.org/project/opensection/
    :alt: Python versions
 
 .. image:: https://img.shields.io/badge/License-MIT-yellow.svg
    :target: https://opensource.org/licenses/MIT
    :alt: License: MIT
 
-Welcome to sectionpy (Professional Concrete Section Analysis), a Python package for structural 
+Welcome to opensection (Professional Concrete Section Analysis), a Python package for structural 
 concrete design according to Eurocodes.
 
-**sectionpy** provides tools for:
+**opensection** provides tools for:
 
 * Section analysis using fiber discretization
 * Material constitutive laws (EC2, EC3)
@@ -29,13 +29,13 @@ Quick Start
 
 Installation::
 
-    pip install sectionpy
+    pip install opensection
 
 Basic usage:
 
 .. code-block:: python
 
-    import sectionpy as oc
+    import opensection as oc
 
     # Define section and materials
     section = oc.RectangularSection(width=0.3, height=0.5)

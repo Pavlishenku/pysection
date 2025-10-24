@@ -1,12 +1,12 @@
 Verification
 ============
 
-sectionpy provides tools to verify designs according to Eurocode 2.
+opensection provides tools to verify designs according to Eurocode 2.
 
 EC2 Verification
 ----------------
 
-.. autoclass:: sectionpy.EC2Verification
+.. autoclass:: opensection.EC2Verification
    :members:
    :undoc-members:
 
@@ -18,7 +18,7 @@ Check ULS
 
 .. code-block:: python
 
-    import sectionpy as oc
+    import opensection as oc
     
     # After solving
     result = solver.solve(N=500, My=0, Mz=100)
@@ -128,7 +128,7 @@ Complete Verification Example
 
 .. code-block:: python
 
-    import sectionpy as oc
+    import opensection as oc
     
     # Define section
     section = oc.RectangularSection(width=0.3, height=0.5)

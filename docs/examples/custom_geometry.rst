@@ -10,7 +10,7 @@ Polygon Sections
 
 .. code-block:: python
 
-    from sectionpy import Section, Contour, Point
+    from opensection import Section, Contour, Point
     
     # Define vertices
     points = [

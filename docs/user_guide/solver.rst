@@ -1,20 +1,20 @@
 Section Solver
 ==============
 
-The section solver is the core of sectionpy, computing the internal forces
+The section solver is the core of opensection, computing the internal forces
 and strains for a given section under applied loads.
 
 Section Solver
 --------------
 
-.. autoclass:: sectionpy.SectionSolver
+.. autoclass:: opensection.SectionSolver
    :members:
    :undoc-members:
 
 Solver Result
 -------------
 
-.. autoclass:: sectionpy.SolverResult
+.. autoclass:: opensection.SolverResult
    :members:
    :undoc-members:
 
@@ -37,7 +37,7 @@ Basic Solve
 
 .. code-block:: python
 
-    import sectionpy as oc
+    import opensection as oc
     
     # Setup
     section = oc.RectangularSection(width=0.3, height=0.5)
@@ -161,5 +161,5 @@ Performance Tips
 API Validation
 --------------
 
-.. autofunction:: sectionpy.validate_and_solve
+.. autofunction:: opensection.validate_and_solve
 

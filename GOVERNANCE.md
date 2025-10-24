@@ -1,8 +1,8 @@
-# SectionPy Project Governance
+# opensection Project Governance
 
 ## Overview
 
-SectionPy is an open-source project dedicated to providing high-quality structural design tools for the engineering community. This document outlines the governance structure and decision-making processes.
+opensection is an open-source project dedicated to providing high-quality structural design tools for the engineering community. This document outlines the governance structure and decision-making processes.
 
 ## Project Goals
 
@@ -16,7 +16,7 @@ SectionPy is an open-source project dedicated to providing high-quality structur
 
 ### Users
 
-Anyone who uses SectionPy. Users are encouraged to:
+Anyone who uses opensection. Users are encouraged to:
 - Report bugs and suggest features
 - Participate in discussions
 - Help other users
@@ -24,7 +24,7 @@ Anyone who uses SectionPy. Users are encouraged to:
 
 ### Contributors
 
-Anyone who contributes to SectionPy through:
+Anyone who contributes to opensection through:
 - Code contributions
 - Documentation improvements
 - Bug reports with detailed information
@@ -59,7 +59,7 @@ Committers with additional responsibilities:
 
 ### Consensus Building
 
-SectionPy strives to make decisions through consensus among maintainers and active contributors. The process:
+opensection strives to make decisions through consensus among maintainers and active contributors. The process:
 
 1. **Proposal**: Anyone can propose changes via GitHub Issues or Discussions
 2. **Discussion**: Community members discuss and refine the proposal
@@ -140,7 +140,7 @@ Committers can become core maintainers by:
 All participants must adhere to the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 **Enforcement:**
-- Violations reported to: SectionPy-conduct@example.com
+- Violations reported to: opensection-conduct@example.com
 - Investigated by core maintainers (excluding conflicted parties)
 - Actions range from warning to permanent ban
 - Appeals process available
@@ -187,8 +187,8 @@ This governance document can be amended by:
 ## Contact
 
 - **General questions**: GitHub Discussions
-- **Private matters**: SectionPy-maintainers@example.com
-- **Code of Conduct**: SectionPy-conduct@example.com
+- **Private matters**: opensection-maintainers@example.com
+- **Code of Conduct**: opensection-conduct@example.com
 
 ## Acknowledgments
 

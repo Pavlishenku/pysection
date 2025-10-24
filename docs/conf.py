@@ -6,9 +6,9 @@ import sys
 sys.path.insert(0, os.path.abspath('../src'))
 
 # -- Project information -----------------------------------------------------
-project = 'SectionPy'
-copyright = '2025, SectionPy Contributors'
-author = 'SectionPy Contributors'
+project = 'opensection'
+copyright = '2025, opensection Contributors'
+author = 'opensection Contributors'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0.0'

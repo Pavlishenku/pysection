@@ -4,7 +4,7 @@ Installation
 Requirements
 ------------
 
-sectionpy requires:
+opensection requires:
 
 * Python 3.8 or higher
 * NumPy >= 1.20.0
@@ -13,17 +13,17 @@ sectionpy requires:
 Installation from PyPI
 ----------------------
 
-The easiest way to install sectionpy is using pip::
+The easiest way to install opensection is using pip::
 
-    pip install sectionpy
+    pip install opensection
 
 Installation from Source
 -------------------------
 
 To install from source::
 
-    git clone https://github.com/sectionpy/sectionpy.git
-    cd sectionpy
+    git clone https://github.com/opensection/opensection.git
+    cd opensection
     pip install -e .
 
 Development Installation
@@ -43,9 +43,9 @@ This includes:
 Verify Installation
 -------------------
 
-Check that sectionpy is correctly installed::
+Check that opensection is correctly installed::
 
-    python -c "import sectionpy; print(sectionpy.__version__)"
+    python -c "import opensection; print(opensection.__version__)"
 
 This should print the version number, e.g., ``0.1.0``.
 
@@ -54,7 +54,7 @@ Upgrading
 
 To upgrade to the latest version::
 
-    pip install --upgrade sectionpy
+    pip install --upgrade opensection
 
 Dependencies
 ------------
@@ -78,9 +78,9 @@ Troubleshooting
 Import Error
 ~~~~~~~~~~~~
 
-If you get an import error, make sure sectionpy is installed::
+If you get an import error, make sure opensection is installed::
 
-    pip list | grep sectionpy
+    pip list | grep opensection
 
 Version Conflicts
 ~~~~~~~~~~~~~~~~~
@@ -96,5 +96,5 @@ It's recommended to use a virtual environment::
 
     python -m venv venv
     source venv/bin/activate  # On Windows: venv\Scripts\activate
-    pip install sectionpy
+    pip install opensection
 

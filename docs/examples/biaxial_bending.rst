@@ -10,7 +10,7 @@ Basic Example
 
 .. code-block:: python
 
-    import sectionpy as oc
+    import opensection as oc
     
     # Square column
     section = oc.RectangularSection(width=0.4, height=0.4)

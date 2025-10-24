@@ -1,7 +1,7 @@
 Postprocess API
 ===============
 
-.. automodule:: sectionpy.postprocess
+.. automodule:: opensection.postprocess
    :members:
    :undoc-members:
    :show-inheritance:
@@ -9,14 +9,14 @@ Postprocess API
 Visualization
 -------------
 
-.. autoclass:: sectionpy.postprocess.visualization.SectionPlotter
+.. autoclass:: opensection.postprocess.visualization.SectionPlotter
    :members:
    :undoc-members:
 
 Report Generation
 -----------------
 
-.. autoclass:: sectionpy.postprocess.report.ReportGenerator
+.. autoclass:: opensection.postprocess.report.ReportGenerator
    :members:
    :undoc-members:
 

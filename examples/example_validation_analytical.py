@@ -3,8 +3,8 @@ Exemple d'utilisation de la base de validation analytique
 Compare le solver numérique avec des solutions analytiques EC2
 """
 
-from pysection import RectangularSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
-from pysection.validation.analytical_cases import ValidationDatabase
+from opensection import RectangularSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
+from opensection.validation.analytical_cases import ValidationDatabase
 import numpy as np
 
 
@@ -13,7 +13,7 @@ def validate_solver_against_analytical():
     Compare le solver numérique avec solutions analytiques
     """
     print("=" * 70)
-    print("VALIDATION DU SOLVER SectionPy")
+    print("VALIDATION DU SOLVER opensection")
     print("Comparaison avec solutions analytiques Eurocode 2")
     print("=" * 70)
     print()
@@ -66,7 +66,7 @@ def validate_solver_against_analytical():
     print(f"  sigma_c = {sol_analytical.sigma_c_max:.2f} MPa")
     print()
     
-    print("Solution numérique (SectionPy):")
+    print("Solution numérique (opensection):")
     print(f"  Convergence : {'OUI' if result.converged else 'NON'}")
     if result.converged:
         print(f"  Iterations : {result.n_iter}")
@@ -130,7 +130,7 @@ def validate_solver_against_analytical():
     print(f"  sigma_c_max = {sol_analytical.sigma_c_max:.2f} MPa")
     print()
     
-    print("Solution numérique (SectionPy):")
+    print("Solution numérique (opensection):")
     print(f"  Convergence : {'OUI' if result.converged else 'NON'}")
     if result.converged:
         print(f"  Iterations : {result.n_iter}")

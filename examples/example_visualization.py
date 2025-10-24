@@ -8,21 +8,21 @@ This example demonstrates how to:
 4. Visualize sections with fiber mesh
 5. Save plots to files
 
-Author: SectionPy Contributors
+Author: opensection Contributors
 """
 
 import matplotlib.pyplot as plt
 
-from pysection.geometry.section import CircularSection, RectangularSection
-from pysection.materials.concrete import ConcreteEC2
-from pysection.materials.steel import SteelEC2
-from pysection.postprocess.report import ReportGenerator
-from pysection.postprocess.visualization import SectionPlotter
-from pysection.reinforcement.rebar import RebarGroup
-from pysection.solver.section_solver import SectionSolver
+from opensection.geometry.section import CircularSection, RectangularSection
+from opensection.materials.concrete import ConcreteEC2
+from opensection.materials.steel import SteelEC2
+from opensection.postprocess.report import ReportGenerator
+from opensection.postprocess.visualization import SectionPlotter
+from opensection.reinforcement.rebar import RebarGroup
+from opensection.solver.section_solver import SectionSolver
 
 print("=" * 70)
-print("SectionPy - VISUALIZATION AND REPORT GENERATION EXAMPLE")
+print("opensection - VISUALIZATION AND REPORT GENERATION EXAMPLE")
 print("=" * 70)
 print()
 
@@ -172,7 +172,7 @@ print("\n" + "=" * 70)
 print("EXAMPLE 4: Detailed Report with Code Checks")
 print("-" * 70)
 
-from pysection.eurocodes.verification import EC2Verification
+from opensection.eurocodes.verification import EC2Verification
 
 # Generate extended report
 print("\n" + "=" * 70)

@@ -1,7 +1,7 @@
 Geometry
 ========
 
-sectionpy supports various section geometries for concrete design.
+opensection supports various section geometries for concrete design.
 
 Section Types
 -------------
@@ -9,46 +9,46 @@ Section Types
 Rectangular Section
 ~~~~~~~~~~~~~~~~~~~
 
-.. autoclass:: sectionpy.RectangularSection
+.. autoclass:: opensection.RectangularSection
    :members:
    :undoc-members:
 
 Circular Section
 ~~~~~~~~~~~~~~~~
 
-.. autoclass:: sectionpy.CircularSection
+.. autoclass:: opensection.CircularSection
    :members:
    :undoc-members:
 
 T-Section
 ~~~~~~~~~
 
-.. autoclass:: sectionpy.TSection
+.. autoclass:: opensection.TSection
    :members:
    :undoc-members:
 
 Custom Sections
 ~~~~~~~~~~~~~~~
 
-.. autoclass:: sectionpy.Section
+.. autoclass:: opensection.Section
    :members:
    :undoc-members:
 
 Geometric Properties
 --------------------
 
-.. autoclass:: sectionpy.GeometricProperties
+.. autoclass:: opensection.GeometricProperties
    :members:
    :undoc-members:
 
 Contours
 --------
 
-.. autoclass:: sectionpy.Contour
+.. autoclass:: opensection.Contour
    :members:
    :undoc-members:
 
-.. autoclass:: sectionpy.Point
+.. autoclass:: opensection.Point
    :members:
    :undoc-members:
 
@@ -60,7 +60,7 @@ Creating a Rectangular Section
 
 .. code-block:: python
 
-    import sectionpy as oc
+    import opensection as oc
 
     section = oc.RectangularSection(width=0.3, height=0.5)
     props = section.properties
@@ -85,7 +85,7 @@ Creating a Custom Section
 
 .. code-block:: python
 
-    from sectionpy import Section, Contour, Point
+    from opensection import Section, Contour, Point
     
     # Define vertices of polygon
     points = [

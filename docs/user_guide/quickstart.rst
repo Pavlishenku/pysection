@@ -1,7 +1,7 @@
 Quick Start Guide
 =================
 
-This guide will help you get started with sectionpy quickly.
+This guide will help you get started with opensection quickly.
 
 Basic Section Analysis
 ----------------------
@@ -10,7 +10,7 @@ Here's a simple example of analyzing a rectangular concrete section:
 
 .. code-block:: python
 
-    import sectionpy as oc
+    import opensection as oc
 
     # Define geometry
     section = oc.RectangularSection(width=0.3, height=0.5)

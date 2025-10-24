@@ -7,23 +7,23 @@ This example demonstrates how to:
 3. Analyze custom sections with the solver
 4. Visualize complex geometries
 
-Author: SectionPy Contributors
+Author: opensection Contributors
 """
 
 import matplotlib.pyplot as plt
 import numpy as np
 
-from pysection.geometry import Contour, Point
-from pysection.geometry.section import Section
-from pysection.materials.concrete import ConcreteEC2
-from pysection.materials.steel import SteelEC2
-from pysection.postprocess.report import ReportGenerator
-from pysection.postprocess.visualization import SectionPlotter
-from pysection.reinforcement.rebar import RebarGroup
-from pysection.solver.section_solver import SectionSolver
+from opensection.geometry import Contour, Point
+from opensection.geometry.section import Section
+from opensection.materials.concrete import ConcreteEC2
+from opensection.materials.steel import SteelEC2
+from opensection.postprocess.report import ReportGenerator
+from opensection.postprocess.visualization import SectionPlotter
+from opensection.reinforcement.rebar import RebarGroup
+from opensection.solver.section_solver import SectionSolver
 
 print("=" * 70)
-print("SectionPy - CUSTOM SECTION CONTOURS EXAMPLE")
+print("opensection - CUSTOM SECTION CONTOURS EXAMPLE")
 print("=" * 70)
 print()
 

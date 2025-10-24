@@ -1,5 +1,5 @@
 """
-Setup file for PySection package
+Setup file for opensection package
 
 This file is kept for backwards compatibility.
 The actual configuration is in pyproject.toml

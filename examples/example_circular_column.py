@@ -1,7 +1,7 @@
 """
 Exemple : Poteau circulaire en béton armé
 """
-import pysection as ps
+import opensection as ps
 
 
 def main():

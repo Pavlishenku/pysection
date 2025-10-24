@@ -8,8 +8,8 @@ Référence : Exemple classique des cours de béton armé
 """
 import numpy as np
 import matplotlib.pyplot as plt
-from pysection import RectangularSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
-from pysection.eurocodes import EC2Verification
+from opensection import RectangularSection, ConcreteEC2, SteelEC2, RebarGroup, SectionSolver
+from opensection.eurocodes import EC2Verification
 
 
 def simply_supported_beam_design():

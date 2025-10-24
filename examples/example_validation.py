@@ -1,9 +1,9 @@
 """
-Exemple d'utilisation du module de validation SectionPy
+Exemple d'utilisation du module de validation opensection
 """
 
-from pysection import RectangularSection, ConcreteEC2, SteelEC2, RebarGroup
-from pysection.validation import (
+from opensection import RectangularSection, ConcreteEC2, SteelEC2, RebarGroup
+from opensection.validation import (
     SectionValidator,
     GeometryValidator,
     MaterialValidator,
@@ -199,7 +199,7 @@ def main():
     """Exécuter tous les exemples"""
     print("\n")
     print("*" * 70)
-    print("  EXEMPLES DE VALIDATION SectionPy")
+    print("  EXEMPLES DE VALIDATION opensection")
     print("*" * 70)
     print()
     
@@ -214,7 +214,7 @@ def main():
     print("=" * 70)
     print("RÉSUMÉ")
     print("=" * 70)
-    print("Le module de validation SectionPy détecte :")
+    print("Le module de validation opensection détecte :")
     print("  - Dimensions negatives ou aberrantes")
     print("  [OK] Armatures hors de la section")
     print("  [OK] Résistances matériaux hors normes EC2")
