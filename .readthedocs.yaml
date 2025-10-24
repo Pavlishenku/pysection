@@ -1,0 +1,38 @@
+# Read the Docs configuration file for SectionPy
+# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
+
+version: 2
+
+# Build documentation in the "docs/" directory with Sphinx
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.11"
+  jobs:
+    post_checkout:
+      # Cancel building pull requests when there aren't changes in the docs directory or YAML file
+      - |
+        if [ "$READTHEDOCS_VERSION_TYPE" = "external" ] && git diff --quiet origin/main -- docs/ .readthedocs.yaml;
+        then
+          exit 183;
+        fi
+
+sphinx:
+  configuration: docs/conf.py
+  fail_on_warning: false
+
+# Build formats
+formats:
+  - pdf
+  - epub
+
+# Python configuration
+python:
+  install:
+    - method: pip
+      path: .
+      extra_requirements:
+        - docs
+    - requirements: requirements.txt
+    - requirements: docs/requirements.txt
+

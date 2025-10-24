@@ -1,0 +1,4 @@
+# Core dependencies for OpenCDS
+numpy>=1.20.0
+matplotlib>=3.3.0
+
