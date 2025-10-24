@@ -55,7 +55,7 @@ pip install -e ".[dev]"
 ## 🚀 Quick Start
 
 ```python
-import opensection as ps
+import opensection as ops
 
 # Define a rectangular concrete section
 section = ops.RectangularSection(width=0.3, height=0.5)

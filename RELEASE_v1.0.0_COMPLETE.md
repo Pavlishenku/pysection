@@ -119,7 +119,7 @@ pip install opensection
 ### Quick Start
 
 ```python
-import opensection as ps
+import opensection as ops
 
 # Define section
 section = ops.RectangularSection(width=0.3, height=0.5)
@@ -214,7 +214,7 @@ GitHub Pages sera sur : https://pavlishenku.github.io/opensection
 ### Package
 - **Nom** : `opensection`
 - **Version** : `1.0.0`
-- **Import** : `import opensection as ps`
+- **Import** : `import opensection as ops`
 - **Lignes de code** : ~1,322 statements
 - **Modules** : 8 modules principaux
 
@@ -241,7 +241,7 @@ pip install opensection
 
 ### Importer
 ```python
-import opensection as ps
+import opensection as ops
 
 # Au lieu de l'ancien:
 # import opensection as sp
@@ -249,7 +249,7 @@ import opensection as ps
 
 ### Exemple complet
 ```python
-import opensection as ps
+import opensection as ops
 
 section = ops.RectangularSection(0.3, 0.5)
 concrete = ops.ConcreteEC2(fck=30)

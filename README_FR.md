@@ -53,7 +53,7 @@ pip install -e ".[dev]"
 ## 🚀 Démarrage Rapide
 
 ```python
-import opensection as ps
+import opensection as ops
 
 # Définir une section béton rectangulaire
 section = ops.RectangularSection(width=0.3, height=0.5)

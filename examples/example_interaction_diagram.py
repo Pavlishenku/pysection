@@ -3,7 +3,7 @@ Exemple : Génération de diagrammes d'interaction N-M
 """
 
 import numpy as np
-import opensection as ps
+import opensection as ops
 
 try:
     import matplotlib.pyplot as plt

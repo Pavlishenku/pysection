@@ -95,7 +95,7 @@ This is the first stable release of opensection, a professional concrete section
 
 ### 🔧 Breaking Changes
 - Package renamed from `opencds` to `opensection`
-- All imports now use `import opensection as ps` instead of `import opencds as oc`
+- All imports now use `import opensection as ops` instead of `import opencds as oc`
 
 ### 🙏 Acknowledgments
 This release represents a complete, production-ready library for structural concrete section analysis based on Eurocode 2 specifications.
