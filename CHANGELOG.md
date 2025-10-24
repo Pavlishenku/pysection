@@ -100,4 +100,4 @@ This is the first stable release of SectionPy, a professional concrete section a
 ### 🙏 Acknowledgments
 This release represents a complete, production-ready library for structural concrete section analysis based on Eurocode 2 specifications.
 
-[1.0.0]: https://github.com/yourusername/sectionpy/releases/tag/v1.0.0
+[1.0.0]: https://github.com/Pavlishenku/pysection/releases/tag/v1.0.0

@@ -67,11 +67,11 @@ test = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Pavlishenku/sectionpy"
-Documentation = "https://sectionpy.readthedocs.io"
-Repository = "https://github.com/Pavlishenku/sectionpy"
-"Bug Tracker" = "https://github.com/Pavlishenku/sectionpy/issues"
-Changelog = "https://github.com/Pavlishenku/sectionpy/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/Pavlishenku/pysection"
+Documentation = "https://pysection.readthedocs.io"
+Repository = "https://github.com/Pavlishenku/pysection"
+"Bug Tracker" = "https://github.com/Pavlishenku/pysection/issues"
+Changelog = "https://github.com/Pavlishenku/pysection/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

@@ -7,9 +7,9 @@
 [![PyPI version](https://img.shields.io/pypi/v/sectionpy.svg)](https://pypi.org/project/sectionpy/)
 [![Python versions](https://img.shields.io/pypi/pyversions/sectionpy.svg)](https://pypi.org/project/sectionpy/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://github.com/Pavlishenku/sectionpy/workflows/CI/badge.svg)](https://github.com/Pavlishenku/sectionpy/actions)
+[![Build Status](https://github.com/Pavlishenku/pysection/workflows/CI/badge.svg)](https://github.com/Pavlishenku/pysection/actions)
 [![codecov](https://codecov.io/gh/Pavlishenku/sectionpy/branch/main/graph/badge.svg)](https://codecov.io/gh/Pavlishenku/sectionpy)
-[![Documentation Status](https://readthedocs.org/projects/sectionpy/badge/?version=latest)](https://sectionpy.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/sectionpy/badge/?version=latest)](https://pysection.readthedocs.io/en/latest/?badge=latest)
 
 [English](README.md) | [Français](README_FR.md)
 
@@ -39,7 +39,7 @@ pip install sectionpy
 ### From source
 
 ```bash
-git clone https://github.com/Pavlishenku/sectionpy.git
+git clone https://github.com/Pavlishenku/pysection.git
 cd sectionpy
 pip install -e .
 ```
@@ -47,7 +47,7 @@ pip install -e .
 ### Development installation
 
 ```bash
-git clone https://github.com/Pavlishenku/sectionpy.git
+git clone https://github.com/Pavlishenku/pysection.git
 cd sectionpy
 pip install -e ".[dev]"
 ```
@@ -86,12 +86,12 @@ print(f"Steel check: {'OK' if checks['steel_stress']['ok'] else 'FAIL'}")
 
 ## 📚 Documentation
 
-Full documentation is available at [sectionpy.readthedocs.io](https://sectionpy.readthedocs.io)
+Full documentation is available at [pysection.readthedocs.io](https://pysection.readthedocs.io)
 
-- [User Guide](https://sectionpy.readthedocs.io/en/latest/user_guide/index.html)
-- [API Reference](https://sectionpy.readthedocs.io/en/latest/api/index.html)
-- [Examples](https://sectionpy.readthedocs.io/en/latest/examples/index.html)
-- [Theory](https://sectionpy.readthedocs.io/en/latest/theory/index.html)
+- [User Guide](https://pysection.readthedocs.io/en/latest/user_guide/index.html)
+- [API Reference](https://pysection.readthedocs.io/en/latest/api/index.html)
+- [Examples](https://pysection.readthedocs.io/en/latest/examples/index.html)
+- [Theory](https://pysection.readthedocs.io/en/latest/theory/index.html)
 
 ## 💡 Examples
 
@@ -110,7 +110,7 @@ Check out the [examples](examples/) directory for more detailed use cases:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Pavlishenku/sectionpy.git
+git clone https://github.com/Pavlishenku/pysection.git
 cd sectionpy
 
 # Create virtual environment
@@ -172,8 +172,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact & Support
 
-- **Issues**: [GitHub Issues](https://github.com/Pavlishenku/sectionpy/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Pavlishenku/sectionpy/discussions)
+- **Issues**: [GitHub Issues](https://github.com/Pavlishenku/pysection/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Pavlishenku/pysection/discussions)
 
 ## 🗺️ Roadmap
 
@@ -196,7 +196,7 @@ If you use SectionPy in academic work, please cite:
   author = {SectionPy Contributors},
   title = {SectionPy: Professional Concrete Section Analysis},
   year = {2025},
-  url = {https://github.com/Pavlishenku/sectionpy},
+  url = {https://github.com/Pavlishenku/pysection},
   version = {1.0.0}
 }
 ```
@@ -207,6 +207,6 @@ If you use SectionPy in academic work, please cite:
 
 **Made with ❤️ by the SectionPy community**
 
-[⭐ Star us on GitHub](https://github.com/Pavlishenku/sectionpy) | [📖 Read the docs](https://sectionpy.readthedocs.io) | [💬 Join the discussion](https://github.com/Pavlishenku/sectionpy/discussions)
+[⭐ Star us on GitHub](https://github.com/Pavlishenku/pysection) | [📖 Read the docs](https://pysection.readthedocs.io) | [💬 Join the discussion](https://github.com/Pavlishenku/pysection/discussions)
 
 </div>

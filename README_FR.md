@@ -7,7 +7,7 @@
 [![Version PyPI](https://img.shields.io/pypi/v/sectionpy.svg)](https://pypi.org/project/sectionpy/)
 [![Versions Python](https://img.shields.io/pypi/pyversions/sectionpy.svg)](https://pypi.org/project/sectionpy/)
 [![Licence: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://github.com/Pavlishenku/sectionpy/workflows/CI/badge.svg)](https://github.com/Pavlishenku/sectionpy/actions)
+[![Build Status](https://github.com/Pavlishenku/pysection/workflows/CI/badge.svg)](https://github.com/Pavlishenku/pysection/actions)
 
 [English](README.md) | **Français**
 
@@ -37,7 +37,7 @@ pip install sectionpy
 ### Depuis les sources
 
 ```bash
-git clone https://github.com/Pavlishenku/sectionpy.git
+git clone https://github.com/Pavlishenku/pysection.git
 cd sectionpy
 pip install -e .
 ```
@@ -45,7 +45,7 @@ pip install -e .
 ### Installation développement
 
 ```bash
-git clone https://github.com/Pavlishenku/sectionpy.git
+git clone https://github.com/Pavlishenku/pysection.git
 cd sectionpy
 pip install -e ".[dev]"
 ```
@@ -84,12 +84,12 @@ print(f"Vérif. acier: {'OK' if checks['steel_stress']['ok'] else 'ÉCHEC'}")
 
 ## 📚 Documentation
 
-Documentation complète disponible sur [sectionpy.readthedocs.io](https://sectionpy.readthedocs.io)
+Documentation complète disponible sur [pysection.readthedocs.io](https://pysection.readthedocs.io)
 
-- [Guide Utilisateur](https://sectionpy.readthedocs.io/fr/latest/user_guide/index.html)
-- [Référence API](https://sectionpy.readthedocs.io/fr/latest/api/index.html)
-- [Exemples](https://sectionpy.readthedocs.io/fr/latest/examples/index.html)
-- [Théorie](https://sectionpy.readthedocs.io/fr/latest/theory/index.html)
+- [Guide Utilisateur](https://pysection.readthedocs.io/fr/latest/user_guide/index.html)
+- [Référence API](https://pysection.readthedocs.io/fr/latest/api/index.html)
+- [Exemples](https://pysection.readthedocs.io/fr/latest/examples/index.html)
+- [Théorie](https://pysection.readthedocs.io/fr/latest/theory/index.html)
 
 ## 💡 Exemples
 
@@ -108,7 +108,7 @@ Consultez le répertoire [examples](examples/) pour plus de cas d'usage détaill
 
 ```bash
 # Cloner le dépôt
-git clone https://github.com/Pavlishenku/sectionpy.git
+git clone https://github.com/Pavlishenku/pysection.git
 cd sectionpy
 
 # Créer environnement virtuel
@@ -171,8 +171,8 @@ Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour les dé
 
 ## 📞 Contact & Support
 
-- **Issues**: [GitHub Issues](https://github.com/Pavlishenku/sectionpy/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Pavlishenku/sectionpy/discussions)
+- **Issues**: [GitHub Issues](https://github.com/Pavlishenku/pysection/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Pavlishenku/pysection/discussions)
 
 ## 🗺️ Feuille de Route
 
@@ -195,7 +195,7 @@ Si vous utilisez SectionPy dans un travail académique, veuillez citer :
   author = {SectionPy Contributors},
   title = {SectionPy: Professional Concrete Section Analysis},
   year = {2025},
-  url = {https://github.com/Pavlishenku/sectionpy},
+  url = {https://github.com/Pavlishenku/pysection},
   version = {1.0.0}
 }
 ```
@@ -206,6 +206,6 @@ Si vous utilisez SectionPy dans un travail académique, veuillez citer :
 
 **Fait avec ❤️ par la communauté SectionPy**
 
-[⭐ Star sur GitHub](https://github.com/Pavlishenku/sectionpy) | [📖 Documentation](https://sectionpy.readthedocs.io) | [💬 Discussions](https://github.com/Pavlishenku/sectionpy/discussions)
+[⭐ Star sur GitHub](https://github.com/Pavlishenku/pysection) | [📖 Documentation](https://pysection.readthedocs.io) | [💬 Discussions](https://github.com/Pavlishenku/pysection/discussions)
 
 </div>
