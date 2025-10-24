@@ -37,17 +37,17 @@ Basic Solve
 
 .. code-block:: python
 
-    import opensection as oc
+    import opensection as ops
     
     # Setup
-    section = oc.RectangularSection(width=0.3, height=0.5)
-    concrete = oc.ConcreteEC2(fck=30)
-    steel = oc.SteelEC2(fyk=500)
-    rebars = oc.RebarGroup()
+    section = ops.RectangularSection(width=0.3, height=0.5)
+    concrete = ops.ConcreteEC2(fck=30)
+    steel = ops.SteelEC2(fyk=500)
+    rebars = ops.RebarGroup()
     rebars.add_rebar(y=0.20, z=0.0, diameter=0.020, n=3)
     
     # Create solver
-    solver = oc.SectionSolver(section, concrete, steel, rebars)
+    solver = ops.SectionSolver(section, concrete, steel, rebars)
     
     # Solve for N and M
     result = solver.solve(N=500, My=0, Mz=100)  # kN, kN·m
@@ -89,13 +89,13 @@ Fiber Mesh Control
 .. code-block:: python
 
     # Fine mesh (more accurate, slower)
-    solver = oc.SectionSolver(
+    solver = ops.SectionSolver(
         section, concrete, steel, rebars,
         fiber_area=0.00005  # m²
     )
     
     # Coarse mesh (faster, less accurate)
-    solver = oc.SectionSolver(
+    solver = ops.SectionSolver(
         section, concrete, steel, rebars,
         fiber_area=0.0005  # m²
     )

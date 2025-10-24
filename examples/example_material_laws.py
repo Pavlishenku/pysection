@@ -20,9 +20,9 @@ def plot_concrete_law():
     print("Trace de la loi beton EC2...")
     
     # Creer plusieurs betons
-    c25 = oc.ConcreteEC2(fck=25)
-    c30 = oc.ConcreteEC2(fck=30)
-    c50 = oc.ConcreteEC2(fck=50)
+    c25 = ops.ConcreteEC2(fck=25)
+    c30 = ops.ConcreteEC2(fck=30)
+    c50 = ops.ConcreteEC2(fck=50)
     
     # Plage de deformations
     epsilon = np.linspace(0, 0.0045, 200)
@@ -57,8 +57,8 @@ def plot_steel_law():
     print("Trace de la loi acier EC2...")
     
     # Creer acier avec et sans ecrouissage
-    steel_plastic = oc.SteelEC2(fyk=500, include_hardening=False)
-    steel_hardening = oc.SteelEC2(fyk=500, include_hardening=True, k=0.01)
+    steel_plastic = ops.SteelEC2(fyk=500, include_hardening=False)
+    steel_hardening = ops.SteelEC2(fyk=500, include_hardening=True, k=0.01)
     
     # Plage de deformations (tension et compression)
     epsilon = np.linspace(-0.02, 0.02, 400)
@@ -99,7 +99,7 @@ def print_material_properties():
     print("BETONS EC2 :")
     print()
     for fck in [20, 25, 30, 35, 40, 45, 50, 60]:
-        c = oc.ConcreteEC2(fck=fck)
+        c = ops.ConcreteEC2(fck=fck)
         print(f"  C{fck}/{{fck+8 if fck<=50 else fck+10}} :")
         print(f"    fck = {c.fck:.1f} MPa")
         print(f"    fcd = {c.fcd:.2f} MPa")
@@ -112,7 +112,7 @@ def print_material_properties():
     print("ACIERS EC2 :")
     print()
     for fyk in [400, 500]:
-        s = oc.SteelEC2(fyk=fyk)
+        s = ops.SteelEC2(fyk=fyk)
         print(f"  B{fyk}B :")
         print(f"    fyk = {s.fyk:.1f} MPa")
         print(f"    fyd = {s.fyd:.2f} MPa")

@@ -23,21 +23,21 @@ def example_rectangular_section_interaction():
     # Définir la section
     width = 0.3  # m
     height = 0.5  # m
-    section = oc.RectangularSection(width=width, height=height)
+    section = ops.RectangularSection(width=width, height=height)
 
     print(f"\nSection: {width}m x {height}m")
     print(f"Aire: {section.properties.area*1e4:.2f} cm²")
 
     # Matériaux
-    concrete = oc.ConcreteEC2(fck=30)
-    steel = oc.SteelEC2(fyk=500)
+    concrete = ops.ConcreteEC2(fck=30)
+    steel = ops.SteelEC2(fyk=500)
 
     print(f"\nMatériaux:")
     print(f"  Béton: C30/37 (fcd = {concrete.fcd:.2f} MPa)")
     print(f"  Acier: B500B (fyd = {steel.fyd:.2f} MPa)")
 
     # Armatures symétriques
-    rebars = oc.RebarGroup()
+    rebars = ops.RebarGroup()
     rebars.add_rebar(y=0.20, z=0.0, diameter=0.020, n=3)  # 3HA20 haut
     rebars.add_rebar(y=-0.20, z=0.0, diameter=0.020, n=3)  # 3HA20 bas
 
@@ -47,12 +47,12 @@ def example_rectangular_section_interaction():
     print(f"  As,tot = {rebars.total_area*1e4:.2f} cm²")
 
     # Créer le solver
-    solver = oc.SectionSolver(section, concrete, steel, rebars)
+    solver = ops.SectionSolver(section, concrete, steel, rebars)
 
     print(f"\nMaillage: {len(solver.fibers)} fibres de béton")
 
     # Créer le diagramme d'interaction
-    diagram = oc.InteractionDiagram(solver)
+    diagram = ops.InteractionDiagram(solver)
 
     print("\nCalcul des points de la courbe d'interaction...")
 
@@ -124,21 +124,21 @@ def example_circular_section_interaction():
 
     # Définir la section
     diameter = 0.5  # m
-    section = oc.CircularSection(diameter=diameter)
+    section = ops.CircularSection(diameter=diameter)
 
     print(f"\nSection: Ø {diameter}m")
     print(f"Aire: {section.properties.area*1e4:.2f} cm²")
 
     # Matériaux
-    concrete = oc.ConcreteEC2(fck=30)
-    steel = oc.SteelEC2(fyk=500)
+    concrete = ops.ConcreteEC2(fck=30)
+    steel = ops.SteelEC2(fyk=500)
 
     print(f"\nMatériaux:")
     print(f"  Béton: C30/37 (fcd = {concrete.fcd:.2f} MPa)")
     print(f"  Acier: B500B (fyd = {steel.fyd:.2f} MPa)")
 
     # Armatures circulaires
-    rebars = oc.RebarGroup()
+    rebars = ops.RebarGroup()
     n_bars = 8
     rebars.add_circular_array(center_y=0.0, center_z=0.0, radius=0.20, n=n_bars, diameter=0.020)
 
@@ -147,7 +147,7 @@ def example_circular_section_interaction():
     print(f"  As,tot = {rebars.total_area*1e4:.2f} cm²")
 
     # Créer le solver
-    solver = oc.SectionSolver(section, concrete, steel, rebars)
+    solver = ops.SectionSolver(section, concrete, steel, rebars)
 
     print(f"\nMaillage: {len(solver.fibers)} fibres de béton")
 
@@ -198,9 +198,9 @@ def example_comparison_different_reinforcement():
     print("=" * 70)
 
     # Section de base
-    section = oc.RectangularSection(width=0.3, height=0.5)
-    concrete = oc.ConcreteEC2(fck=30)
-    steel = oc.SteelEC2(fyk=500)
+    section = ops.RectangularSection(width=0.3, height=0.5)
+    concrete = ops.ConcreteEC2(fck=30)
+    steel = ops.SteelEC2(fyk=500)
 
     print("\nSection: 0.3m x 0.5m")
     print("Béton: C30/37")
@@ -218,13 +218,13 @@ def example_comparison_different_reinforcement():
     for config in configs:
         print(f"\n--- Configuration: {config['name']} ---")
 
-        rebars = oc.RebarGroup()
+        rebars = ops.RebarGroup()
         rebars.add_rebar(y=0.20, z=0.0, diameter=config["diameter"], n=config["n_bars"])
         rebars.add_rebar(y=-0.20, z=0.0, diameter=config["diameter"], n=config["n_bars"])
 
         print(f"As,tot = {rebars.total_area*1e4:.2f} cm²")
 
-        solver = oc.SectionSolver(section, concrete, steel, rebars)
+        solver = ops.SectionSolver(section, concrete, steel, rebars)
 
         N_values = np.linspace(100, 2500, 15)
         M_capacity = []

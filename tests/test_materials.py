@@ -5,7 +5,7 @@ Tests unitaires pour les matériaux
 import numpy as np
 import pytest
 
-import opensection as oc
+import opensection as ops
 from opensection.materials import ConcreteEC2, SteelEC2, StructuralSteelEC3
 
 
@@ -325,20 +325,20 @@ class TestPrestressingSteelEC2:
 
     def test_prestressing_creation(self):
         """Test création acier de précontrainte"""
-        steel = oc.PrestressingSteelEC2(fp01k=1500)
+        steel = ops.PrestressingSteelEC2(fp01k=1500)
         assert steel.fp01k == 1500
         assert steel.Ep == 195000
     
     def test_prestressing_stress_elastic(self):
         """Test contrainte zone élastique"""
-        steel = oc.PrestressingSteelEC2(fp01k=1500)
+        steel = ops.PrestressingSteelEC2(fp01k=1500)
         epsilon = 0.005
         sigma = steel.stress(epsilon)
         assert sigma > 0
     
     def test_prestressing_no_compression(self):
         """Test pas de résistance en compression"""
-        steel = oc.PrestressingSteelEC2(fp01k=1500)
+        steel = ops.PrestressingSteelEC2(fp01k=1500)
         epsilon = -0.001
         sigma = steel.stress(epsilon)
         assert sigma == 0.0

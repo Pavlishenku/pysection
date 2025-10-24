@@ -12,14 +12,14 @@ def main():
     
     # Geometrie
     diameter = 0.40  # 40 cm
-    section = oc.CircularSection(diameter=diameter)
+    section = ops.CircularSection(diameter=diameter)
     print(f"Section circulaire : D = {diameter*100:.0f} cm")
     print(f"Aire : {section.properties.area*1e4:.2f} cm2")
     print()
     
     # Materiaux
-    concrete = oc.ConcreteEC2(fck=25)  # C25/30
-    steel = oc.SteelEC2(fyk=500)  # B500B
+    concrete = ops.ConcreteEC2(fck=25)  # C25/30
+    steel = ops.SteelEC2(fyk=500)  # B500B
     print(f"Beton : C25/30")
     print(f"  fck = {concrete.fck:.1f} MPa")
     print(f"  fcd = {concrete.fcd:.2f} MPa")
@@ -32,7 +32,7 @@ def main():
     print()
     
     # Armatures - 8 barres Ø16 en peripherie
-    rebars = oc.RebarGroup()
+    rebars = ops.RebarGroup()
     rebars.add_circular_array(
         center_y=0.0,
         center_z=0.0,
@@ -56,7 +56,7 @@ def main():
     
     # Analyse
     print("Analyse en cours...")
-    solver = oc.SectionSolver(section, concrete, steel, rebars, fiber_area=0.00005)
+    solver = ops.SectionSolver(section, concrete, steel, rebars, fiber_area=0.00005)
     print(f"  Maillage : {len(solver.fibers)} fibres de beton")
     print()
     
@@ -71,7 +71,7 @@ def main():
     print()
     
     # Verifications EC2
-    checks = oc.EC2Verification.check_ULS(result, concrete.fcd, steel.fyd)
+    checks = ops.EC2Verification.check_ULS(result, concrete.fcd, steel.fyd)
     print("VERIFICATIONS EC2 (ELU) :")
     print(f"  Beton : {checks['concrete_stress']['ratio']*100:.1f}% - {'OK' if checks['concrete_stress']['ok'] else 'NON OK'}")
     print(f"  Acier : {checks['steel_stress']['ratio']*100:.1f}% - {'OK' if checks['steel_stress']['ok'] else 'NON OK'}")

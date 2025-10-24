@@ -16,7 +16,7 @@ def main():
     web_width = 0.25  # 25 cm (ame)
     web_height = 0.48  # 48 cm
     
-    section = oc.TSection(
+    section = ops.TSection(
         flange_width=flange_width,
         flange_thickness=flange_thickness,
         web_width=web_width,
@@ -32,15 +32,15 @@ def main():
     print()
     
     # Materiaux
-    concrete = oc.ConcreteEC2(fck=30)
-    steel = oc.SteelEC2(fyk=500)
+    concrete = ops.ConcreteEC2(fck=30)
+    steel = ops.SteelEC2(fyk=500)
     print(f"Materiaux :")
     print(f"  Beton C30/37 : fcd = {concrete.fcd:.2f} MPa")
     print(f"  Acier B500B : fyd = {steel.fyd:.2f} MPa")
     print()
     
     # Armatures tendues (en bas)
-    rebars = oc.RebarGroup()
+    rebars = ops.RebarGroup()
     rebars.add_linear_array(
         y1=-web_width/2 + 0.04,
         z1=-web_height + 0.04,
@@ -77,7 +77,7 @@ def main():
     
     # Analyse
     print("Analyse en cours...")
-    solver = oc.SectionSolver(section, concrete, steel, rebars)
+    solver = ops.SectionSolver(section, concrete, steel, rebars)
     print(f"  Maillage : {len(solver.fibers)} fibres de beton")
     print()
     
@@ -97,7 +97,7 @@ def main():
     print()
     
     # Verifications
-    checks = oc.EC2Verification.check_ULS(result, concrete.fcd, steel.fyd)
+    checks = ops.EC2Verification.check_ULS(result, concrete.fcd, steel.fyd)
     print("VERIFICATIONS EC2 :")
     print(f"  Beton : {checks['concrete_stress']['ratio']*100:.1f}% - {'OK' if checks['concrete_stress']['ok'] else 'NON OK'}")
     print(f"  Acier : {checks['steel_stress']['ratio']*100:.1f}% - {'OK' if checks['steel_stress']['ok'] else 'NON OK'}")

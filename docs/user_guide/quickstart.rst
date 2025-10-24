@@ -10,22 +10,22 @@ Here's a simple example of analyzing a rectangular concrete section:
 
 .. code-block:: python
 
-    import opensection as oc
+    import opensection as ops
 
     # Define geometry
-    section = oc.RectangularSection(width=0.3, height=0.5)
+    section = ops.RectangularSection(width=0.3, height=0.5)
 
     # Define materials (Eurocode 2)
-    concrete = oc.ConcreteEC2(fck=30)  # C30/37 concrete
-    steel = oc.SteelEC2(fyk=500)       # B500B reinforcement
+    concrete = ops.ConcreteEC2(fck=30)  # C30/37 concrete
+    steel = ops.SteelEC2(fyk=500)       # B500B reinforcement
 
     # Add reinforcement
-    rebars = oc.RebarGroup()
+    rebars = ops.RebarGroup()
     rebars.add_rebar(y=0.20, z=0.0, diameter=0.020, n=3)  # 3HA20 top
     rebars.add_rebar(y=-0.20, z=0.0, diameter=0.020, n=3) # 3HA20 bottom
 
     # Create solver
-    solver = oc.SectionSolver(section, concrete, steel, rebars)
+    solver = ops.SectionSolver(section, concrete, steel, rebars)
 
     # Solve for given loads
     result = solver.solve(N=500, My=0, Mz=100)  # N in kN, M in kN·m
@@ -55,7 +55,7 @@ Use EC2 verification tools:
 
 .. code-block:: python
 
-    checks = oc.EC2Verification.check_ULS(result, concrete.fcd, steel.fyd)
+    checks = ops.EC2Verification.check_ULS(result, concrete.fcd, steel.fyd)
     
     print(f"Concrete OK: {checks['concrete_stress']['ok']}")
     print(f"Steel OK: {checks['steel_stress']['ok']}")
@@ -68,21 +68,21 @@ Rectangular Section
 
 .. code-block:: python
 
-    section = oc.RectangularSection(width=0.3, height=0.5)
+    section = ops.RectangularSection(width=0.3, height=0.5)
 
 Circular Section
 ~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
-    section = oc.CircularSection(diameter=0.5)
+    section = ops.CircularSection(diameter=0.5)
 
 T-Section
 ~~~~~~~~~
 
 .. code-block:: python
 
-    section = oc.TSection(
+    section = ops.TSection(
         web_width=0.3,
         web_height=0.6,
         flange_width=0.8,
@@ -98,13 +98,13 @@ Concrete EC2
 .. code-block:: python
 
     # Standard concrete
-    concrete = oc.ConcreteEC2(fck=30)  # C30/37
+    concrete = ops.ConcreteEC2(fck=30)  # C30/37
     
     # High-strength concrete
-    concrete = oc.ConcreteEC2(fck=60)  # C60/75
+    concrete = ops.ConcreteEC2(fck=60)  # C60/75
     
     # Custom safety factors
-    concrete = oc.ConcreteEC2(fck=30, gamma_c=1.5, alpha_cc=0.85)
+    concrete = ops.ConcreteEC2(fck=30, gamma_c=1.5, alpha_cc=0.85)
 
 Steel EC2
 ~~~~~~~~~
@@ -112,10 +112,10 @@ Steel EC2
 .. code-block:: python
 
     # Standard reinforcement
-    steel = oc.SteelEC2(fyk=500)  # B500B
+    steel = ops.SteelEC2(fyk=500)  # B500B
     
     # With strain hardening
-    steel = oc.SteelEC2(fyk=500, include_hardening=True, k=0.01)
+    steel = ops.SteelEC2(fyk=500, include_hardening=True, k=0.01)
 
 Reinforcement
 -------------
@@ -125,7 +125,7 @@ Single Bars
 
 .. code-block:: python
 
-    rebars = oc.RebarGroup()
+    rebars = ops.RebarGroup()
     rebars.add_rebar(y=0.20, z=0.0, diameter=0.020, n=3)
 
 Linear Array
@@ -158,7 +158,7 @@ Plot Section
 
 .. code-block:: python
 
-    plotter = oc.SectionPlotter(section, rebars)
+    plotter = ops.SectionPlotter(section, rebars)
     plotter.plot()
     plotter.save("section.png")
 
@@ -167,7 +167,7 @@ Generate Report
 
 .. code-block:: python
 
-    report = oc.ReportGenerator()
+    report = ops.ReportGenerator()
     report.add_section_info(section, concrete, steel, rebars)
     report.add_results(result)
     print(report.generate())

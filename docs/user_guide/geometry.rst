@@ -60,9 +60,9 @@ Creating a Rectangular Section
 
 .. code-block:: python
 
-    import opensection as oc
+    import opensection as ops
 
-    section = oc.RectangularSection(width=0.3, height=0.5)
+    section = ops.RectangularSection(width=0.3, height=0.5)
     props = section.properties
     
     print(f"Area: {props.area:.4f} m²")
@@ -75,7 +75,7 @@ Creating a Circular Section
 
 .. code-block:: python
 
-    section = oc.CircularSection(diameter=0.5)
+    section = ops.CircularSection(diameter=0.5)
     props = section.properties
     
     print(f"Area: {props.area:.4f} m²")

@@ -17,21 +17,21 @@ Basic Usage
 
 .. code-block:: python
 
-    import opensection as oc
+    import opensection as ops
     
     # Setup section
-    section = oc.RectangularSection(width=0.3, height=0.5)
-    concrete = oc.ConcreteEC2(fck=30)
-    steel = oc.SteelEC2(fyk=500)
+    section = ops.RectangularSection(width=0.3, height=0.5)
+    concrete = ops.ConcreteEC2(fck=30)
+    steel = ops.SteelEC2(fyk=500)
     
     # Symmetric reinforcement
-    rebars = oc.RebarGroup()
+    rebars = ops.RebarGroup()
     rebars.add_rebar(y=0.20, z=0.0, diameter=0.020, n=3)
     rebars.add_rebar(y=-0.20, z=0.0, diameter=0.020, n=3)
     
     # Create solver and diagram
-    solver = oc.SectionSolver(section, concrete, steel, rebars)
-    diagram = oc.InteractionDiagram(solver)
+    solver = ops.SectionSolver(section, concrete, steel, rebars)
+    diagram = ops.InteractionDiagram(solver)
     
     # Generate interaction curve
     M_vals, N_vals = diagram.compute_NM_curve(n_points=20)

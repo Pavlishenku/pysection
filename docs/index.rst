@@ -35,19 +35,19 @@ Basic usage:
 
 .. code-block:: python
 
-    import opensection as oc
+    import opensection as ops
 
     # Define section and materials
-    section = oc.RectangularSection(width=0.3, height=0.5)
-    concrete = oc.ConcreteEC2(fck=30)
-    steel = oc.SteelEC2(fyk=500)
+    section = ops.RectangularSection(width=0.3, height=0.5)
+    concrete = ops.ConcreteEC2(fck=30)
+    steel = ops.SteelEC2(fyk=500)
 
     # Add reinforcement
-    rebars = oc.RebarGroup()
+    rebars = ops.RebarGroup()
     rebars.add_rebar(y=0.0, z=-0.20, diameter=0.020, n=3)
 
     # Analyze
-    solver = oc.SectionSolver(section, concrete, steel, rebars)
+    solver = ops.SectionSolver(section, concrete, steel, rebars)
     result = solver.solve(N=500, My=0, Mz=100)
 
 .. toctree::

@@ -86,16 +86,16 @@ Concrete Classes
 
 .. code-block:: python
 
-    import opensection as oc
+    import opensection as ops
     
     # Standard concrete classes
-    c20 = oc.ConcreteEC2(fck=20)  # C20/25
-    c30 = oc.ConcreteEC2(fck=30)  # C30/37
-    c40 = oc.ConcreteEC2(fck=40)  # C40/50
+    c20 = ops.ConcreteEC2(fck=20)  # C20/25
+    c30 = ops.ConcreteEC2(fck=30)  # C30/37
+    c40 = ops.ConcreteEC2(fck=40)  # C40/50
     
     # High-strength concrete
-    c60 = oc.ConcreteEC2(fck=60)  # C60/75
-    c80 = oc.ConcreteEC2(fck=80)  # C80/95
+    c60 = ops.ConcreteEC2(fck=60)  # C60/75
+    c80 = ops.ConcreteEC2(fck=80)  # C80/95
     
     print(f"C30/37: fcd = {c30.fcd:.2f} MPa")
     print(f"C30/37: Ecm = {c30.Ecm:.0f} MPa")
@@ -106,10 +106,10 @@ Custom Safety Factors
 .. code-block:: python
 
     # Custom partial safety factor
-    concrete = oc.ConcreteEC2(fck=30, gamma_c=1.2)
+    concrete = ops.ConcreteEC2(fck=30, gamma_c=1.2)
     
     # Custom long-term effects coefficient
-    concrete = oc.ConcreteEC2(fck=30, alpha_cc=1.0)
+    concrete = ops.ConcreteEC2(fck=30, alpha_cc=1.0)
 
 Steel Grades
 ~~~~~~~~~~~~
@@ -117,11 +117,11 @@ Steel Grades
 .. code-block:: python
 
     # Common grades
-    b400 = oc.SteelEC2(fyk=400)  # B400
-    b500 = oc.SteelEC2(fyk=500)  # B500
+    b400 = ops.SteelEC2(fyk=400)  # B400
+    b500 = ops.SteelEC2(fyk=500)  # B500
     
     # With strain hardening
-    steel = oc.SteelEC2(fyk=500, include_hardening=True, k=0.01)
+    steel = ops.SteelEC2(fyk=500, include_hardening=True, k=0.01)
     
     print(f"B500: fyd = {b500.fyd:.2f} MPa")
     print(f"B500: Es = {b500.Es:.0f} MPa")
@@ -134,7 +134,7 @@ Stress-Strain Curves
     import numpy as np
     import matplotlib.pyplot as plt
     
-    concrete = oc.ConcreteEC2(fck=30)
+    concrete = ops.ConcreteEC2(fck=30)
     
     # Generate strain range
     epsilon = np.linspace(0, 0.004, 100)
@@ -158,7 +158,7 @@ Concrete Properties
 
 .. code-block:: python
 
-    concrete = oc.ConcreteEC2(fck=30)
+    concrete = ops.ConcreteEC2(fck=30)
     
     print(f"fck = {concrete.fck} MPa")
     print(f"fcd = {concrete.fcd:.2f} MPa")
@@ -171,7 +171,7 @@ Steel Properties
 
 .. code-block:: python
 
-    steel = oc.SteelEC2(fyk=500)
+    steel = ops.SteelEC2(fyk=500)
     
     print(f"fyk = {steel.fyk} MPa")
     print(f"fyd = {steel.fyd:.2f} MPa")

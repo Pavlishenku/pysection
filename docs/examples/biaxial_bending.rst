@@ -10,22 +10,22 @@ Basic Example
 
 .. code-block:: python
 
-    import opensection as oc
+    import opensection as ops
     
     # Square column
-    section = oc.RectangularSection(width=0.4, height=0.4)
-    concrete = oc.ConcreteEC2(fck=30)
-    steel = oc.SteelEC2(fyk=500)
+    section = ops.RectangularSection(width=0.4, height=0.4)
+    concrete = ops.ConcreteEC2(fck=30)
+    steel = ops.SteelEC2(fyk=500)
     
     # Corner reinforcement
-    rebars = oc.RebarGroup()
+    rebars = ops.RebarGroup()
     rebars.add_rebar(y=0.15, z=0.15, diameter=0.025, n=1)
     rebars.add_rebar(y=0.15, z=-0.15, diameter=0.025, n=1)
     rebars.add_rebar(y=-0.15, z=0.15, diameter=0.025, n=1)
     rebars.add_rebar(y=-0.15, z=-0.15, diameter=0.025, n=1)
     
     # Solve for biaxial moment
-    solver = oc.SectionSolver(section, concrete, steel, rebars)
+    solver = ops.SectionSolver(section, concrete, steel, rebars)
     result = solver.solve(N=1000, My=50, Mz=75)  # kN, kN·m
     
     print(f"Converged: {result.converged}")

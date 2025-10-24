@@ -18,13 +18,13 @@ Check ULS
 
 .. code-block:: python
 
-    import opensection as oc
+    import opensection as ops
     
     # After solving
     result = solver.solve(N=500, My=0, Mz=100)
     
     # Verify ULS
-    checks = oc.EC2Verification.check_ULS(
+    checks = ops.EC2Verification.check_ULS(
         result,
         fcd=concrete.fcd,
         fyd=steel.fyd
@@ -66,7 +66,7 @@ Check SLS
 .. code-block:: python
 
     # SLS checks (if implemented)
-    sls_checks = oc.EC2Verification.check_SLS(
+    sls_checks = ops.EC2Verification.check_SLS(
         result,
         fck=concrete.fck,
         max_crack_width=0.0003  # 0.3 mm
@@ -128,20 +128,20 @@ Complete Verification Example
 
 .. code-block:: python
 
-    import opensection as oc
+    import opensection as ops
     
     # Define section
-    section = oc.RectangularSection(width=0.3, height=0.5)
-    concrete = oc.ConcreteEC2(fck=30)
-    steel = oc.SteelEC2(fyk=500)
+    section = ops.RectangularSection(width=0.3, height=0.5)
+    concrete = ops.ConcreteEC2(fck=30)
+    steel = ops.SteelEC2(fyk=500)
     
     # Add reinforcement
-    rebars = oc.RebarGroup()
+    rebars = ops.RebarGroup()
     rebars.add_rebar(y=0.21, z=0.0, diameter=0.020, n=3)
     rebars.add_rebar(y=-0.21, z=0.0, diameter=0.020, n=3)
     
     # Solve
-    solver = oc.SectionSolver(section, concrete, steel, rebars)
+    solver = ops.SectionSolver(section, concrete, steel, rebars)
     result = solver.solve(N=500, My=0, Mz=100)
     
     # Comprehensive verification
@@ -156,7 +156,7 @@ Complete Verification Example
     
     # 2. ULS stress checks
     print(f"\n2. ULS Stress Verification:")
-    checks = oc.EC2Verification.check_ULS(result, concrete.fcd, steel.fyd)
+    checks = ops.EC2Verification.check_ULS(result, concrete.fcd, steel.fyd)
     
     print(f"   Concrete: σ_c,max = {result.sigma_c_max:.2f} MPa")
     print(f"             f_cd = {concrete.fcd:.2f} MPa")

@@ -25,7 +25,7 @@ def example_simple_two_layers():
     height = 0.5
 
     # Armatures
-    rebars = oc.RebarGroup()
+    rebars = ops.RebarGroup()
     rebars.add_rebar(y=0.20, z=0.0, diameter=0.020, n=3)  # 3HA20 haut
     rebars.add_rebar(y=-0.20, z=0.0, diameter=0.020, n=3)  # 3HA20 bas
 
@@ -51,7 +51,7 @@ def example_linear_array():
     height = 0.6
 
     # Armatures avec nappe linéaire
-    rebars = oc.RebarGroup()
+    rebars = ops.RebarGroup()
 
     # Nappe supérieure : 5 barres espacées
     rebars.add_linear_array(y1=-0.15, z1=-0.15, y2=-0.15, z2=0.15, n=5, diameter=0.016)
@@ -83,7 +83,7 @@ def example_circular_array():
     diameter = 0.5
 
     # Armatures en cercle
-    rebars = oc.RebarGroup()
+    rebars = ops.RebarGroup()
     n_bars = 8
     rebars.add_circular_array(center_y=0.0, center_z=0.0, radius=0.20, n=n_bars, diameter=0.020)
 
@@ -109,7 +109,7 @@ def example_complex_pattern():
     height = 0.8
 
     # Armatures complexes
-    rebars = oc.RebarGroup()
+    rebars = ops.RebarGroup()
 
     # Nappe supérieure (zone comprimée) : 5HA16
     rebars.add_linear_array(y1=0.35, z1=-0.25, y2=0.35, z2=0.25, n=5, diameter=0.016)
@@ -177,7 +177,7 @@ def example_cover_helpers():
         print(f"  Barre {i+1}: y={y:.3f}m, z={z:.3f}m")
 
     # Créer les armatures
-    rebars = oc.RebarGroup()
+    rebars = ops.RebarGroup()
     for y, z in positions:
         rebars.add_rebar(y=y, z=z, diameter=diameter, n=1)
 
