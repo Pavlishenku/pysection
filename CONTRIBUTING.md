@@ -2,7 +2,7 @@
 
 First off, thank you for considering contributing to opensection! It's people like you that make opensection such a great tool for the structural engineering community.
 
-## [LIST] Table of Contents
+## Table of Contents
 
 - [Code of Conduct](#code-of-conduct)
 - [Getting Started](#getting-started)
@@ -13,11 +13,11 @@ First off, thank you for considering contributing to opensection! It's people li
 - [Documentation](#documentation)
 - [Submitting Changes](#submitting-changes)
 
-##  Code of Conduct
+## Code of Conduct
 
 This project and everyone participating in it is governed by the [opensection Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
 
-## [>] Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -55,7 +55,7 @@ This project and everyone participating in it is governed by the [opensection Co
    git checkout -b feature/your-feature-name
    ```
 
-## [THINK] How Can I Contribute?
+## How Can I Contribute?
 
 ### Reporting Bugs
 
@@ -100,7 +100,7 @@ Unsure where to begin? Look for issues labeled:
 5. Ensure all tests pass
 6. Fill in the pull request template
 
-## [CONFIG] Development Process
+## Development Process
 
 ### 1. Make Your Changes
 
@@ -162,7 +162,7 @@ git commit -m "feat: add support for circular hollow sections"
 - `style:` Formatting changes
 - `chore:` Maintenance tasks
 
-##  Coding Standards
+## Coding Standards
 
 ### Python Style
 
@@ -222,7 +222,7 @@ def process_rebars(
 - **Constants**: `UPPER_SNAKE_CASE` (e.g., `MAX_ITERATIONS`)
 - **Private**: prefix with `_` (e.g., `_internal_method`)
 
-## [TEST] Testing
+## Testing
 
 ### Writing Tests
 
@@ -259,7 +259,7 @@ tests/
  fixtures/              # Test data and fixtures
 ```
 
-## [DOCS] Documentation
+## Documentation
 
 ### Building Documentation
 
@@ -277,7 +277,7 @@ View at `docs/_build/html/index.html`.
 - **Reference**: API documentation (auto-generated)
 - **Explanation**: Background theory and concepts
 
-##  Submitting Changes
+## Submitting Changes
 
 ### Before Submitting
 
@@ -323,7 +323,7 @@ Pull requests are reviewed for:
 - Performance implications
 - API consistency
 
-## [WORLD] Translation Contributions
+## Translation Contributions
 
 We welcome translations! See [Translation Guide](docs/TRANSLATION.md) for:
 - How to add new language
@@ -337,13 +337,13 @@ Priority languages:
 - Japanese
 - Chinese (Simplified)
 
-## [IDEA] Questions?
+## Questions?
 
 - **General questions**: [GitHub Discussions](https://github.com/opensection/opensection/discussions)
 - **Bug reports**: [GitHub Issues](https://github.com/opensection/opensection/issues)
 - **Email**: pavlishenku@gmail.com
 
-## [AWARD] Recognition
+## Recognition
 
 Contributors are recognized in:
 - [AUTHORS.md](AUTHORS.md)
@@ -351,5 +351,5 @@ Contributors are recognized in:
 - Release notes
 - Annual summary posts
 
-Thank you for contributing to opensection! [SUCCESS]
+Thank you for contributing to opensection!
 

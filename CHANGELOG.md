@@ -7,11 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2025-10-24
 
-### 🎉 First Stable Release
+### First Stable Release
 
 This is the first stable release of opensection, a professional concrete section analysis library.
 
-### ✨ Added
+### Added
 
 #### Core Features
 - **Fiber-based section analysis** using Newton-Raphson solver
@@ -88,16 +88,16 @@ This is the first stable release of opensection, a professional concrete section
 - **Contributing guidelines**
 - **Code of conduct**
 
-### 📝 Package Information
+### Package Information
 - **License**: MIT
 - **Python Support**: 3.8, 3.9, 3.10, 3.11, 3.12
 - **Main Dependencies**: NumPy >= 1.20.0, Matplotlib >= 3.3.0
 
-### 🔧 Breaking Changes
+### Breaking Changes
 - Package renamed from `opencds` to `opensection`
 - All imports now use `import opensection as ops` instead of `import opencds as oc`
 
-### 🙏 Acknowledgments
+### Acknowledgments
 This release represents a complete, production-ready library for structural concrete section analysis based on Eurocode 2 specifications.
 
 [1.0.0]: https://github.com/Pavlishenku/opensection/releases/tag/v1.0.0
